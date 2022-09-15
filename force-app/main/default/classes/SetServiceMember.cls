@@ -10,7 +10,7 @@ global class SetServiceMember {
 
         for(Integer j = 0; j< oppProduct.size(); j++){
         for(Integer i = 0; i < memberMap.size(); i++){
-           
+           // updated
             if((oppProduct.get(j).Product2Id)==(memberMap.get(i).service.Name)){
                 Service_Member__c serviceMember = new Service_Member__c();
                 serviceMember.Opportunity_Product__c = oppProduct.get(j).Id;
