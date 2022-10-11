@@ -30,7 +30,6 @@ global class SetServiceMember {
                 Service_Member__c serviceMember = new Service_Member__c();
                 serviceMember.Opportunity_Product__c = oppProduct.get(j).Id;
                 serviceMember.Contact__c = memberMap.get(i).selectedContact.Id;
-                
                 String serviceMemberName ;
                 if(memberMap.get(i).selectedContact.FirstName != null){
                 serviceMemberName=memberMap.get(i).selectedContact.FirstName + ' ' + memberMap.get(i).selectedContact.LastName;
@@ -40,22 +39,18 @@ global class SetServiceMember {
                 serviceMember.Name = serviceMemberName;
                 serviceMembers.add(serviceMember);
 
-                System.debug(' service points 2' + memberMap.get(i).selectedContact.Is_Member__c);
-                if(memberMap.get(i).selectedContact.Is_Member__c){
-                     // rename x to variable 
-                    decimal x= membermap.get(i).service.Points__c;
-                    System.debug(' service points' + oppProduct.get(j).Product2.Points__c);
-                 memberMap.get(i).selectedContact.Total_Hold__c = memberMap.get(i).selectedContact.Total_Hold__c + x;
                 
+                if(memberMap.get(i).selectedContact.Is_Member__c==false){
+                 memberMap.get(i).selectedContact.Total_Hold__c = 0;}
 
-                    if (contactsToUpdate.contains(memberMap.get(i).selectedContact)== false){
-                     System.debug('check passed 1'+ memberMap.get(i).selectedContact);
+                if (contactsToUpdate.contains(memberMap.get(i).selectedContact)== false){
+                    System.debug('check passed 1'+ memberMap.get(i).selectedContact);
                     contactsToUpdate.add(memberMap.get(i).selectedContact);
-                    }
-            }
+                }
+            
            }
            }}
-
+           
             insert serviceMembers;
            update contactsToUpdate;
     }
