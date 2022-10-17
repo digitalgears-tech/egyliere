@@ -1,54 +1,69 @@
 public with sharing class addValueToPicklist {
+    static String picklistId;
     public addValueToPicklist() {
 
     }
 
     @InvocableMethod
     public static void addValueToPicklist(List<String> picklistValue){
-        String Id =getPicklistId();
-        updatePicklist(Id, picklistValue.get(0));
+        getPicklistId(picklistValue.get(0));
+       //updatePicklist(picklistId, picklistValue.get(0));
 
     }
-
-    Public static String getPicklistId(){
-
+    @future(callout=true)
+    public static void getPicklistId(String picklistValue){
+        String accessToken= '00D7X0000004mGz!AR0AQN6Td7e2tcv3bHuvO5ugQmv9FFS16N5ANw6y4Jf62HmpBNZy7wC0hpL1GG4KlaHyJ9loafkqj0Q39uJQlrGXefdkTG.L';
         Http http = new Http();
-        HttpRequest request= new HttpRequest();
-        request.setEndpoint('https://egylieretravel--dev.sandbox.my.salesforce.com/services/data/v55.0/tooling/query/?q=select+Id+FROM+CustomField+WHERE+DeveloperName+=+’Tags’');
-        request.setMethod('GET');
-        request.setHeader('Authorization', 'Bearer '+'00D7X0000004mGz!AR0AQIOwx3jhiv0jnf9vOre8r3Er8DcUBZwAfX_Sd90fb_SO_vR9aswQBT7ab.98OmMW7ylmM6aeHpqRHu6UnoB7fN5jUJ6m');
-        HttpResponse response = http.send(request);
-        Map<String, Object> results = (Map<String, Object>) JSON.deserializeUntyped(response.getBody());
-        Map<String, Object> record = (Map<String, Object>) results.get('records');
-        String picklistId = (String) record.get('Id');
-        return picklistId;
-    }
-
-    Public static void updatePicklist(String Id, String picklistValue){
-        Http http = new Http();
+        HttpRequest requestId= new HttpRequest();
+        requestId.setEndpoint('https://egylieretravel--dev.sandbox.my.salesforce.com/services/data/v55.0/tooling/query/?q=select%20Id%20FROM%20CustomField%20WHERE%20DeveloperName%20=%20'+  '\''+ 'Tags' + '\'');
+        requestId.setMethod('GET');
+        requestId.setHeader('Authorization', 'Bearer '+ accessToken);
+        HttpResponse responseId = http.send(requestId);
+         Map<String, Object> resultsId = (Map<String, Object>) JSON.deserializeUntyped(responseId.getBody());
+         System.debug('Id'+resultsId.get('records'));
+        List<Object>  record = (List<Object>) resultsId.get('records');
+        String Id = (String) ((Map<String, Object>)record.get(0)).get('Id');
+        System.debug('Id'+Id);
         HttpRequest request= new HttpRequest();
         request.setEndpoint('https://egylieretravel--dev.sandbox.my.salesforce.com/services/data/v55.0/tooling/sobjects/CustomField/'+Id);
         request.setMethod('GET');
-        request.setHeader('Authorization', 'Bearer '+'00D7X0000004mGz!AR0AQIOwx3jhiv0jnf9vOre8r3Er8DcUBZwAfX_Sd90fb_SO_vR9aswQBT7ab.98OmMW7ylmM6aeHpqRHu6UnoB7fN5jUJ6m');
+        request.setHeader('Authorization', 'Bearer '+ accessToken);
         HttpResponse response = http.send(request);
         Map<String, Object> results = (Map<String, Object>) JSON.deserializeUntyped(response.getBody());
-        Map<String, Object> body = (Map<String, Object>) results.get('Metadata');
-        Map<String, Object> valueSet = (Map<String, Object>) body.get('valueSet');
-        valueSet.put('valueSetName','[]');
+        System.debug('GET'+response.getBody());
+        Map<String, Object> metadata = (Map<String, Object>) results.get('Metadata');
+        Map<String, Object> valueSet = (Map<String, Object>) metadata.get('valueSet');
         Map<String, Object> valueSetDefinition = (Map<String, Object>) valueSet.get('valueSetDefinition');
-        Map<String, List<String>> value = (Map<String, List<String>>) valueSetDefinition.get('value');
-        String valueTobeadded = '{'+'\n'+'"color": null,'+'\n'+'"default": false,'+'\n'+'"description": null,'+'\n'+'"isActive": null,'+'\n'+'"label": '+picklistValue+','+'\n'+'"urls": null,'+'\n'+'"valueName": '+picklistValue +'\n'+'}' ;
+        List<Object> value = (List<Object>) valueSetDefinition.get('value');
+        Map<String, Object> valueTobeAdd = new Map<String, Object> ();
+        valueTobeAdd.put('color', null);
+        valueTobeAdd.put('default',false);
+        valueTobeAdd.put('description',null);
+        valueTobeAdd.put('isActive',true);
+        valueTobeAdd.put('label',picklistValue);
+        valueTobeAdd.put('urls',null);
+        valueTobeAdd.put('valueName',picklistValue);
+        value.add(valueTobeAdd);
 
-        valueSetDefinition.put('value', value+valueTobeadded);
-       
+        valueSet.put('valueSettings',new List<String>());
+        valueSetDefinition.put('value',value);
         valueSet.put('valueSetDefinition', valueSetDefinition);
-        body.put('valueSet', valueSet);
 
+        System.debug('valueSet'+ value.toString());
+        Map<String, Object> body = new Map<String, Object>();
+        body.put('Metadata', metadata);
+        System.debug('PATCH'+JSON.serialize(body));
+        
         HttpRequest patchRequest = new HttpRequest();
         patchRequest.setEndpoint('https://egylieretravel--dev.sandbox.my.salesforce.com/services/data/v55.0/tooling/sobjects/CustomField/'+Id);
         patchRequest.setMethod('PATCH');
-        patchRequest.setHeader('Authorization', 'Bearer '+'00D7X0000004mGz!AR0AQIOwx3jhiv0jnf9vOre8r3Er8DcUBZwAfX_Sd90fb_SO_vR9aswQBT7ab.98OmMW7ylmM6aeHpqRHu6UnoB7fN5jUJ6m');
+        patchRequest.setHeader('Authorization', 'Bearer '+ accessToken);
+        patchrequest.setHeader('Content-Type', 'application/json;charset=UTF-8');
         patchRequest.setBody(JSON.serialize(body));
-        http.send(patchRequest);
+        HttpResponse patchResponse= http.send(patchRequest);
+        System.debug('PATCH'+patchResponse.getBody() +' '+ patchResponse.getStatus());
+          
+
+        
     }
 }
