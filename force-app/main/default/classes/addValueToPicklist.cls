@@ -12,22 +12,22 @@ public with sharing class addValueToPicklist {
     }
     @future(callout=true)
     public static void getPicklistId(String picklistValue){
-        String accessToken= '00D7X0000004mGz!AR0AQN6Td7e2tcv3bHuvO5ugQmv9FFS16N5ANw6y4Jf62HmpBNZy7wC0hpL1GG4KlaHyJ9loafkqj0Q39uJQlrGXefdkTG.L';
+        
         Http http = new Http();
         HttpRequest requestId= new HttpRequest();
-        requestId.setEndpoint('https://egylieretravel--dev.sandbox.my.salesforce.com/services/data/v55.0/tooling/query/?q=select%20Id%20FROM%20CustomField%20WHERE%20DeveloperName%20=%20'+  '\''+ 'Tags' + '\'');
+        requestId.setEndpoint('callout:Tooling_Api/services/data/v55.0/tooling/query/?q=select%20Id%20FROM%20CustomField%20WHERE%20DeveloperName%20=%20'+  '\''+ 'Tags' + '\'');
         requestId.setMethod('GET');
-        requestId.setHeader('Authorization', 'Bearer '+ accessToken);
         HttpResponse responseId = http.send(requestId);
+        System.debug('test'+ responseId.getBody());
          Map<String, Object> resultsId = (Map<String, Object>) JSON.deserializeUntyped(responseId.getBody());
-         System.debug('Id'+resultsId.get('records'));
         List<Object>  record = (List<Object>) resultsId.get('records');
         String Id = (String) ((Map<String, Object>)record.get(0)).get('Id');
         System.debug('Id'+Id);
+
+
         HttpRequest request= new HttpRequest();
-        request.setEndpoint('https://egylieretravel--dev.sandbox.my.salesforce.com/services/data/v55.0/tooling/sobjects/CustomField/'+Id);
+        request.setEndpoint('callout:Tooling_Api/services/data/v55.0/tooling/sobjects/CustomField/'+Id);
         request.setMethod('GET');
-        request.setHeader('Authorization', 'Bearer '+ accessToken);
         HttpResponse response = http.send(request);
         Map<String, Object> results = (Map<String, Object>) JSON.deserializeUntyped(response.getBody());
         System.debug('GET'+response.getBody());
@@ -55,9 +55,8 @@ public with sharing class addValueToPicklist {
         System.debug('PATCH'+JSON.serialize(body));
         
         HttpRequest patchRequest = new HttpRequest();
-        patchRequest.setEndpoint('https://egylieretravel--dev.sandbox.my.salesforce.com/services/data/v55.0/tooling/sobjects/CustomField/'+Id);
+        patchRequest.setEndpoint('callout:Tooling_Api/services/data/v55.0/tooling/sobjects/CustomField/'+Id);
         patchRequest.setMethod('PATCH');
-        patchRequest.setHeader('Authorization', 'Bearer '+ accessToken);
         patchrequest.setHeader('Content-Type', 'application/json;charset=UTF-8');
         patchRequest.setBody(JSON.serialize(body));
         HttpResponse patchResponse= http.send(patchRequest);
