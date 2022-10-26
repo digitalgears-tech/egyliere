@@ -1,9 +1,12 @@
 public class PublicationService {
     private static PublicationService instance = null;
     public  PublicationRepository publicationRepositoryInstance;
-    
+    public  PreferenceRepository preferenceRepositoryInstance;
+    public  ContactRepository contactRepositoryInstance;
     private PublicationService() {
         publicationRepositoryInstance = PublicationRepository.getInstance();
+        preferenceRepositoryInstance = PreferenceRepository.getInstance();
+        contactRepositoryInstance = ContactRepository.getInstance();
     }
 
     public static PublicationService getInstance() {
@@ -13,9 +16,16 @@ public class PublicationService {
         return instance;
       }
 
-      public List<Publication__c> getPublicationByTags(List<String> tagslist){
+      public List<Publication__c> getPublicationByTags(String orangeID){
         
         PublicationService publicationServiceInstance = PublicationService.getInstance();
+        Contact contact =contactRepositoryInstance.findByOrangeId(orangeId);
+        List<preference__c>  preference =preferenceRepositoryInstance.findByContact(contact);
+        List<String> tagslist;
+        for (preference__c p : preference) {
+         tagslist.add(p.Main_Tag__c);
+      }
+
         return publicationRepositoryInstance.findByTags(tagslist);
       }
 }
