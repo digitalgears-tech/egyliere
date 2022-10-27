@@ -5,7 +5,7 @@ global with sharing class PerferenceAPI {
 
     }
 
-    @HttpPatch
+    @HttpGet
     global static List<String> sendPerferencesList(){
         return preferenceServiceInstance.getMainTagsFromPreferences();
     }

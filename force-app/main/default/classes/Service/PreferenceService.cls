@@ -14,7 +14,7 @@ public with sharing class PreferenceService {
 
     public List<String> getMainTagsFromPreferences() {
         List<preference__c> preferences =preferenceRepositoryInstance.findAllPrefernces();
-        List<String> tagslist;
+        List<String> tagslist = new List<String>();
              for (preference__c p : preferences) {
                 tagslist.add(p.Main_Tag__c);
             }

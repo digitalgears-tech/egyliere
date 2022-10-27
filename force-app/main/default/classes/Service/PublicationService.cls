@@ -21,11 +21,11 @@ public class PublicationService {
         PublicationService publicationServiceInstance = PublicationService.getInstance();
         Contact contact =contactRepositoryInstance.findByOrangeId(orangeId);
         List<preference__c>  preference =preferenceRepositoryInstance.findByContact(contact);
-        List<String> tagslist;
+        List<String> tagslist= new List<String>();
         for (preference__c p : preference) {
          tagslist.add(p.Main_Tag__c);
       }
-
+      System.debug('preference' + tagslist.toString());
         return publicationRepositoryInstance.findByTags(tagslist);
       }
 }
