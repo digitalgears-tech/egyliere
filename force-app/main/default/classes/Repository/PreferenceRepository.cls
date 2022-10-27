@@ -18,4 +18,13 @@ public with sharing class PreferenceRepository {
           WHERE Contact__c = :contact.Id
           ];
       }
+
+      public List<preference__c> findAllPrefernces() {
+
+        return [
+          SELECT
+          Main_Tag__c
+          FROM preference__c
+          ];
+      }
 }
