@@ -7,6 +7,6 @@ global with sharing class PerferenceAPI {
 
     @HttpGet
     global static List<String> sendPerferencesList(){
-        return preferenceServiceInstance.getMainTagsFromPreferences();
+        return preferenceServiceInstance.getMainTagsList();
     }
 }

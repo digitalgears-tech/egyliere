@@ -5,8 +5,13 @@ global with sharing class PublicationAPI {
     @HttpGet
     global static List<Publication__c>  upsertPublication() {
         RestRequest getReuest= RestContext.request;
-        String orangeId = getReuest.requestURI.substring(getReuest.requestURI.lastIndexOf('/') + 1);
+        String app = getReuest.params.get('App');
+        if(app.equals('orange')){
+        String orangeId = getReuest.params.get('orangeID');
         return publicationServiceInstance.getPublicationByTags(orangeId);
+    }else{
+        return null;
+    }
     }
 
     

@@ -12,12 +12,17 @@ public with sharing class PreferenceService {
         return instance;
       }
 
-    public List<String> getMainTagsFromPreferences() {
-        List<preference__c> preferences =preferenceRepositoryInstance.findAllPrefernces();
+    public List<String> getMainTagsList() {
+       
         List<String> tagslist = new List<String>();
-             for (preference__c p : preferences) {
-                tagslist.add(p.Main_Tag__c);
-            }
+       
+        Schema.DescribeFieldResult fieldResult = preference__c.Main_Tag__c.getDescribe();
+        List<Schema.PicklistEntry> ple = fieldResult.getPicklistValues();
+         for( Schema.PicklistEntry f : ple)
+        {
+            tagslist.add(f.getLabel());
+        }     
+    
         return tagslist;
     
     }
