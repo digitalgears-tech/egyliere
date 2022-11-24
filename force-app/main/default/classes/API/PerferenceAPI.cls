@@ -7,6 +7,12 @@ global with sharing class PerferenceAPI {
 
     @HttpGet
     global static List<String> sendPerferencesList(){
-        return preferenceServiceInstance.getMainTagsList();
+        RestRequest getReuest= RestContext.request;
+        String app = getReuest.params.get('App');
+        if(app.equals('orange')){
+        return preferenceServiceInstance.getMainTagsList();}
+        else {
+            return preferenceServiceInstance.getMainTagsList();
+        }
     }
 }

@@ -1,8 +1,10 @@
 public with sharing class PreferenceService {
     private static PreferenceService instance = null;
     public  PreferenceRepository preferenceRepositoryInstance;
+    public  ContactRepository contactRepositoryInstance;
     private PreferenceService() {
        preferenceRepositoryInstance = PreferenceRepository.getInstance();
+       contactRepositoryInstance = ContactRepository.getInstance();
     }
 
     public static PreferenceService getInstance() {
@@ -26,6 +28,21 @@ public with sharing class PreferenceService {
         return tagslist;
     
     }
+    public List<String> getContactMainTagsList(String Id , String app) {
+        List<String> tagslist = new List<String>();
+        List<preference__c>  preferences ;
+        if(app.equals('orange')){
+        preferences = preferenceRepositoryInstance.findByContact(contactRepositoryInstance.findByOrangeId(Id));
+        }else{
+        preferences = preferenceRepositoryInstance.findByContact(contactRepositoryInstance.findByRecordId(Id));
+        }
+        for( preference__c p : preferences)
+        {
+            if (!(tagslist.contains(p.Main_Tag__c))){
+            tagslist.add(p.Main_Tag__c);}
+        }   
 
+        return tagslist;
+    }
 
 }

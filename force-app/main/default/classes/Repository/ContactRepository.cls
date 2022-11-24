@@ -19,4 +19,15 @@ public class ContactRepository {
           ];
 
     }
+
+    public Contact findByRecordId(String recordId){
+
+        return [
+          SELECT
+          Id
+          FROM Contact
+          WHERE Id= :recordId
+          ];
+
+    }
 }
