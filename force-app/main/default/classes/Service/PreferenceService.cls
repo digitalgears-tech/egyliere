@@ -28,6 +28,17 @@ public with sharing class PreferenceService {
         return tagslist;
     
     }
+
+
+    public Map<String, List<String>>  getTagsMap() {
+         Map<String, List<String>> tagsMap= DependencyForPicklistApex.getFieldDependencies('preference__c','Main_Tag__c','Sub_Tags__c');
+    
+    
+        return tagsMap;
+    
+}
+
+
     public List<String> getContactMainTagsList(String Id , String app) {
         List<String> tagslist = new List<String>();
         List<preference__c>  preferences ;
@@ -44,5 +55,53 @@ public with sharing class PreferenceService {
 
         return tagslist;
     }
+
+    public  Map<String, List<String>>  getContactTagsMap(String Id , String app) {
+        Map<String, List<String>> tagsMap = new Map<String, List<String>>();
+        List<preference__c>  preferences ;
+        if(app.equals('orange')){
+        preferences = preferenceRepositoryInstance.findByContact(contactRepositoryInstance.findByOrangeId(Id));
+        }else{
+        preferences = preferenceRepositoryInstance.findByContact(contactRepositoryInstance.findByRecordId(Id));
+        }
+        for( preference__c p : preferences)
+        {  
+             List<String> subTags;
+            if (!(tagsMap.containskey(p.Main_Tag__c))){
+                subTags=  new List<String>();
+                subTags.add(p.Sub_Tags__c);
+                tagsMap.put(p.Main_Tag__c,subTags);
+            }else{
+                subTags = tagsMap.get(p.Main_Tag__c);
+                subTags.add(p.Sub_Tags__c);
+                tagsMap.put(p.Main_Tag__c, subTags);
+            }
+        
+        }   
+
+        return tagsMap;
+    }
+    public void updateContactPreferenceByID(String Id, String app, Map<String, List<String>> newTags){
+
+        Contact contact;
+        List<preference__c>  preferences = new List<preference__c>();
+        if(app.equals('orange')) {
+            contact = contactRepositoryInstance.findByOrangeId(Id);
+        }else{
+            contact = contactRepositoryInstance.findByRecordId(Id);
+        }
+        Map<String, List<String>> currentTagList = Instance.getContactTagsMap(Id,app); 
+        for( string tag : newTags.keySet()){
+            if(!(currentTagList.containskey(tag))){
+                preference__c p = new preference__c();
+                p.Main_Tag__c = tag;
+                //p.Sub_Tags__c = newTags.get(tag);
+                p.Contact__c = contact.Id;
+                preferences.add(p);
+            }
+        }
+
+        insert preferences;
+      }
 
 }

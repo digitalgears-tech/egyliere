@@ -13,7 +13,8 @@ public class ContactRepository {
 
         return [
           SELECT
-          Orange_ID__c
+          Orange_ID__c,
+          Id
           FROM Contact
           WHERE Orange_ID__c = :orangeId
           ];

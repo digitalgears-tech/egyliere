@@ -13,7 +13,8 @@ public with sharing class PreferenceRepository {
 
         return [
           SELECT
-          Main_Tag__c
+          Main_Tag__c,
+          Sub_Tags__c
           FROM preference__c
           WHERE Contact__c = :contact.Id
           ];
@@ -23,7 +24,8 @@ public with sharing class PreferenceRepository {
 
         return [
           SELECT
-          Main_Tag__c
+          Main_Tag__c,
+          Sub_Tags__c
           FROM preference__c
           ];
       }

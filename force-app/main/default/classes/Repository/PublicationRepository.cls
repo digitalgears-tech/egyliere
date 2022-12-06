@@ -21,8 +21,8 @@ public class PublicationRepository {
             Discount_Type__c,
             Image__c,
             Promo_code__c,
-            Tags__c,
-            Show_on_External_App__c,
+            Tag__c,
+            Location__c,
             Description__c
           FROM Publication__c];
       }
@@ -37,8 +37,8 @@ public class PublicationRepository {
             Discount_Type__c,
             Image__c,
             Promo_code__c,
-            Tags__c,
-            Show_on_External_App__c,
+            Tag__c,
+            Location__c,
             Description__c
           FROM Publication__c
           WHERE Show_on_External_App__c = true];
@@ -54,10 +54,11 @@ public class PublicationRepository {
             Discount_Amount__c,
             Discount_Type__c,
             Image__c,
-            Tags__c,
+            Tag__c,
+            Location__c,
             Description__c
           FROM Publication__c
-          WHERE Tags__c = :tagslist
+          WHERE Tag__c = : tagslist
           AND Active__c = true];
       }
 
@@ -71,11 +72,12 @@ public class PublicationRepository {
             Discount_Amount__c,
             Discount_Type__c,
             Image__c,
-            Tags__c,
+            Tag__c,
+            Location__c,
             Description__c
           FROM Publication__c
-          WHERE Tags__c = :tagslist
-          AND Active__c = true
-          AND Show_on_External_App__c = true];
+          WHERE Tag__c = :tagslist
+          AND Show_on_External_App__c = true
+          AND Active__c = true];
       }
 }

@@ -3,10 +3,12 @@ public class PublicationService {
     public  PublicationRepository publicationRepositoryInstance;
     public  PreferenceRepository preferenceRepositoryInstance;
     public  ContactRepository contactRepositoryInstance;
+    public  PublicationMapper publicationMapperInstance;
     private PublicationService() {
         publicationRepositoryInstance = PublicationRepository.getInstance();
         preferenceRepositoryInstance = PreferenceRepository.getInstance();
         contactRepositoryInstance = ContactRepository.getInstance();
+        publicationMapperInstance = PublicationMapper.getInstance();
     }
 
     public static PublicationService getInstance() {
@@ -16,7 +18,7 @@ public class PublicationService {
         return instance;
       }
 
-      public List<Publication__c> getPublicationByTags(String ID, String app){
+      public  List<PublicationMapper> getPublicationByTags(String ID, String app){
         PublicationService publicationServiceInstance = PublicationService.getInstance();
         Contact contact;
         List<preference__c>  preference;
@@ -28,21 +30,24 @@ public class PublicationService {
       preference =preferenceRepositoryInstance.findByContact(contact);
         List<String> tagslist= new List<String>();
         for (preference__c p : preference) {
-         tagslist.add(p.Main_Tag__c);
-      }
+          List<String> subTags=p.Sub_Tags__c.split(';');
+          for(String tag : subTags) {
+            if(!(tagslist.contains(tag)))
+              tagslist.add(tag);}
+           }
         if (app.equals('orange')){
-          return publicationRepositoryInstance.findExternalappByTags(tagslist);
+          return publicationMapperInstance.PublicationObjectListToMapperList(publicationRepositoryInstance.findExternalappByTags(tagslist));
         }else{
-        return publicationRepositoryInstance.findByTags(tagslist);}
+        return publicationMapperInstance.PublicationObjectListToMapperList(publicationRepositoryInstance.findByTags(tagslist));}
       }
 
-      public List<Publication__c> getPublicationByTags(String app){
+      public  List<PublicationMapper> getPublicationByTags(String app){
         List<Publication__c>  publication;
         if (app.equals('Internal')){
           publication = publicationRepositoryInstance.findAllPublications();
         }else if(app.equals('orange')){
           publication = publicationRepositoryInstance.findAllPublicationsShowOnExternalApp();
         }
-        return publication;
+        return publicationMapperInstance.PublicationObjectListToMapperList(publication);
       }
 }
