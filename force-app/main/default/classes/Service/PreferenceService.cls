@@ -76,7 +76,9 @@ public with sharing class PreferenceService {
                 subTags.add(p.Sub_Tags__c);
                 tagsMap.put(p.Main_Tag__c, subTags);
             }
-        
+
+            if (p.Main_Tag__c.equals('General'))
+            tagsMap.put(p.Main_Tag__c, p.General_Preferences__c.split(';'));
         }   
 
         return tagsMap;
@@ -90,18 +92,34 @@ public with sharing class PreferenceService {
         }else{
             contact = contactRepositoryInstance.findByRecordId(Id);
         }
-        Map<String, List<String>> currentTagList = Instance.getContactTagsMap(Id,app); 
+
+        List<preference__c> currentTagList = preferenceRepositoryInstance.findExceptGeneralByContact(contact);
+
         for( string tag : newTags.keySet()){
-            if(!(currentTagList.containskey(tag))){
+              if(!(tag.equals('General'))){
                 preference__c p = new preference__c();
                 p.Main_Tag__c = tag;
-                //p.Sub_Tags__c = newTags.get(tag);
+                p.Sub_Tags__c = String.join(newTags.get(tag),';');
                 p.Contact__c = contact.Id;
                 preferences.add(p);
-            }
+              }else{
+               try{
+                preference__c generalPreference = preferenceRepositoryInstance.findGeneralByContact(contact);
+                generalPreference.General_Preferences__c = String.join(newTags.get(tag),';');
+                update generalPreference ;
+             }catch(Exception e){
+                preference__c p = new preference__c();
+                p.Main_Tag__c = 'General';
+                p.General_Preferences__c = String.join(newTags.get(tag),';');
+                p.Contact__c = contact.Id;
+                preferences.add(p);
+                
+             }
+             }
         }
-
+        delete currentTagList;
         insert preferences;
-      }
+       
+    }
 
 }

@@ -14,10 +14,32 @@ public with sharing class PreferenceRepository {
         return [
           SELECT
           Main_Tag__c,
-          Sub_Tags__c
+          Sub_Tags__c,
+          General_Preferences__c
           FROM preference__c
           WHERE Contact__c = :contact.Id
           ];
+      }
+      public List<preference__c> findExceptGeneralByContact(Contact contact) {
+
+        return [
+          SELECT
+          Main_Tag__c,
+          Sub_Tags__c
+          FROM preference__c
+          WHERE Contact__c = :contact.Id
+          AND Main_Tag__c != 'General'  ];
+      }
+      public preference__c findGeneralByContact(Contact contact) {
+
+        return [
+          SELECT
+          Main_Tag__c,
+          Sub_Tags__c,
+          General_Preferences__c
+          FROM preference__c
+          WHERE Contact__c = :contact.Id
+          AND Main_Tag__c = 'General' ];
       }
 
       public List<preference__c> findAllPrefernces() {
