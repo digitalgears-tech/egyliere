@@ -1,4 +1,4 @@
-public with sharing class PreferenceService {
+public class PreferenceService {
     private static PreferenceService instance = null;
     public  PreferenceRepository preferenceRepositoryInstance;
     public  ContactRepository contactRepositoryInstance;

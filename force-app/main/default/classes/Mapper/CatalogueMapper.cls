@@ -1,4 +1,4 @@
-public with sharing class CatalogueMapper {
+public class CatalogueMapper {
 
     public String name;
     public String address;

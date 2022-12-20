@@ -1,6 +1,5 @@
 @RestResource(urlMapping='/PlansAPI/*')
-global with sharing class PlansAPI {
-
+global class PlansAPI {
     public static PlansService plansServiceInstance = PlansService.getInstance();
     public PlansAPI() {
 

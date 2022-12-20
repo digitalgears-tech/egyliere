@@ -1,5 +1,5 @@
 @RestResource(urlMapping='/CustomerPerferencesList/*')
-global with sharing class CustomerPerferenceAPI {
+global  class CustomerPerferenceAPI {
     public static PreferenceService preferenceServiceInstance = PreferenceService.getInstance();
     private CustomerPerferenceAPI() {
 

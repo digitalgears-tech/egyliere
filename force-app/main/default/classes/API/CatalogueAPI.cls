@@ -1,6 +1,6 @@
 
 @RestResource(urlMapping='/EntitiesCatalogueList/*')
-global with sharing class CatalogueAPI {
+global class CatalogueAPI {
     public static CatalogueService CatalogueServiceInstance = CatalogueService.getInstance();
     private CatalogueAPI() {
 

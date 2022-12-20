@@ -1,4 +1,4 @@
-public with sharing class DependencyForPicklistApex {
+public class DependencyForPicklistApex {
     public DependencyForPicklistApex() {
 
     }

@@ -1,5 +1,5 @@
 @RestResource(urlMapping='/PublicationListAPI/*')
-global with sharing class PublicationAPI {
+global class PublicationAPI {
     public static PublicationService publicationServiceInstance = PublicationService.getInstance();
 
     @HttpGet

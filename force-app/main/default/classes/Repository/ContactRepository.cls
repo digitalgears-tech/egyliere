@@ -31,4 +31,19 @@ public class ContactRepository {
           ];
 
     }
+
+    public Contact findByUsername(String userName){
+
+      return [
+        SELECT
+        Id,
+        Name,
+        AccountId,
+        Tier__c,
+        Password__c
+        FROM Contact
+        WHERE UserName__c = :userName
+        ];
+
+  }
 }

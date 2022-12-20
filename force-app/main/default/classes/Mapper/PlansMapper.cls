@@ -1,4 +1,4 @@
-global with sharing class PlansMapper {
+global class PlansMapper {
     String name;
     Integer price;
     Integer points;

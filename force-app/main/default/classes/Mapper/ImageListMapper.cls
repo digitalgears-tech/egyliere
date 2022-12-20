@@ -1,4 +1,4 @@
-public with sharing class ImageListMapper {
+public class ImageListMapper {
 
     private static ImageListMapper instance = null;
 

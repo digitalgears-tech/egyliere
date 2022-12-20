@@ -1,4 +1,4 @@
-global with sharing class PublicationMapper {
+global class PublicationMapper {
     public String name;
     public Datetime startDate;
     public Datetime endDate;

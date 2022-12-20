@@ -1,4 +1,4 @@
-public with sharing class PlansService {
+public class PlansService {
 
     private static PlansService instance = null;
     public  PlansRepository planRepositoryInstance;

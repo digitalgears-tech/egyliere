@@ -1,4 +1,4 @@
-public with sharing class CatalogueService {
+public class CatalogueService {
     private static CatalogueService instance = null;
     public  CatalogueRepository CatalogueRepositoryInstance;
 
