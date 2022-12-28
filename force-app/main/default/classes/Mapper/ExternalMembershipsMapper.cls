@@ -2,7 +2,7 @@ global class ExternalMembershipsMapper {
 
     String memberShipId;
     String memberShipProvider;
-    Date   expirationDate;
+    String   expirationDate;
     String id;
     public ExternalMembershipsMapper() {
 
@@ -12,7 +12,7 @@ global class ExternalMembershipsMapper {
         ExternalMembershipsMapper externalMembershipsMapper = new ExternalMembershipsMapper();
         externalMembershipsMapper.memberShipId = membershipObject.Name;
         externalMembershipsMapper.memberShipProvider = membershipObject.MemberShip_Provider__c;
-        externalMembershipsMapper.expirationDate = membershipObject.Expiration_Date__c;
+        externalMembershipsMapper.expirationDate = (membershipObject.Expiration_Date__c.format()).replace('-','/');
         externalMembershipsMapper.id = membershipObject.Id;
         return externalMembershipsMapper;
     }
@@ -36,9 +36,9 @@ global class ExternalMembershipsMapper {
             MemberShip__c membership = new MemberShip__c();
             Map<String, Object> membershipmap =(Map<String, Object>)membershipMapper.get(counter);
            // membership.Id = (String)membershipmap.get('id');
-            List <String> expireDate = ((String)membershipmap.get('expirationDate')).split('-');
-            Date dt = Date.newInstance(integer.valueof(expireDate.get(0)), integer.valueof(expireDate.get(1)),integer.valueof(expireDate.get(2)));
-            membership.Expiration_Date__c = dt;
+            //List <String> expireDate = ((String)membershipmap.get('expirationDate')).split('-');
+            //Date dt = Date.newInstance(integer.valueof(expireDate.get(0)), integer.valueof(expireDate.get(1)),integer.valueof(expireDate.get(5)));
+            membership.Expiration_Date__c =Date.parse((String)membershipmap.get('expirationDate'));
             membership.MemberShip_Provider__c =(String) membershipmap.get('memberShipProvider');
             membership.Name = (String)membershipmap.get('memberShipId');
             membership.Contact__c= contactId;

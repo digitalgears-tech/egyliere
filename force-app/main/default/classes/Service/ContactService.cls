@@ -2,10 +2,12 @@ public class ContactService {
     private static ContactService instance = null;
     public  ContactRepository contactRepositoryInstance;
     public AccountRepository accountRepositoryInstance;
+    public PlansRepository  plansRepositoryInstance;
 
     public ContactService() {
         contactRepositoryInstance = ContactRepository.getInstance();
         accountRepositoryInstance = AccountRepository.getInstance();
+        plansRepositoryInstance = PlansRepository.getInstance();
     }
 
     public static ContactService getInstance() {
@@ -29,10 +31,16 @@ public class ContactService {
         contactMap.put('ID', contact.Orange_ID__c);
          }else{
         contactMap.put('ID', contact.Id);}
-        contactMap.put('MmeberShip', contact.Tier__c);
         contactMap.put('Account ID', Account.Id);
         contactMap.put('Total Points', Account.Balance__c +'');
         contactMap.put('Consumed Points', Account.Consumed__c+'');
+        try{      
+          Plan__c plan = plansRepositoryInstance.FindPlansById(Account.Plan__c);
+          contactMap.put('MmeberShip', plan.Name);
+        }catch(Exception e){
+      
+
+        }
 
      }else{
       contactMap.put('Status', 'Rejected');
@@ -44,7 +52,7 @@ public class ContactService {
      return contactMap;
   }
 
-  public contact CreateSubscribeContact(List<Object> contactDetails, Account account){
+  public contact CreateRegisterContact(List<Object> contactDetails, Account account){
 
     List <Contact> contacts = new List<Contact>();
     Integer counter = 0;
@@ -56,6 +64,7 @@ public class ContactService {
       Phone=contactsmap.get('Phone')+'',
       Email=contactsmap.get('Email')+'',
       Password__c=contactsmap.get('Password')+'',
+      UserName__c=contactsmap.get('Email')+'',
       AccountId=account.Id);
 
         contacts.add(contact);
@@ -64,4 +73,25 @@ public class ContactService {
     insert contacts;
     return contacts.get(0);
   }
+
+  public void updateContactInfo(List< Object> contactDetails, String app, String id){
+
+    Map<String, Object> contactsmap = (Map<String, Object>) contactDetails.get(0);
+    Contact contact = contactRepositoryInstance.findByRecordId(id);
+    if(contact.Password__c.equals(contactsmap.get('Password'))){
+      contact.FirstName = (String)contactsmap.get('First Name');
+      contact.LastName = (String)contactsmap.get('Last Name');
+      contact.Email = (String)contactsmap.get('Email');
+      contact.Phone = (String)contactsmap.get('Phone');
+      if(!(contactsmap.get('Password').equals(null))){
+        contact.Password__c= (String)contactsmap.get('New Password');
+      }
+    }else{
+      throw new DMLException(' Wrong Password');
+    }
+  
+    update contact;
+  }
+
+
 }

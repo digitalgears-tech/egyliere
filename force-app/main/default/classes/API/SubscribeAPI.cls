@@ -1,6 +1,5 @@
 @RestResource(urlMapping='/SubscribeAPI/*')
-global class SubscribeAPI {
-    public static ContactService contactServiceInstance = ContactService.getInstance();
+global  class SubscribeAPI {
     public static AccountService accountServiceInstance = AccountService.getInstance();
     public static RequestService requestServiceInstance = RequestService.getInstance();
     public SubscribeAPI() {
@@ -8,22 +7,20 @@ global class SubscribeAPI {
     }
 
     @HttpPost
-    global static void setSubscribtionRequest(){
-        RestRequest getReuest= RestContext.request;
+    global static void CreateSubscribtionRequest(){
+        RestRequest postReuest= RestContext.request;
         RestResponse requestResponse= RestContext.response;
-        String app = getReuest.params.get('App');
-        if(app.equals('Internal')){
-            try{
-            List< Object> body = (List< Object>)JSON.deserializeUntyped(RestContext.request.requestbody.tostring());
-           Account account = accountServiceInstance.CreateSubscribeAccount(body);
-           Contact contact = contactServiceInstance.CreateSubscribeContact(body, account);
-           requestServiceInstance.CreateSubscribeRequest(contact, account);
-           requestResponse.statusCode=200;
-           requestResponse.responseBody=Blob.valueOf(' Accepted subscription');
-            }catch(Exception e){
-                requestResponse.statusCode=400;
-                requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
-            }
-         }
+       try{ 
+         String app = postReuest.params.get('App');
+            if(app.equals('Internal')){
+                 String recordId = postReuest.params.get('recordID');
+                 List< Object> body = (List< Object>)JSON.deserializeUntyped(RestContext.request.requestbody.tostring());
+                 requestServiceInstance.CreateSubscribeRequest(recordId , body);           
+                 requestResponse.responseBody=Blob.valueOf(' Subscribtion request Submited' );
+                 requestResponse.statusCode=200;
+             }
+        }catch(Exception e){
+
+        }
     }
 }

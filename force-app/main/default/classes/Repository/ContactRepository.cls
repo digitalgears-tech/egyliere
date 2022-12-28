@@ -25,7 +25,10 @@ public class ContactRepository {
 
         return [
           SELECT
-          Id
+          Id,
+          Name,
+          AccountId, 
+          Password__c
           FROM Contact
           WHERE Id= :recordId
           ];

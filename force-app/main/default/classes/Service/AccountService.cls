@@ -2,6 +2,8 @@ public class AccountService {
 
     private static AccountService instance = null;
     public  AccountRepository accountRepositoryInstance;
+    public ContactRepository contactRepositoryInstance;
+    public PlansRepository plansRepositoryInstance;
 
     public AccountService() {
         accountRepositoryInstance = AccountRepository.getInstance();
@@ -14,7 +16,7 @@ public class AccountService {
         return instance;
       }
    
-      public Account CreateSubscribeAccount(List< Object> accountDetails){
+      public Account CreateRegisterAccount(List< Object> accountDetails){
         List <Account> accounts = new List<Account>();
         Integer counter = 0;
         RecordType rt = [select Id from RecordType where Name = 'Individual' and SobjectType = 'Account'];
@@ -30,4 +32,5 @@ public class AccountService {
           insert accounts;
           return accounts.get(0);
       }
+
 }

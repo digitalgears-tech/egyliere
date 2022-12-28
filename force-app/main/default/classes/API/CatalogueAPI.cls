@@ -1,5 +1,5 @@
 
-@RestResource(urlMapping='/EntitiesCatalogueList/*')
+@RestResource(urlMapping='/CatalogueListAPI/*')
 global class CatalogueAPI {
     public static CatalogueService CatalogueServiceInstance = CatalogueService.getInstance();
     private CatalogueAPI() {
