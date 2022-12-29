@@ -7,12 +7,11 @@ global class CatalogueAPI {
     }
 
     @HttpGet
-    global static List<Catalogue__c> getCatalogueListByType(){
+    global static List<CatalogueMapper> getCatalogueList(){
         RestRequest getReuest= RestContext.request;
         String app = getReuest.params.get('App');
         if(app.equals('Internal')){
-        String type = getReuest.params.get('Type');
-        return CatalogueServiceInstance.getCatalogueListByType(type);}
+        return CatalogueServiceInstance.GetCatalogueList();}
 
         return null;
     }

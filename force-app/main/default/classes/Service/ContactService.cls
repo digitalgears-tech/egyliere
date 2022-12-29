@@ -83,7 +83,8 @@ public class ContactService {
       contact.LastName = (String)contactsmap.get('Last Name');
       contact.Email = (String)contactsmap.get('Email');
       contact.Phone = (String)contactsmap.get('Phone');
-      if(!(contactsmap.get('Password').equals(null))){
+      
+      if(contactsmap.get('New Password') != null){
         contact.Password__c= (String)contactsmap.get('New Password');
       }
     }else{

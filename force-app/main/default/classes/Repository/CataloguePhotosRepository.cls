@@ -12,12 +12,15 @@ public class CataloguePhotosRepository {
         return instance;
       }
 
-      public List<Catalogue_Photos__c> FindPhotoByCatalogue(String catalogueid){
+      public List<Catalogue_Photos__c> FindPhotoByCatalogueandRecordType(String catalogueid , RecordType rt){
         return [
           SELECT
           Name,
-          Photos_Or_Links__c
+          Link__c,
+          Photos__c	
           FROM Catalogue_Photos__c
           WHERE Catalogue__c = :catalogueid
-        ];}
+          AND RecordTypeId = :rt.Id
+        ];
+    }
 }

@@ -15,10 +15,20 @@ public class CatalogueRepository {
         return [
           SELECT
           Name,
-          Image__c,
+          Logo__c,
           City__c,
           Address__c,
-          Phone__c
+          Location__c,
+          Phone__c,
+          Emergency_Number__c,
+          Type__c,
+          Description__c,
+          House_Rules__c,
+          Change_Policy__c,
+          Cancellation_Policy__c,
+          Benefits__c,
+          Recommendations__c,
+          RecordTypeId	
           FROM Catalogue__c
         ];
       }
@@ -27,10 +37,20 @@ public class CatalogueRepository {
         return [
           SELECT
           Name,
-          Image__c,
+          Logo__c,
           City__c,
           Address__c,
-          Phone__c
+          Location__c,
+          Phone__c,
+          Emergency_Number__c,
+          Type__c,
+          Description__c,
+          House_Rules__c,
+          Change_Policy__c,
+          Cancellation_Policy__c,
+          Benefits__c,
+          Recommendations__c,
+          RecordTypeId	
           FROM Catalogue__c
           WHERE Type__c = :type
         ];
@@ -40,10 +60,20 @@ public class CatalogueRepository {
         return [
           SELECT
           Name,
-          Image__c,
+          Logo__c,
           City__c,
           Address__c,
-          Phone__c
+          Location__c,
+          Phone__c,
+          Emergency_Number__c,
+          Type__c,
+          Description__c,
+          House_Rules__c,
+          Change_Policy__c,
+          Cancellation_Policy__c,
+          Benefits__c,
+          Recommendations__c,
+          RecordTypeId	
           FROM Catalogue__c
           WHERE CityGuide__c = true
         ];

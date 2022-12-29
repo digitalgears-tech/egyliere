@@ -17,6 +17,8 @@ global class CreateRequestAPI {
             String recordId = postReuest.params.get('recordID');
             List< Object> body = (List< Object>)JSON.deserializeUntyped(RestContext.request.requestbody.tostring());
              requestServiceInstance.CreateReservationRequest(recordId , body);
+             requestResponse.statusCode=200;
+            requestResponse.responseBody = Blob.valueOf('Request successfully created');
            
          }
         }catch(Exception e){

@@ -1,6 +1,7 @@
 public class CatalogueService {
     private static CatalogueService instance = null;
     public  CatalogueRepository CatalogueRepositoryInstance;
+    public CatalogueMapper catalogueMapper = new CatalogueMapper();
 
     public CatalogueService() {
         CatalogueRepositoryInstance = CatalogueRepository.getInstance();
@@ -17,5 +18,11 @@ public class CatalogueService {
        return CatalogueRepositoryInstance.FindAllCatalogueByType(type);
 
       }
+
+      public List<CatalogueMapper> GetCatalogueList() {
+        List<Catalogue__c> catalogueObjectList = CatalogueRepositoryInstance.FindAllCatalogue();
+        return CatalogueMapper.catalogueObjectListToMapperList(catalogueObjectList);
+ 
+       }
 
 }
