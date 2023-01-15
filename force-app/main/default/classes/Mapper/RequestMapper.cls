@@ -1,55 +1,26 @@
 public class RequestMapper {
-    String name;
-    String additionalDetails;	
-    Integer adult;
-    String airline;
-    Datetime arivalDate;
-    Datetime arivalDate1;	
-    String bedsize;
-    String cancellationPolicy;
-    String category;	
-    String changePolicy;	
-    Integer infant;	
-    Integer child;	
-    String citizenship;	
-    String classPreference;
-    Integer confirmationNumber;
-    String departure;	
-    String departure1;
-    String departure2;	
-    String departure3;	
-    String departure4;
-    String departureAirport;	
-    Datetime departureDate;	
-    Datetime departureDate1;
-    Datetime departureDate2;	
-    Datetime departureDate3;	
-    Datetime departureDate4;		
+   
+    Datetime AppointmentDateTime;
+    String Requirments;
     String destination;
-    String destination1;
-    String destination2;
-    String destination3;
-    String destination4;
-    String eventName;	
-    String flightNumber;
-    String hotel;
-    String mealPlan;	
-    Integer numberofBookings;
-    String operationDetails;	
-    String opportunityProduct;	
-    String preferences;	
-    String promocode;		
-    String requestDetails;
-    String roomOccupancy;
-    static final String subType;
-    String ticketType;	
-    String timeSlot;	
-    String transportType;	
-    String triptype;
-    String type;
-    String typeofVisa;	
-    String venu;	
-    String catalogue;
+    Decimal adult;
+    Decimal infant;
+    Decimal child;
+    String additionalDetails;
+    Datetime dateAndTime;
+    String category;
+    String location;
+    String eventName;
+    String ticketType;
+    String promoCode;
+    Decimal numberOfTicket;
+    Datetime startDate;
+    Datetime endDate;
+    Decimal numberOfTravelers;
+    String slot;
+    String operatinghours;
+    String cancellationPolicy;
+
     static final String VALUE_Flight = 'Flight Management';
     static final String VALUE_Visa = 'Visa Management';
     static final String VALUE_Accommodation = 'Accommodation Management';
@@ -299,26 +270,67 @@ public class RequestMapper {
 
 
      
-    public void RetriveRequest(){
-        if (subType.equals(VALUE_Flight)){
+    public RequestMapper RetriveRequest(Opprtunity_Line_Item_Details__c serviceDetails ){
+        String subType = serviceDetails.Sub_Type__c;
+        RequestMapper operationDetails = new RequestMapper();
 
+        if (subType.equals(VALUE_Flight)){
+             
         }
         if (subType.equals(VALUE_Visa)){
+
+            operationDetails.AppointmentDateTime = serviceDetails.Arival_Date1__c;
+            operationDetails.Requirments = serviceDetails.Request_Details__c;
 
         }
         if (subType.equals(VALUE_Accommodation)){
             
         }
         if (subType.equals(VALUE_Specialty_Travel)){
+
+            operationDetails.startDate = serviceDetails.Arival_Date__c;
+            operationDetails.endDate = serviceDetails.Departure_Date__c;
+            operationDetails.destination = serviceDetails.Destination__c;
+            operationDetails.numberOfTravelers = serviceDetails.Booking__c;
+            operationDetails.category = serviceDetails.Category__c;
+            operationDetails.additionalDetails = serviceDetails.Additional_Details__c;
+
             
         }
         if (subType.equals(VALUE_Health_Vaccine)){
+            operationDetails.adult = serviceDetails.Adult__c;
+            operationDetails.infant = serviceDetails.Child_0_2yr__c;
+            operationDetails.child = serviceDetails.Child_3_12yr__c;
+            operationDetails.additionalDetails = serviceDetails.Additional_Details__c;
+            operationDetails.dateAndTime = serviceDetails.Arival_Date__c;
+            operationDetails.destination = serviceDetails.Destination__c;
+            operationDetails.category = serviceDetails.Category__c;
             
         }
         if (subType.equals(VALUE_Excursions_Experiences)){
             
+            operationDetails.startDate = serviceDetails.Arival_Date__c;
+            operationDetails.numberOfTravelers = serviceDetails.Booking__c;
+            operationDetails.category = serviceDetails.Category__c;
+            operationDetails.location = serviceDetails.Destination__c;
+            operationDetails.additionalDetails = serviceDetails.Additional_Details__c;
+            operationDetails.slot = serviceDetails.Request_Details__c;
+            operationDetails.operatinghours = serviceDetails.Operation_Details__c;
+            operationDetails.cancellationPolicy = serviceDetails.Cancellation_Policy__c;
+
+
+
         }
         if (subType.equals( VALUE_Event_Ticketing)){
+            operationDetails.eventName = serviceDetails.Event_Name__c;
+            operationDetails.dateAndTime = serviceDetails.Arival_Date__c;
+            operationDetails.ticketType  = serviceDetails.Ticket_Type__c;
+            operationDetails.additionalDetails = serviceDetails.Additional_Details__c;
+            operationDetails.promoCode = serviceDetails.Promo_Code__c;
+            operationDetails.category = serviceDetails.Category__c;
+            operationDetails.location = serviceDetails.Destination__c;
+            operationDetails.numberOfTicket = serviceDetails.Booking__c;
+
             
         }
         if (subType.equals(VALUE_Dining)){
@@ -384,6 +396,8 @@ public class RequestMapper {
         if (subType.equals(VALUE_LongHolidays)){
             
         }
+
+        return operationDetails;
     }
 
 

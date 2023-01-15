@@ -10,7 +10,7 @@ global class UpdateProfileAPI {
  global static void UpdateProfile(){
     RestRequest getReuest= RestContext.request;
     RestResponse requestResponse= RestContext.response;
-    //try{
+    try{
     String app = getReuest.params.get('App');
     if(app.equals('Internal')){
         String id = getReuest.params.get('recordID');
@@ -20,9 +20,9 @@ global class UpdateProfileAPI {
         requestResponse.statusCode=200;
       
      }
-  //  }catch(Exception e){
-   //     requestResponse.statusCode=400;
-  //      requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
-    // }
+     }catch(Exception e){
+      requestResponse.statusCode=400;
+      requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
+    }
  }
 }

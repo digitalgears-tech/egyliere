@@ -56,7 +56,7 @@ public class CatalogueRepository {
         ];
       }
 
-      public List<Catalogue__c> FindAllCatalogueByCityGuide(){
+      public List<Catalogue__c> FindAllCatalogueByCityGuide(String cityGuideId){
         return [
           SELECT
           Name,
@@ -75,7 +75,9 @@ public class CatalogueRepository {
           Recommendations__c,
           RecordTypeId	
           FROM Catalogue__c
-          WHERE CityGuide__c = true
+          WHERE City_Guide__c =: cityGuideId
         ];
       }
+
+      
 }

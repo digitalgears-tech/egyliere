@@ -4,6 +4,10 @@ public class RequestService {
     public AccountRepository accountRepositoryInstance;
     public OpportunityRepository opportunityRepositoryInstance;
     public ProductRepository productRepositoryInstance;
+    public RequestRepository requestRepositoryInstance;
+    public ServiceRepository serviceRepositoryInstance;
+    public PackageServiceRepository packageServiceRepositoryInstance;
+    public PlansRepository plansRepositoryInstance;
     public RequestMapper requestMapper = new RequestMapper();
 
     private RequestService() {
@@ -11,6 +15,11 @@ public class RequestService {
         accountRepositoryInstance = AccountRepository.getInstance();
         opportunityRepositoryInstance = OpportunityRepository.getInstance();
         productRepositoryInstance = productRepository.getInstance();
+        requestRepositoryInstance = RequestRepository.getInstance();
+        serviceRepositoryInstance = ServiceRepository.getInstance();
+        plansRepositoryInstance = PlansRepository.getInstance();
+
+        packageServiceRepositoryInstance = PackageServiceRepository.getInstance();
     }
 
     public static RequestService getInstance() {
@@ -32,7 +41,8 @@ public class RequestService {
             ContactId=contact.id,
             Origin='web',
             Status='New',
-            RecordType=rt);
+            Plan__c = (String)planDetails.get('name'),
+            RecordTypeId=rt.Id);
 
             insert subscribeRequest;
       }
@@ -50,7 +60,7 @@ public class RequestService {
             Status='New',
             RecordType=rt);
             insert reservationRequest;
-            Opportunity packages = opportunityRepositoryInstance.findByCase(reservationRequest.Id);
+            Opportunity packages = opportunityRepositoryInstance.findByCase(reservationRequest.Id).get(0);
             List<OpportunityLineItem> packageServices= new List<OpportunityLineItem>();
             List<Opprtunity_Line_Item_Details__c> services = new List<Opprtunity_Line_Item_Details__c>();
             List<Service_Member__c> serviceMembers = new List<Service_Member__c>();
@@ -79,6 +89,14 @@ public class RequestService {
             }
             insert services;
             counter = 0;
+
+            Map<String,Object> serviceDetails = (Map<String,Object>) requestDetails.get(counter);
+            //List<String> members = (String)serviceDetails.get('Members');
+            List<Contact> contacts = new List<Contact>();
+           // for(String m : members){
+                //Contact contact = contactRepositoryInstance.findByRecordId(m);
+            //    contacts.add(contact);
+           // }
             while(counter < requestDetails.size()){
             Service_Member__c servicemember = new Service_Member__c();
             servicemember.Contact__c = contact.Id;
@@ -91,5 +109,26 @@ public class RequestService {
             insert serviceMembers;
             update packageServices;
            
+      }
+
+      public void GetReservationsRequest(String recordId){
+
+        Contact contact = contactRepositoryInstance.findByRecordId(recordId);
+        Account account = accountRepositoryInstance.findByAccountId(contact.AccountId);
+        RecordType rt =[select Id from RecordType where Name = 'Reservation' and SobjectType = 'Case'];
+        List<Case> reservationRequests = requestRepositoryInstance.findReservationRequestByContact(contact , rt.Id);
+        List<Opportunity> opportunities ;
+        for(Case r : reservationRequests){
+         opportunities.addAll(opportunityRepositoryInstance.findByCase(r.Id));}
+         List<OpportunityLineItem> packageServices;
+         List<Opprtunity_Line_Item_Details__c> services ;
+         for(Opportunity o : opportunities){
+            packageServices.addAll(packageServiceRepositoryInstance.findAllPackageServiceByOpportunity(o.Id));
+         }
+
+         for(OpportunityLineItem o :packageServices){
+            services.addAll(serviceRepositoryInstance.findServiceByOpportunityProduct(o.Id));
+         }
+
       }
 }

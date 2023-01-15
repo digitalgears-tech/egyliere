@@ -3,11 +3,12 @@ public class ContactService {
     public  ContactRepository contactRepositoryInstance;
     public AccountRepository accountRepositoryInstance;
     public PlansRepository  plansRepositoryInstance;
-
+    public ContactCityGuideRepository contactCityGuideRepositoryInstance;
     public ContactService() {
         contactRepositoryInstance = ContactRepository.getInstance();
         accountRepositoryInstance = AccountRepository.getInstance();
         plansRepositoryInstance = PlansRepository.getInstance();
+        contactCityGuideRepositoryInstance = ContactCityGuideRepository.getInstance();
     }
 
     public static ContactService getInstance() {
@@ -34,6 +35,16 @@ public class ContactService {
         contactMap.put('Account ID', Account.Id);
         contactMap.put('Total Points', Account.Balance__c +'');
         contactMap.put('Consumed Points', Account.Consumed__c+'');
+        contactMap.put('Guest', Account.Guest__c+'');
+        If(Account.Guest__c){
+          List<Contact_City_Guide__c> contactCityGuide=contactCityGuideRepositoryInstance.FindAllCityGuidesbyContactAndActive(contact.Id);
+          String cityGuide= '';
+          for (Contact_City_Guide__c c :contactCityGuide ){
+              cityGuide = c.City_Guide__c+';'+cityGuide;
+          }
+
+          contactMap.put('CityGuide', cityGuide);
+        }
         try{      
           Plan__c plan = plansRepositoryInstance.FindPlansById(Account.Plan__c);
           contactMap.put('MmeberShip', plan.Name);
@@ -83,7 +94,7 @@ public class ContactService {
       contact.LastName = (String)contactsmap.get('Last Name');
       contact.Email = (String)contactsmap.get('Email');
       contact.Phone = (String)contactsmap.get('Phone');
-      
+
       if(contactsmap.get('New Password') != null){
         contact.Password__c= (String)contactsmap.get('New Password');
       }
@@ -93,6 +104,12 @@ public class ContactService {
   
     update contact;
   }
+
+ public List<Contact> getContactMembers( String id){
+  Contact contact = contactRepositoryInstance.findByRecordId(id);
+  List<Contact> members = contactRepositoryInstance.findByAccountId(contact.AccountId);
+  return members;
+ }
 
 
 }

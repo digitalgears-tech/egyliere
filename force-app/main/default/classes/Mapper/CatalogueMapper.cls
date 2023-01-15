@@ -4,10 +4,11 @@ global class CatalogueMapper {
     public List<String> Logo;
     public String city;
     public String address;
-    public Map<String,Double> location = new Map<String,Double>();
+    public Map<String,Double> location;
     public String phone;
     public String emergencyNumber;
     public String type;
+    public String category;
     public String description;
     public String houseRules;
     public String changePolicy;
@@ -25,13 +26,17 @@ global class CatalogueMapper {
     public  CatalogueMapper CatalogueObjectToMapper(Catalogue__c catalogueObject){
         CatalogueMapper catalogueMap = new CatalogueMapper();
         ImageListMapper ImageListMapperInstance = ImageListMapper.getInstance(); 
+        RecordTypeRepository recordTypeRepositoryInstance = RecordTypeRepository.getInstance();
+
         catalogueMap.name = catalogueObject.name;
         catalogueMap.Logo = ImageListMapperInstance.ConvertToImageList(catalogueObject.Logo__c);
         catalogueMap.city = catalogueObject.City__c;
         catalogueMap.address = catalogueObject.Address__c;
         Location loc = catalogueObject.Location__c;
+        catalogueMap.location =  new Map<String,Double>();
+        If(!(loc == null)){
         catalogueMap.location.put('Latitude', loc.latitude);
-        catalogueMap.location.put('Longitude',loc.longitude);
+        catalogueMap.location.put('Longitude',loc.longitude);}
         catalogueMap.phone = catalogueObject.Phone__c;
         catalogueMap.emergencyNumber = catalogueObject.Emergency_Number__c;
         catalogueMap.type = catalogueObject.Type__c;
@@ -40,6 +45,7 @@ global class CatalogueMapper {
         catalogueMap.changePolicy = catalogueObject.Change_Policy__c;
         catalogueMap.cancellationPolicy = catalogueObject.Cancellation_Policy__c;
         catalogueMap.benefits = catalogueObject.Benefits__c;
+        catalogueMap.category  = recordTypeRepositoryInstance.getRecordTypebyId(catalogueObject.RecordTypeId).Name;
         catalogueMap.recommendations = catalogueObject.Recommendations__c;
         catalogueMap.photoCatalogues = photoCataloguesMap(catalogueObject);
         catalogueMap.linksCatalogues = linkCataloguesMap(catalogueObject);

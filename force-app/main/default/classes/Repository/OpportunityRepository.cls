@@ -12,7 +12,7 @@ public class OpportunityRepository {
         return instance;
       }
 
-    public Opportunity findByCase(String requestID){
+    public List<Opportunity> findByCase(String requestID){
 
         return [
           SELECT

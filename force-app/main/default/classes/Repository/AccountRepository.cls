@@ -19,7 +19,8 @@ public class AccountRepository {
             Balance__c,
             Consumed__c,
             Plan__c,
-            Total_Hold__c
+            Total_Hold__c,
+            Guest__c
             FROM Account
             WHERE Id = :accountId
             ];

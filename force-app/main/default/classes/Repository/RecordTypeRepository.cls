@@ -12,7 +12,11 @@ public class RecordTypeRepository {
         return instance;
       }
 
-    public RecordType getRecordTypebyNameAndObject(String name, String object){
-
+    public RecordType getRecordTypebyId(String id){
+      return [
+          SELECT
+            Name
+            FROM RecordType
+            WHERE Id =: id];
     }
 }

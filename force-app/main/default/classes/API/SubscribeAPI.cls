@@ -20,7 +20,8 @@ global  class SubscribeAPI {
                  requestResponse.statusCode=200;
              }
         }catch(Exception e){
-
+            requestResponse.statusCode=400;
+            requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
         }
     }
 }

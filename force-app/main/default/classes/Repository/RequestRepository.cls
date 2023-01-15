@@ -18,7 +18,19 @@ public class RequestRepository {
           RecordTypeId,
           CaseNumber
           FROM Case
-          WHERE Contact__c = :contact.Id
+          WHERE ContactId = :contact.Id
+           ];
+      }
+
+      public List<Case> findReservationRequestByContact(Contact contact, string rtId) {
+
+        return [
+          SELECT
+          RecordTypeId,
+          CaseNumber
+          FROM Case
+          WHERE ContactId = :contact.Id
+          And RecordTypeId = :rtId
            ];
       }
 }

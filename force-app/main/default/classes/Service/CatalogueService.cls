@@ -25,4 +25,10 @@ public class CatalogueService {
  
        }
 
+       public List<CatalogueMapper> GetCityGuideCatalogueList(String id) {
+        List<Catalogue__c> catalogueObjectList = CatalogueRepositoryInstance.FindAllCatalogueByCityGuide(id);
+        return CatalogueMapper.catalogueObjectListToMapperList(catalogueObjectList);
+ 
+       }
+
 }

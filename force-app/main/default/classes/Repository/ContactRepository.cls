@@ -49,4 +49,19 @@ public class ContactRepository {
         ];
 
   }
+
+  public List<Contact> findByAccountId(String accountId){
+
+    return [
+      SELECT
+      Id,
+      Name,
+      AccountId,
+      Tier__c,
+      Password__c
+      FROM Contact
+      WHERE AccountId = :accountId
+      ];
+
+}
 }

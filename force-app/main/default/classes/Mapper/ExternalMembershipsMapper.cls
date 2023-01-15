@@ -41,6 +41,7 @@ global class ExternalMembershipsMapper {
             membership.Expiration_Date__c =Date.parse((String)membershipmap.get('expirationDate'));
             membership.MemberShip_Provider__c =(String) membershipmap.get('memberShipProvider');
             membership.Name = (String)membershipmap.get('memberShipId');
+            membership.Password__c = (String)membershipmap.get('Password');
             membership.Contact__c= contactId;
             externalMemberships.add(membership);
             counter += 1;

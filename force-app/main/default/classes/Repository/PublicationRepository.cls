@@ -24,7 +24,8 @@ public class PublicationRepository {
             Tag__c,
             Location__c,
             Description__c
-          FROM Publication__c];
+          FROM Publication__c
+          WHERE Active__c = true];
       }
       public List<Publication__c> findAllPublicationsShowOnExternalApp(){
 
@@ -41,7 +42,8 @@ public class PublicationRepository {
             Location__c,
             Description__c
           FROM Publication__c
-          WHERE Show_on_External_App__c = true];
+          WHERE Show_on_External_App__c = true
+          AND Active__c = true];
       }
 
       public List<Publication__c> findByTags(List<String> tagslist){
