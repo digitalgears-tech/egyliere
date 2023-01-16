@@ -31,6 +31,21 @@ public class DependencyForPicklistApex {
         return controllingInfo;
     }
     
+    public static List<String> getPickList(String objectName, String picklistField) {
+       
+        List<String> picklist = new List<String>();
+        Schema.SObjectType objType = Schema.getGlobalDescribe().get(objectName);
+        Schema.DescribeSObjectResult describeResult = objType.getDescribe();
+        Schema.DescribeFieldResult fieldResult = describeResult.fields.getMap().get(picklistField).getDescribe();
+        List<Schema.PicklistEntry> ple = fieldResult.getPicklistValues();
+         for( Schema.PicklistEntry f : ple)
+        {
+            picklist.add(f.getLabel());
+        }     
+    
+        return picklist;
+    
+    }
     public class MyPickListInfo{
         public String validFor;
     }

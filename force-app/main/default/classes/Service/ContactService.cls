@@ -27,7 +27,10 @@ public class ContactService {
       Account account = accountRepositoryInstance.findByAccountId(contact.AccountId);
       if(password.equals(contact.Password__c)) {
         contactMap.put('Status', 'Accepted');
-        contactMap.put('Name', contact.Name);
+        contactMap.put('First Name', contact.FirstName);
+        contactMap.put('Last Name', contact.LastName);
+        contactMap.put('Email', contact.Email);
+        contactMap.put('Phone', contact.Phone);
         If(app.equals('orange')){
         contactMap.put('ID', contact.Orange_ID__c);
          }else{
@@ -74,6 +77,7 @@ public class ContactService {
       LastName=contactsmap.get('Last Name')+'',
       Phone=contactsmap.get('Phone')+'',
       Email=contactsmap.get('Email')+'',
+      Country__c=contactsmap.get('Country')+'',
       Password__c=contactsmap.get('Password')+'',
       UserName__c=contactsmap.get('Email')+'',
       AccountId=account.Id);

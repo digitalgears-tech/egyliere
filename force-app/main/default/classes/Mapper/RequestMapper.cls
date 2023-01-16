@@ -66,7 +66,11 @@ public class RequestMapper {
             service.Citizenship__c = (String)serviceDetails.get('Citizenship'); 
             service.Airline__c = (String)serviceDetails.get('Airline');
             service.Trip_type__c= (String)serviceDetails.get('Trip Type');
+            service.Adult__c = (Decimal)serviceDetails.get('Adult');
+            service.Child_0_2yr__c = (Decimal)serviceDetails.get('Infant');
+            service.Child_3_12yr__c = (Decimal)serviceDetails.get('Child');
             service.Class__c=(String)serviceDetails.get('Class');
+            service.Additional_Details__c  =(String)serviceDetails.get('Additional details');
             if(service.Trip_type__c.equals('One-way')|| service.Trip_type__c.equals('RoundTrip') ){
                 service.Departure__c = (String)serviceDetails.get('Depart Departure'); 
                 service.Destination__c = (String)serviceDetails.get('Depart Destination'); 
@@ -119,7 +123,11 @@ public class RequestMapper {
             service.Destination__c = (String)serviceDetails.get('Destination');
             service.Meal_Plan__c = (String)serviceDetails.get('Meal Plan');
             service.Bed_size__c = (String)serviceDetails.get('Bed Size');
+            if (service.Category__c.equals('Hotel')){
             service.Booking__c= (Decimal)serviceDetails.get('Number of rooms');
+            }else{
+            service.Booking__c= (Decimal)serviceDetails.get('Number of guests');
+            }
             service.Room__c = (Decimal)serviceDetails.get('Room Occupancy');
             service.Prefrence__c = (String)serviceDetails.get('Room Preference');
             service.Additional_Details__c  =(String)serviceDetails.get('Additional details');
@@ -190,6 +198,7 @@ public class RequestMapper {
             service.Booking__c = (Decimal)serviceDetails.get('Number of travelers');
             service.Flight_Number__c = (String)serviceDetails.get('Flight Number');
             service.Destination__c= (String)serviceDetails.get('Destination');
+            service.Departure__c= (String)serviceDetails.get('Pick-up Address');
             service.Additional_Details__c  =(String)serviceDetails.get('Additional details');
 
             return service;

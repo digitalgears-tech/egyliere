@@ -15,6 +15,7 @@ public class RequestRepository {
 
         return [
           SELECT
+          Id,
           RecordTypeId,
           CaseNumber
           FROM Case
@@ -26,6 +27,7 @@ public class RequestRepository {
 
         return [
           SELECT
+          Id,
           RecordTypeId,
           CaseNumber
           FROM Case

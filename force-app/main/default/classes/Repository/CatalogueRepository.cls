@@ -79,5 +79,27 @@ public class CatalogueRepository {
         ];
       }
 
+      public List<Catalogue__c> FindAllCatalogueByRecordType(String recordTypeId){
+        return [
+          SELECT
+          Name,
+          Logo__c,
+          City__c,
+          Address__c,
+          Location__c,
+          Phone__c,
+          Emergency_Number__c,
+          Type__c,
+          Description__c,
+          House_Rules__c,
+          Change_Policy__c,
+          Cancellation_Policy__c,
+          Benefits__c,
+          Recommendations__c,
+          RecordTypeId	
+          FROM Catalogue__c
+          WHERE RecordTypeId = :recordTypeId
+        ];
+      }
       
 }

@@ -23,5 +23,17 @@ public class ProductRepository {
           FROM Product2
           WHERE Name = :name
           ];
+      }
+          public Product2 findById(String id){
+
+            return [
+              SELECT
+              Id,
+              Name,
+              Family,
+              Logo__c
+              FROM Product2
+              WHERE Id = :id
+              ];
     }
 }

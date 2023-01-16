@@ -25,6 +25,18 @@ public class CatalogueService {
  
        }
 
+       public List<CatalogueMapper> GetCatalogueListByRecordType(String type) {
+        RecordType rt =[
+          SELECT
+          Id
+          FROM RecordType
+          WHERE Name = :type
+          ];
+        List<Catalogue__c> catalogueObjectList = CatalogueRepositoryInstance.FindAllCatalogueByRecordType(rt.Id);
+        return CatalogueMapper.catalogueObjectListToMapperList(catalogueObjectList);
+ 
+       }
+
        public List<CatalogueMapper> GetCityGuideCatalogueList(String id) {
         List<Catalogue__c> catalogueObjectList = CatalogueRepositoryInstance.FindAllCatalogueByCityGuide(id);
         return CatalogueMapper.catalogueObjectListToMapperList(catalogueObjectList);

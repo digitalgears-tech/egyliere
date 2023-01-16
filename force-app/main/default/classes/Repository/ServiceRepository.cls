@@ -73,7 +73,7 @@ private static ServiceRepository instance = null;
           FROM Opprtunity_Line_Item_Details__c
           ];
     }
-          public List<Opprtunity_Line_Item_Details__c> findServiceByOpportunityProduct(String opportunityProductId){
+          public List<Opprtunity_Line_Item_Details__c> findServiceByOpportunityProduct(List<String> opportunityProductId){
 
             return [
               SELECT

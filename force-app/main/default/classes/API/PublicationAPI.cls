@@ -8,7 +8,6 @@ global class PublicationAPI {
         String app = getReuest.params.get('App');
         if(app.equals('orange')){
             try{String orangeId = getReuest.params.get('orangeID');
-                System.debug(publicationServiceInstance.getPublicationByTags(orangeId ,app));
                 return publicationServiceInstance.getPublicationByTags(orangeId ,app);
             }catch(Exception e){
                 return publicationServiceInstance.getPublicationByTags(app);

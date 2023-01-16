@@ -22,13 +22,14 @@ public class PackageServiceRepository {
           ];
     }
 
-    public List<OpportunityLineItem> findAllPackageServiceByOpportunity(String opportunityId){
+    public List<OpportunityLineItem> findAllPackageServiceByOpportunity(List<String> opportunityId){
 
         return [
           SELECT
           Id,
           Name,
-          Opportunity_Line_Item_Details__c
+          Opportunity_Line_Item_Details__c,
+          PricebookEntry.Product2.Logo__c
           FROM OpportunityLineItem
           WHERE OpportunityId = :opportunityId
           ];

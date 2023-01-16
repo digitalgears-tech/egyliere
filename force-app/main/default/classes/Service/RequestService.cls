@@ -9,6 +9,7 @@ public class RequestService {
     public PackageServiceRepository packageServiceRepositoryInstance;
     public PlansRepository plansRepositoryInstance;
     public RequestMapper requestMapper = new RequestMapper();
+    public ServiceMapper serviceMapper = new ServiceMapper();
 
     private RequestService() {
         contactRepositoryInstance = ContactRepository.getInstance();
@@ -58,7 +59,7 @@ public class RequestService {
             ContactId=contact.id,
             Origin='web',
             Status='New',
-            RecordType=rt);
+            RecordTypeId=rt.Id);
             insert reservationRequest;
             Opportunity packages = opportunityRepositoryInstance.findByCase(reservationRequest.Id).get(0);
             List<OpportunityLineItem> packageServices= new List<OpportunityLineItem>();
@@ -111,24 +112,35 @@ public class RequestService {
            
       }
 
-      public void GetReservationsRequest(String recordId){
+      public List<ServiceMapper>  GetReservationsRequest(String recordId){
 
         Contact contact = contactRepositoryInstance.findByRecordId(recordId);
         Account account = accountRepositoryInstance.findByAccountId(contact.AccountId);
         RecordType rt =[select Id from RecordType where Name = 'Reservation' and SobjectType = 'Case'];
         List<Case> reservationRequests = requestRepositoryInstance.findReservationRequestByContact(contact , rt.Id);
-        List<Opportunity> opportunities ;
+        List<Opportunity> opportunities = new List<Opportunity>();
         for(Case r : reservationRequests){
          opportunities.addAll(opportunityRepositoryInstance.findByCase(r.Id));}
-         List<OpportunityLineItem> packageServices;
-         List<Opprtunity_Line_Item_Details__c> services ;
+         List<OpportunityLineItem> packageServices = new List<OpportunityLineItem>();
+         List<Opprtunity_Line_Item_Details__c> services = new List<Opprtunity_Line_Item_Details__c>();
+
+         List<String> opportunitiesIDs = new List<String>();
          for(Opportunity o : opportunities){
-            packageServices.addAll(packageServiceRepositoryInstance.findAllPackageServiceByOpportunity(o.Id));
+            opportunitiesIDs.add(o.Id);
          }
+         packageServices.addAll(packageServiceRepositoryInstance.findAllPackageServiceByOpportunity(opportunitiesIDs));
+
+         List <String> packageServicesIDs=  new List<String>();
+         Map<String,String> packageServiceLogoMap = new Map<String,String>();
 
          for(OpportunityLineItem o :packageServices){
-            services.addAll(serviceRepositoryInstance.findServiceByOpportunityProduct(o.Id));
+            packageServiceLogoMap.put(o.Id, o.PricebookEntry.Product2.Logo__c);
+            packageServicesIDs.add(o.Id);
          }
+         services.addAll(serviceRepositoryInstance.findServiceByOpportunityProduct(packageServicesIDs));
+
+        return  serviceMapper.ServiceobjectListToMapperList(services, packageServiceLogoMap);
+
 
       }
 }

@@ -10,8 +10,14 @@ global class CatalogueAPI {
     global static List<CatalogueMapper> getCatalogueList(){
         RestRequest getReuest= RestContext.request;
         String app = getReuest.params.get('App');
+        String type = getReuest.params.get('Type');
         if(app.equals('Internal')){
-        return CatalogueServiceInstance.GetCatalogueList();}
+         if(type == null){
+        return CatalogueServiceInstance.GetCatalogueList();
+         }else{
+          return CatalogueServiceInstance.GetCatalogueListByRecordType(type);
+         }
+       }
 
         return null;
     }
