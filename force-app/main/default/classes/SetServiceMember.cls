@@ -1,4 +1,3 @@
-
 // Rename Class ServiceMemberInvocable
 global class SetServiceMember {
 

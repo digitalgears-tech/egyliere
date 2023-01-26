@@ -41,7 +41,11 @@ public class ContactRepository {
         SELECT
         Id,
         Name,
+        FirstName,
+        LastName,
         AccountId,
+        Email,
+        Phone,
         Tier__c,
         Password__c
         FROM Contact
