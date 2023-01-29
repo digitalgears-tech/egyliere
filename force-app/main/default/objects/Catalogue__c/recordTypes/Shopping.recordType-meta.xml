@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Shopping</fullName>
+    <active>true</active>
+    <label>Shopping</label>
+    <picklistValues>
+        <picklist>City__c</picklist>
+        <values>
+            <fullName>France</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spain</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Tags__c</picklist>
+        <values>
+            <fullName>Family</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sun %26 Beach</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>yoga</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type__c</picklist>
+        <values>
+            <fullName>Store</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

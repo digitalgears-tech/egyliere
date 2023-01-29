@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sub_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Sub Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Type__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetName>SubType</valueSetName>
+        <valueSettings>
+            <controllingFieldValue>Travel Services</controllingFieldValue>
+            <valueName>Visa Management</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel Services</controllingFieldValue>
+            <valueName>Flight Management</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel Services</controllingFieldValue>
+            <valueName>Accommodation Management</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel Services</controllingFieldValue>
+            <valueName>Specialty Travel Planning</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel Services</controllingFieldValue>
+            <valueName>Health and Vaccine</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Concierge Services</controllingFieldValue>
+            <valueName>Excursions Planning / Travel Experiences</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Concierge Services</controllingFieldValue>
+            <valueName>Event Ticketing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Concierge Services</controllingFieldValue>
+            <valueName>Dining &amp; Nightspots Reservations</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Concierge Services</controllingFieldValue>
+            <valueName>VIP Airport Services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Concierge Services</controllingFieldValue>
+            <valueName>Transport Arrangement - Booking</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Lifestyle Management Services</controllingFieldValue>
+            <valueName>Education Planning</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Lifestyle Management Services</controllingFieldValue>
+            <valueName>Luxury Goods Sourcing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Lifestyle Management Services</controllingFieldValue>
+            <valueName>Property Management / Estate Management</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Lifestyle Management Services</controllingFieldValue>
+            <valueName>Yacht / Watercraft / Private Jet Management</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Lifestyle Management Services</controllingFieldValue>
+            <valueName>Commodity Consultancy</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Lifestyle Management Services</controllingFieldValue>
+            <valueName>Security &amp; Close Protection</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Lifestyle Management Services</controllingFieldValue>
+            <valueName>Aircraft Charters</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Lifestyle Management Services</controllingFieldValue>
+            <valueName>Luxury Sailing Boat &amp; Motor Yacht Charters</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Lifestyle Management Services</controllingFieldValue>
+            <valueName>Private Event Planning / Special Celebrations</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Lifestyle Management Services</controllingFieldValue>
+            <valueName>Personal Shopping &amp; Styling</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Lifestyle Management Services</controllingFieldValue>
+            <valueName>Luxury Shopping Experiences &amp; Benefits</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Lifestyle Management Services</controllingFieldValue>
+            <valueName>Personal Membership Management</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Lifestyle Management Services</controllingFieldValue>
+            <valueName>Exclusive Access to VIP / Invite-Only Events</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Lifestyle Management Services</controllingFieldValue>
+            <valueName>Private Island Rentals</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Lifestyle Management Services</controllingFieldValue>
+            <valueName>Rare, Sport &amp; Vintage Car Rentals</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Lifestyle Management Services</controllingFieldValue>
+            <valueName>Private Access to Historical Venues</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Lifestyle Management Services</controllingFieldValue>
+            <valueName>Villa &amp; Chalet Rentals - Long Holidays</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Lifestyle Management Services</controllingFieldValue>
+            <valueName>Yearly Tailored Global Event Calendar</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Lifestyle Management Services</controllingFieldValue>
+            <valueName>Property Sourcing</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

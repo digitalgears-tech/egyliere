@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Event</fullName>
+    <active>true</active>
+    <label>Event</label>
+    <picklistValues>
+        <picklist>Discount_Type__c</picklist>
+        <values>
+            <fullName>Amount</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Percentage</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Tag__c</picklist>
+        <values>
+            <fullName>Art %26 Antique Fairs</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Beauty</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bleisure Travel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Boutique Hotels</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Business Travel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Concerts</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Conferences %26 Events</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cuisine</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Culture</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cups %26 Championships</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Desert Safari</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Eco Hotels %26 Lodges</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Entrepreneurship</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Extended Stays</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Extraordinary Experiences</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Family</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fashion Shows</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fitness</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gastro Hotels</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>History</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Incentive Trips %26 Company Retreats</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lifestyle Hotels</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Luxury Brands</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Luxury Homes %26 Villas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Meditation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Music Festivals</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Opera</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rejuvenation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Relaxation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sea %26 River Cruises</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Seasonal Celebrations</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sightseeing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ski Resorts</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Social Happenings</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spirituality</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sports</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Theatre</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trade Shows %26 Expos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Water Sports</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wellness Festivals</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wellness Resorts</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wilderness %26 Wildlife</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

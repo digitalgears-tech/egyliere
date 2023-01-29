@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <decisions>
+        <name>Check_SubType</name>
+        <label>Check SubType</label>
+        <locationX>595</locationX>
+        <locationY>401</locationY>
+        <defaultConnector>
+            <targetReference>Quote_Line_Item_General_view</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Is_Accommodation</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Quote_LineItem_details.SubType__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Accommodation Management</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Quote_LineItem_Accommodation_view</targetReference>
+            </connector>
+            <label>Is Accommodation</label>
+        </rules>
+        <rules>
+            <name>Is_Flight</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Quote_LineItem_details.SubType__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Flight Management</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Quote_LineItem_Flight_view</targetReference>
+            </connector>
+            <label>Is Flight</label>
+        </rules>
+        <rules>
+            <name>Is_Health_Vaccine</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Quote_LineItem_details.SubType__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Health and Vaccine</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Quote_Line_Item_General_view</targetReference>
+            </connector>
+            <label>Is Health &amp; Vaccine</label>
+        </rules>
+        <rules>
+            <name>Is_Specialty_Travel_Planning</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Quote_LineItem_details.SubType__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Specialty Travel Planning</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Quote_Line_Item_General_view</targetReference>
+            </connector>
+            <label>Is Specialty Travel Planning</label>
+        </rules>
+        <rules>
+            <name>Is_Event_Ticketing</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Quote_LineItem_details.SubType__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Event Ticketing</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Quote_LineItem_details.SubType__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Dining &amp; Nightspots Reservations</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Quote_Line_Item_General_view</targetReference>
+            </connector>
+            <label>Is Event Ticketing OR Is Dining &amp; Nightspots Reservations</label>
+        </rules>
+        <rules>
+            <name>Is_Visa_Management</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Quote_LineItem_details.SubType__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Visa Management</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Quote_Line_Item_General_view</targetReference>
+            </connector>
+            <label>Is Visa Management</label>
+        </rules>
+        <rules>
+            <name>Is_Excursions_Planning_Travel_Experiences</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Quote_LineItem_details.SubType__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Excursions Planning / Travel Experiences</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Quote_Line_Item_General_view</targetReference>
+            </connector>
+            <label>Is Excursions Planning / Travel Experiences</label>
+        </rules>
+        <rules>
+            <name>Is_VIP_Airport_Services</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Quote_LineItem_details.SubType__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>VIP Airport Services</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Quote_Line_Item_General_view</targetReference>
+            </connector>
+            <label>Is VIP Airport Services</label>
+        </rules>
+        <rules>
+            <name>Transport_Arrangement</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Quote_LineItem_details.SubType__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Transport Arrangement - Booking</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Quote_LineItem_Transfer_view</targetReference>
+            </connector>
+            <label>Transport Arrangement</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Screen Flow: &lt;Object Name&gt; {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Screen Flow: Quote Line Item Detail view</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordLookups>
+        <name>Get_Quote_LineItem_details</name>
+        <label>Get Quote LineItem details</label>
+        <locationX>611</locationX>
+        <locationY>277</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_SubType</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_QuoteLineItem.Line_Item_Detail__r.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Quote_Line_Item_Detail__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_QuoteLineItem</name>
+        <label>Get QuoteLineItem</label>
+        <locationX>616</locationX>
+        <locationY>176</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Quote_LineItem_details</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>varT_Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>QuoteLineItem</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>490</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Get_QuoteLineItem</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <name>Quote_Line_Item_General_view</name>
+        <label>Quote Line Item General view</label>
+        <locationX>782</locationX>
+        <locationY>558</locationY>
+        <flowName>Screen_Flow_Quote_Line_Item_General_view</flowName>
+        <inputAssignments>
+            <name>varT_Id</name>
+            <value>
+                <elementReference>Get_Quote_LineItem_details.Id</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <subflows>
+        <name>Quote_LineItem_Accommodation_view</name>
+        <label>Quote LineItem Accommodation view</label>
+        <locationX>549</locationX>
+        <locationY>560</locationY>
+        <flowName>Screen_Flow_Quote_LineItem_Accommodation_view</flowName>
+        <inputAssignments>
+            <name>varT_Id</name>
+            <value>
+                <elementReference>Get_Quote_LineItem_details.Id</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <subflows>
+        <name>Quote_LineItem_Flight_view</name>
+        <label>Quote LineItem Flight view</label>
+        <locationX>431</locationX>
+        <locationY>575</locationY>
+        <flowName>Screen_Flow_Quote_LineItem_Flight_view</flowName>
+        <inputAssignments>
+            <name>varT_Id</name>
+            <value>
+                <elementReference>Get_Quote_LineItem_details.Id</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <subflows>
+        <name>Quote_LineItem_Transfer_view</name>
+        <label>Quote LineItem Transfer view</label>
+        <locationX>648</locationX>
+        <locationY>555</locationY>
+        <flowName>Screen_Flow_Quote_LineItem_Transfer_view</flowName>
+        <inputAssignments>
+            <name>varT_Id</name>
+            <value>
+                <elementReference>Get_Quote_LineItem_details.Id</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <variables>
+        <name>varT_Id</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

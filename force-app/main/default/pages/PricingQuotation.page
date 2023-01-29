@@ -1,0 +1,1060 @@
+<!--
+  @description       : 
+  @author            : Ahmed Abdelraouf
+  @group             : 
+  @last modified on  : 01-29-2023
+  @last modified by  : Ahmed Abdelraouf
+-->
+<apex:page renderAs="pdf"
+  applyBodyTag="false"
+  standardController="Opportunity"
+  extensions="PricingQuotationExtension"
+>
+  <head>
+    <style type="text/css" media="print">
+      @page {
+        padding-top: 40px;
+        @top-center {
+          content: element(header);
+        }
+        @bottom-left {
+          content: element(footer);
+        }
+      }
+
+      div.header {
+        padding-top: 30px;
+        padding-right: 10px;
+        padding-left: 10px;
+
+        position: running(header);
+      }
+
+      div.footer {
+        display: block;
+        padding: 5px;
+        position: running(footer);
+      }
+
+      .pagenumber:before {
+        content: counter(page);
+      }
+
+      .pagecount:before {
+        content: counter(pages);
+      }
+      .header-text {
+        font-size: 1.3em;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 700;
+      }
+      .subheader-text {
+        font-weight: 20;
+        font-size: 12px;
+        font-weight: lighter;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .table-header-text {
+        font-weight: 20;
+        font-size: 12px;
+        font-weight: bold;
+        font-family: Arial, Helvetica, sans-serif;
+        color: white;
+      }
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        padding-top: 5px;
+      }
+      span.mark {
+        content: "\2713";
+      }
+
+      td.border,
+      th.border {
+        border: 1px solid #36495f;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      table.break {
+        page-break-inside: auto;
+      }
+      tr {
+        page-break-inside: avoid;
+        page-break-after: auto;
+        border: 1px solid #36495f;
+      }
+
+      th {
+        background-color: #36495f;
+        text-align: center;
+      }
+      td {
+        word-break: break-all;
+        word-wrap: break-word;
+      }
+      td.center {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <div class="header">
+    <div>
+      <div>
+        <table border="0" width="100%" id="theGrid">
+          <tbody>
+            <tr>
+              <td>
+                <span id="theFirst">
+                  <apex:outputText styleClass="header-text" value="Egylière">
+                  </apex:outputText>
+
+                  <!-- <apex:image value="{!URLFOR($Resource.EgyliereLogo)}" width="277" height="92" /> -->
+                </span>
+                <div>
+                  <apex:outputText styleClass="subheader-text"
+                    value="World Luxury Travel"
+                  >
+                  </apex:outputText>
+                </div>
+              </td>
+
+              <td>
+                <span id="theSecond" style="float: right">
+                  <apex:image value="{!URLFOR($Resource.EgyliereLogo)}"
+                    width="150"
+                    height="40"
+                  />
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div>Page <span class="pagenumber" /> of <span class="pagecount" /></div>
+  </div>
+  <div style="padding-right: 5px; padding-left: 5px" class="content">
+    <table border="0" width="100%" id="theGrid">
+      <tbody>
+        <tr>
+          <td>
+            <span id="theFirst">
+              <li class="subheader-text">
+                Suez Canal Tower, 4 Ibn Katheer Street -Giza, Egypt
+              </li>
+              <li class="subheader-text">(+20)100 210 3030</li>
+              <li class="subheader-text">info@egyliere.com</li>
+            </span>
+          </td>
+
+          <td>
+            <span id="theSecond" style="float: right">
+              <apex:outputText value="Date: "
+                style="font-weight: bold"
+                styleClass="subheader-text"
+              >
+              </apex:outputText>
+              <apex:outputText styleClass="subheader-text"
+                value="{0,date,dd/MM/YYYY}"
+              >
+                <apex:param value="{!TODAY()}" />
+              </apex:outputText>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <li style="font-weight: bold" class="subheader-text">To:</li>
+    <li class="subheader-text">
+      <apex:outputText value="{!ContactInfo.Name}"></apex:outputText>
+    </li>
+    <li class="subheader-text">
+      <apex:outputText value="{!ContactInfo.MailingStreet} ,
+          {!ContactInfo.MailingCity},
+          {!ContactInfo.MailingCountry}"
+      ></apex:outputText>
+    </li>
+    <li class="subheader-text">
+      <apex:outputText value="{!ContactInfo.Phone}"></apex:outputText>
+    </li>
+
+    <p style="font-weight: bold" class="subheader-text">Accommodation</p>
+
+    <!-- <table border=" 0" width="100% " id="theGrid ">
+      <tbody>
+        <tr>
+          <td width="50%">
+            <span id="theFirst ">
+              <apex:outputText
+                styleClass="subheader-text"
+                value="Destination: "
+              >
+              </apex:outputText>
+            </span>
+            <span style="color: darkgrey"> </span>
+          </td>
+
+          <td width="50%"></td>
+        </tr>
+      </tbody>
+    </table> -->
+
+    <table width="100%" id="theGrid">
+      <tbody>
+        <tr>
+          <th width="10%" class="border">
+            <apex:outputText value="Category" styleClass="table-header-text">
+            </apex:outputText>
+          </th>
+
+          <th width="15%" class="border">
+            <apex:outputText value="Name" styleClass="table-header-text">
+            </apex:outputText>
+          </th>
+
+          <th width="20%" class="border">
+            <apex:outputText value="Description" styleClass="table-header-text">
+            </apex:outputText>
+          </th>
+
+          <th width="12%" class="border">
+            <apex:outputText value="Check-In" styleClass="table-header-text">
+            </apex:outputText>
+          </th>
+          <th width="12%" class="border">
+            <apex:outputText value="Check-Out" styleClass="table-header-text">
+            </apex:outputText>
+          </th>
+          <th width="7%" class="border">
+            <apex:outputText value="Rooms"
+              styleClass="table-header-text"
+            >
+            </apex:outputText>
+          </th>
+          <th width="8%" class="border">
+            <apex:outputText value="Price" styleClass="table-header-text">
+            </apex:outputText>
+          </th>
+          <th width="10%" class="border">
+            <apex:outputText value="Destination" styleClass="table-header-text">
+            </apex:outputText>
+          </th>
+          <th width="10%" class="border">
+            <apex:outputText value="Selected" styleClass="table-header-text">
+            </apex:outputText>
+          </th>
+        </tr>
+        <apex:repeat value="{!QuoteLineItemsAccomedation}"
+          var="quoteLineItemAccomedation"
+        >
+          <tr>
+            <td width="10%" class="border center">
+              <apex:outputText value="{!quoteLineItemAccomedation.Line_Item_Detail__r.Opportunity_Line_Item_Details__r.Category__c}"
+                styleClass="subheader-text"
+              >
+              </apex:outputText>
+            </td>
+            <td width="15%" class="border center">
+              <apex:outputText value="{!quoteLineItemAccomedation.Line_Item_Detail__r.Hotel__c}"
+                styleClass="subheader-text"
+              >
+              </apex:outputText>
+            </td>
+            <!-- value="{!quoteLineItemAccomedation.Line_Item_Detail__r.Room__c}  {!quoteLineItemAccomedation.Line_Item_Detail__r.Bed_size__c} {!quoteLineItemAccomedation.Line_Item_Detail__r.Meal_Plan__c}" -->
+            <td width="20%" class="border center">
+              <apex:outputText value="{!quoteLineItemAccomedation.Line_Item_Detail__r.Description__c}"
+                styleClass="subheader-text"
+              >
+              </apex:outputText>
+            </td>
+            <td width="12%" class="border center">
+              <apex:outputText value="{0, date, MM/dd/yyyy, hh:mm aaa}"
+                styleClass="subheader-text"
+              >
+                <apex:param value="{!quoteLineItemAccomedation.Line_Item_Detail__r.Arival_Date__c}"
+                >
+                </apex:param>
+              </apex:outputText>
+            </td>
+            <td width="12%" class="border center">
+              <apex:outputText value="{0, date, MM/dd/yyyy, hh:mm aaa}"
+                styleClass="subheader-text"
+              >
+                <apex:param value="{!quoteLineItemAccomedation.Line_Item_Detail__r.Departure_Date__c}"
+                >
+                </apex:param>
+              </apex:outputText>
+            </td>
+            <td width="7%" class="border center">
+              <apex:outputText value="{!quoteLineItemAccomedation.Line_Item_Detail__r.Bookings__c}"
+                styleClass="subheader-text"
+              >
+              </apex:outputText>
+            </td>
+            <td width="8%" class="border center">
+              <apex:outputText value="{0, number, ###,###.##}"
+                styleClass="subheader-text"
+              >
+                <apex:param value="{!quoteLineItemAccomedation.TotalPrice}"
+                />
+              </apex:outputText>
+            </td>
+            <td width="10%" class="border center">
+                <apex:outputText value="{!quoteLineItemAccomedation.Line_Item_Detail__r.Destination__c}"
+                styleClass="subheader-text"
+              >
+                
+              </apex:outputText>
+            </td>
+            <td width="10%" class="border center"></td>
+          </tr>
+        </apex:repeat>
+      </tbody>
+    </table>
+
+    
+    <apex:outputPanel rendered="{!IF(QuoteLineItemsFlightOneWaySize>0, true, false)}"
+    >
+      <p style="font-weight: bold" class="subheader-text">Flights</p>
+      <li class="subheader-text">
+        <apex:outputText value="One Way"></apex:outputText>
+      </li>
+      <table border="0" width="100%" id="theGrid">
+        <tbody>
+          <tr>
+            <th width="10%" class="border">
+              <apex:outputText value="Airline" styleClass="table-header-text">
+              </apex:outputText>
+            </th>
+
+            <th width="10%" class="border">
+              <apex:outputText value="From" styleClass="table-header-text">
+              </apex:outputText>
+            </th>
+            <th width="10%" class="border">
+              <apex:outputText value="To" styleClass="table-header-text">
+              </apex:outputText>
+            </th>
+            <th width="12%" class="border">
+              <apex:outputText value="Departure" styleClass="table-header-text">
+              </apex:outputText>
+            </th>
+
+            <th width="12%" class="border">
+              <apex:outputText value="Arrival" styleClass="table-header-text">
+              </apex:outputText>
+            </th>
+
+            <th width="8%" class="border">
+              <apex:outputText value="Class" styleClass="table-header-text">
+              </apex:outputText>
+            </th>
+            <th width="20%" class="border">
+              <apex:outputText value="Description"
+                styleClass="table-header-text"
+              >
+              </apex:outputText>
+            </th>
+            <th width="8%" class="border">
+              <apex:outputText value="Price" styleClass="table-header-text">
+              </apex:outputText>
+            </th>
+            <th width="10%" class="border">
+              <apex:outputText value="Selected" styleClass="table-header-text">
+              </apex:outputText>
+            </th>
+          </tr>
+          <apex:repeat value="{!QuoteLineItemsFlightOneWay}"
+            var="quoteLineItemFlightOneWay"
+          >
+            <tr>
+              <td width="10%" class="border center">
+                <apex:outputText value="{!quoteLineItemFlightOneWay.Line_Item_Detail__r.Airline__c}"
+                  styleClass="subheader-text"
+                >
+                </apex:outputText>
+              </td>
+
+              <td width="10%" class="border center">
+                <apex:outputText value="{!quoteLineItemFlightOneWay.Line_Item_Detail__r.Class__c} "
+                  styleClass="subheader-text"
+                >
+                </apex:outputText>
+              </td>
+
+              <td width="10%" class="border center">
+                <apex:outputText value="{!quoteLineItemFlightOneWay.Line_Item_Detail__r.Class__c} "
+                  styleClass="subheader-text"
+                >
+                </apex:outputText>
+              </td>
+              <td width="12%" class="border center">
+                <apex:outputText value="{0, date, MM/dd/yyyy, hh:mm aaa}"
+                  styleClass="subheader-text"
+                >
+                  <apex:param value="{!quoteLineItemFlightOneWay.Line_Item_Detail__r.Departure_Date__c}"
+                  >
+                  </apex:param>
+                </apex:outputText>
+              </td>
+              <td width="12%" class="border center">
+                <apex:outputText value="{0, date, MM/dd/yyyy, hh:mm aaa}"
+                  styleClass="subheader-text"
+                >
+                  <apex:param value="{!quoteLineItemFlightOneWay.Line_Item_Detail__r.Arival_Date__c}"
+                  >
+                  </apex:param>
+                </apex:outputText>
+              </td>
+
+              <td width="8%" class="border center">
+                <apex:outputText value="{!quoteLineItemFlightOneWay.Line_Item_Detail__r.Class__c} "
+                  styleClass="subheader-text"
+                >
+                </apex:outputText>
+              </td>
+              <td width="20%" class="border center">
+                <apex:outputText value="{!quoteLineItemFlightOneWay.Line_Item_Detail__r.Description__c} "
+                  styleClass="subheader-text"
+                >
+                </apex:outputText>
+              </td>
+              <td width="8%" class="border center">
+                <apex:outputText value="{0, number, ###,###.##}">
+                  <apex:param value="{!quoteLineItemFlightOneWay.TotalPrice}"
+                  />
+                </apex:outputText>
+              </td>
+              <td width="10%" class="border center"></td>
+            </tr>
+          </apex:repeat>
+        </tbody>
+      </table>
+    </apex:outputPanel>
+
+    <apex:outputPanel rendered="{!IF(QuoteLineItemsFlightRoundTripSize>0, true, false)}"
+    >
+      <p style="font-weight: bold" class="subheader-text">Flights</p>
+      <li class="subheader-text">
+        <apex:outputText value="Round"></apex:outputText>
+      </li>
+
+      <table width="100%" id="theGrid">
+        <tbody>
+          <tr>
+            <th width="82%" class="border">
+              <apex:outputText value="Flights" styleClass="table-header-text">
+              </apex:outputText>
+            </th>
+
+            <th width="8%" class="border">
+              <apex:outputText value="Price" styleClass="table-header-text">
+              </apex:outputText>
+            </th>
+            <th width="10%" class="border">
+              <apex:outputText value="Selected" styleClass="table-header-text">
+              </apex:outputText>
+            </th>
+          </tr>
+          <apex:repeat value="{!QuoteLineItemsFlightRoundTrip}"
+            var="quoteLineItemFlightRoundTrip"
+          >
+            <tr>
+              <td class="border">
+                <table border="0" width="82%" id="theGrid2">
+                  <tr>
+                    <th width="10%" class="border">
+                      <apex:outputText value="Airline"
+                        styleClass="table-header-text"
+                      >
+                      </apex:outputText>
+                    </th>
+
+                    <th width="10%" class="border">
+                      <apex:outputText value="From"
+                        styleClass="table-header-text"
+                      >
+                      </apex:outputText>
+                    </th>
+                    <th width="10%" class="border">
+                      <apex:outputText value="To"
+                        styleClass="table-header-text"
+                      >
+                      </apex:outputText>
+                    </th>
+                    <th width="12%" class="border">
+                      <apex:outputText value="Departure"
+                        styleClass="table-header-text"
+                      >
+                      </apex:outputText>
+                    </th>
+
+                    <th width="12%" class="border">
+                      <apex:outputText value="Arrival"
+                        styleClass="table-header-text"
+                      >
+                      </apex:outputText>
+                    </th>
+
+                    <th width="8%" class="border">
+                      <apex:outputText value="Class"
+                        styleClass="table-header-text"
+                      >
+                      </apex:outputText>
+                    </th>
+                    <th width="20%" class="border">
+                      <apex:outputText value="Description"
+                        styleClass="table-header-text"
+                      >
+                      </apex:outputText>
+                    </th>
+                  </tr>
+
+                  <tr>
+                    <td width="10%" class="border center">
+                      <apex:outputText value="{!quoteLineItemFlightRoundTrip.Line_Item_Detail__r.Airline__c}"
+                        styleClass="subheader-text"
+                      >
+                      </apex:outputText>
+                    </td>
+
+                    <td width="10%" class="border center">
+                      <apex:outputText value="{!quoteLineItemFlightRoundTrip.Line_Item_Detail__r.Departure__c} "
+                        styleClass="subheader-text"
+                      >
+                      </apex:outputText>
+                    </td>
+
+                    <td width="10%" class="border center">
+                      <apex:outputText value="{!quoteLineItemFlightRoundTrip.Line_Item_Detail__r.Destination__c} "
+                        styleClass="subheader-text"
+                      >
+                      </apex:outputText>
+                    </td>
+                    <td width="12%" class="border center">
+                      <apex:outputText value="{0, date, MM/dd/yyyy, hh:mm aaa}"
+                        styleClass="subheader-text"
+                      >
+                        <apex:param value="{!quoteLineItemFlightRoundTrip.Line_Item_Detail__r.Departure_Date__c}"
+                        >
+                        </apex:param>
+                      </apex:outputText>
+                    </td>
+                    <td width="12%" class="border center">
+                      <apex:outputText value="{0, date, MM/dd/yyyy, hh:mm aaa}"
+                        styleClass="subheader-text"
+                      >
+                        <apex:param value="{!quoteLineItemFlightRoundTrip.Line_Item_Detail__r.Arival_Date__c}"
+                        >
+                        </apex:param>
+                      </apex:outputText>
+                    </td>
+
+                    <td width="8%" class="border center">
+                      <apex:outputText value="{!quoteLineItemFlightRoundTrip.Line_Item_Detail__r.Class__c} "
+                        styleClass="subheader-text"
+                      >
+                      </apex:outputText>
+                    </td>
+                    <td width="20%" class="border center">
+                      <apex:outputText value="{!quoteLineItemFlightRoundTrip.Line_Item_Detail__r.Description__c} "
+                        styleClass="subheader-text"
+                      >
+                      </apex:outputText>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td width="10%" class="border center">
+                      <apex:outputText value="{!quoteLineItemFlightRoundTrip.Line_Item_Detail__r.Airline1__c}"
+                        styleClass="subheader-text"
+                      >
+                      </apex:outputText>
+                    </td>
+
+                    <td width="10%" class="border center">
+                      <apex:outputText value="{!quoteLineItemFlightRoundTrip.Line_Item_Detail__r.Destination__c} "
+                        styleClass="subheader-text"
+                      >
+                      </apex:outputText>
+                    </td>
+
+                    <td width="10%" class="border center">
+                      <apex:outputText value="{!quoteLineItemFlightRoundTrip.Line_Item_Detail__r.Departure__c} "
+                        styleClass="subheader-text"
+                      >
+                      </apex:outputText>
+                    </td>
+                    <td width="12%" class="border center">
+                      <apex:outputText value="{!quoteLineItemFlightRoundTrip.Line_Item_Detail__r.Departure_Date1__c} "
+                        styleClass="subheader-text"
+                      >
+                      </apex:outputText>
+                    </td>
+                    <td width="12%" class="border center">
+                      <apex:outputText value="{!quoteLineItemFlightRoundTrip.Line_Item_Detail__r.Arival_Date1__c} "
+                        styleClass="subheader-text"
+                      >
+                      </apex:outputText>
+                    </td>
+
+                    <td width="8%" class="border center">
+                      <apex:outputText value="{!quoteLineItemFlightRoundTrip.Line_Item_Detail__r.Class1__c} "
+                        styleClass="subheader-text"
+                      >
+                      </apex:outputText>
+                    </td>
+                    <td width="20%" class="border center">
+                      <!-- TODO  the description should be updated to be unquie for the round trip-->
+                      <apex:outputText value="{!quoteLineItemFlightRoundTrip.Line_Item_Detail__r.Description__c} "
+                        styleClass="subheader-text"
+                      >
+                      </apex:outputText>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <td width="8%" class="border"></td>
+              <td width="10%" class="border"></td>
+            </tr>
+          </apex:repeat>
+        </tbody>
+      </table>
+    </apex:outputPanel>
+
+    <apex:outputPanel rendered="{!IF(QuoteLineItemsFlightMultiCitySize>0, true, false)}"
+    >
+      <p style="font-weight: bold" class="subheader-text">Flights</p>
+      <li class="subheader-text">
+        <apex:outputText value="Multi-Cities"></apex:outputText>
+      </li>
+      <table width="100%" id="theGrid">
+        <tbody>
+          <tr>
+            <th width="82%" class="border">
+              <apex:outputText value="Flights" styleClass="table-header-text">
+              </apex:outputText>
+            </th>
+
+            <th width="8%" class="border">
+              <apex:outputText value="Price" styleClass="table-header-text">
+              </apex:outputText>
+            </th>
+            <th width="10%" class="border">
+              <apex:outputText value="Selected" styleClass="table-header-text">
+              </apex:outputText>
+            </th>
+          </tr>
+          <apex:repeat value="{!QuoteLineItemsFlightMultiCity}"
+            var="quoteLineItemFlightMultiCity"
+          >
+            <tr>
+              <td class="border">
+                <table border="0" width="100%" class="break" id="theGrid2">
+                  <tr>
+                    <th width="10%" class="border">
+                      <apex:outputText value="Airline"
+                        styleClass="table-header-text"
+                      >
+                      </apex:outputText>
+                    </th>
+
+                    <th width="10%" class="border">
+                      <apex:outputText value="From"
+                        styleClass="table-header-text"
+                      >
+                      </apex:outputText>
+                    </th>
+                    <th width="10%" class="border">
+                      <apex:outputText value="To"
+                        styleClass="table-header-text"
+                      >
+                      </apex:outputText>
+                    </th>
+                    <th width="12%" class="border">
+                      <apex:outputText value="Departure"
+                        styleClass="table-header-text"
+                      >
+                      </apex:outputText>
+                    </th>
+
+                    <th width="12%" class="border">
+                      <apex:outputText value="Arrival"
+                        styleClass="table-header-text"
+                      >
+                      </apex:outputText>
+                    </th>
+
+                    <th width="8%" class="border">
+                      <apex:outputText value="Class"
+                        styleClass="table-header-text"
+                      >
+                      </apex:outputText>
+                    </th>
+                    <th width="20%" class="border">
+                      <apex:outputText value="Description"
+                        styleClass="table-header-text"
+                      >
+                      </apex:outputText>
+                    </th>
+                  </tr>
+
+                  <tr>
+                    <td width="10%" class="border center">
+                      <apex:outputText value="{!quoteLineItemFlightMultiCity.Line_Item_Detail__r.Airline__c}"
+                        styleClass="subheader-text"
+                      >
+                      </apex:outputText>
+                    </td>
+
+                    <td width="10%" class="border center">
+                      <apex:outputText value="{!quoteLineItemFlightMultiCity.Line_Item_Detail__r.Departure__c} "
+                        styleClass="subheader-text"
+                      >
+                      </apex:outputText>
+                    </td>
+
+                    <td width="10%" class="border center">
+                      <apex:outputText value="{!quoteLineItemFlightMultiCity.Line_Item_Detail__r.Destination__c} "
+                        styleClass="subheader-text"
+                      >
+                      </apex:outputText>
+                    </td>
+                    <td width="12%" class="border center">
+                      <apex:outputText value="{0, date, MM/dd/yyyy, hh:mm aaa}"
+                        styleClass="subheader-text"
+                      >
+                        <apex:param value="{!quoteLineItemFlightMultiCity.Line_Item_Detail__r.Departure_Date__c}"
+                        >
+                        </apex:param>
+                      </apex:outputText>
+                    </td>
+                    <td width="12%" class="border center">
+                      <apex:outputText value="{0, date, MM/dd/yyyy, hh:mm aaa}"
+                        styleClass="subheader-text"
+                      >
+                        <apex:param value="{!quoteLineItemFlightMultiCity.Line_Item_Detail__r.Arival_Date__c}"
+                        >
+                        </apex:param>
+                      </apex:outputText>
+                    </td>
+
+                    <td width="8%" class="border center">
+                      <apex:outputText value="{!quoteLineItemFlightMultiCity.Line_Item_Detail__r.Class__c} "
+                        styleClass="subheader-text"
+                      >
+                      </apex:outputText>
+                    </td>
+                    <td width="20%" class="border center">
+                      <apex:outputText value="{!quoteLineItemFlightMultiCity.Line_Item_Detail__r.Description__c} "
+                        styleClass="subheader-text"
+                      >
+                      </apex:outputText>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td width="10%" class="border center">
+                      <apex:outputText value="{!quoteLineItemFlightMultiCity.Line_Item_Detail__r.Airline1__c}"
+                        styleClass="subheader-text"
+                      >
+                      </apex:outputText>
+                    </td>
+
+                    <td width="10%" class="border center">
+                      <apex:outputText value="{!quoteLineItemFlightMultiCity.Line_Item_Detail__r.Departure1__c} "
+                        styleClass="subheader-text"
+                      >
+                      </apex:outputText>
+                    </td>
+
+                    <td width="10%" class="border center">
+                      <apex:outputText value="{!quoteLineItemFlightMultiCity.Line_Item_Detail__r.Destination1__c} "
+                        styleClass="subheader-text"
+                      >
+                      </apex:outputText>
+                    </td>
+                    <td width="12%" class="border center">
+                      <apex:outputText value="{0, date, MM/dd/yyyy, hh:mm aaa}"
+                        styleClass="subheader-text"
+                      >
+                        <apex:param value="{!quoteLineItemFlightMultiCity.Line_Item_Detail__r.Departure_Date1__c}"
+                        >
+                        </apex:param>
+                      </apex:outputText>
+                    </td>
+                    <td width="12%" class="border center">
+                      <apex:outputText value="{0, date, MM/dd/yyyy, hh:mm aaa}"
+                        styleClass="subheader-text"
+                      >
+                        <apex:param value="{!quoteLineItemFlightMultiCity.Line_Item_Detail__r.Arival_Date1__c}"
+                        />
+                      </apex:outputText>
+                    </td>
+
+                    <td width="8%" class="border center">
+                      <apex:outputText value="{!quoteLineItemFlightMultiCity.Line_Item_Detail__r.Class1__c} "
+                        styleClass="subheader-text"
+                      >
+                      </apex:outputText>
+                    </td>
+                    <td width="20%" class="border center">
+                      <!-- TODO  the description should be updated to be unquie for the round trip-->
+                      <apex:outputText value="{!quoteLineItemFlightMultiCity.Line_Item_Detail__r.Description__c} "
+                        styleClass="subheader-text"
+                      >
+                      </apex:outputText>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td width="10%" class="border center">
+                      <apex:outputText value="{!quoteLineItemFlightMultiCity.Line_Item_Detail__r.Airline2__c}"
+                        styleClass="subheader-text"
+                      >
+                      </apex:outputText>
+                    </td>
+
+                    <td width="10%" class="border center">
+                      <apex:outputText value="{!quoteLineItemFlightMultiCity.Line_Item_Detail__r.Departure2__c} "
+                        styleClass="subheader-text"
+                      >
+                      </apex:outputText>
+                    </td>
+
+                    <td width="10%" class="border center">
+                      <apex:outputText value="{!quoteLineItemFlightMultiCity.Line_Item_Detail__r.Destination2__c} "
+                        styleClass="subheader-text"
+                      >
+                      </apex:outputText>
+                    </td>
+                    <td width="12%" class="border center">
+                      <apex:outputText value="{0, date, MM/dd/yyyy, hh:mm aaa}"
+                        styleClass="subheader-text"
+                      >
+                        <apex:param value="{!quoteLineItemFlightMultiCity.Line_Item_Detail__r.Departure_Date2__c}"
+                        />
+                      </apex:outputText>
+                    </td>
+                    <td width="12%" class="border center">
+                      <apex:outputText value="{0, date, MM/dd/yyyy, hh:mm aaa}"
+                        styleClass="subheader-text"
+                      >
+                        <apex:param value="{!quoteLineItemFlightMultiCity.Line_Item_Detail__r.Arival_Date2__c}"
+                        />
+                      </apex:outputText>
+                    </td>
+
+                    <td width="8%" class="border center">
+                      <apex:outputText value="{!quoteLineItemFlightMultiCity.Line_Item_Detail__r.Class2__c} "
+                        styleClass="subheader-text"
+                      >
+                      </apex:outputText>
+                    </td>
+                    <td width="20%" class="border center">
+                      <!-- TODO  the description should be updated to be unquie for the round trip-->
+                      <apex:outputText value="{!quoteLineItemFlightMultiCity.Line_Item_Detail__r.Description__c} "
+                        styleClass="subheader-text"
+                      >
+                      </apex:outputText>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td width="10%" class="border center">
+                      <apex:outputText value="{!quoteLineItemFlightMultiCity.Line_Item_Detail__r.Airline3__c}"
+                        styleClass="subheader-text"
+                      >
+                      </apex:outputText>
+                    </td>
+
+                    <td width="10%" class="border center">
+                      <apex:outputText value="{!quoteLineItemFlightMultiCity.Line_Item_Detail__r.Departure3__c} "
+                        styleClass="subheader-text"
+                      >
+                      </apex:outputText>
+                    </td>
+
+                    <td width="10%" class="border center">
+                      <apex:outputText value="{!quoteLineItemFlightMultiCity.Line_Item_Detail__r.Destination3__c} "
+                        styleClass="subheader-text"
+                      >
+                      </apex:outputText>
+                    </td>
+                    <td width="12%" class="border center">
+                      <apex:outputText value="{0, date, MM/dd/yyyy, hh:mm aaa}"
+                        styleClass="subheader-text"
+                      >
+                        <apex:param value="{!quoteLineItemFlightMultiCity.Line_Item_Detail__r.Departure_Date3__c}"
+                        />
+                      </apex:outputText>
+                    </td>
+                    <td width="12%" class="border center">
+                      <apex:outputText value="{0, date, MM/dd/yyyy, hh:mm aaa}"
+                        styleClass="subheader-text"
+                      >
+                        <apex:param value="{!quoteLineItemFlightMultiCity.Line_Item_Detail__r.Arival_Date3__c}"
+                        />
+                      </apex:outputText>
+                    </td>
+
+                    <td width="8%" class="border center">
+                      <apex:outputText value="{!quoteLineItemFlightMultiCity.Line_Item_Detail__r.Class3__c} "
+                        styleClass="subheader-text"
+                      >
+                      </apex:outputText>
+                    </td>
+                    <td width="20%" class="border center">
+                      <!-- TODO  the description should be updated to be unquie for the round trip-->
+                      <apex:outputText value="{!quoteLineItemFlightMultiCity.Line_Item_Detail__r.Description__c} "
+                        styleClass="subheader-text"
+                      >
+                      </apex:outputText>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td width="10%" class="border center">
+                      <apex:outputText value="{!quoteLineItemFlightMultiCity.Line_Item_Detail__r.Airline4__c}"
+                        styleClass="subheader-text"
+                      >
+                      </apex:outputText>
+                    </td>
+
+                    <td width="10%" class="border center">
+                      <apex:outputText value="{!quoteLineItemFlightMultiCity.Line_Item_Detail__r.Departure4__c} "
+                        styleClass="subheader-text"
+                      >
+                      </apex:outputText>
+                    </td>
+
+                    <td width="10%" class="border center">
+                      <apex:outputText value="{!quoteLineItemFlightMultiCity.Line_Item_Detail__r.Destination4__c} "
+                        styleClass="subheader-text"
+                      >
+                      </apex:outputText>
+                    </td>
+                    <td width="12%" class="border center">
+                      <apex:outputText value="{0, date, MM/dd/yyyy, hh:mm aaa}"
+                        styleClass="subheader-text"
+                      >
+                        <apex:param value="{!quoteLineItemFlightMultiCity.Line_Item_Detail__r.Departure_Date4__c}"
+                        />
+                      </apex:outputText>
+                    </td>
+                    <td width="12%" class="border center">
+                      <apex:outputText value="{0, date, MM/dd/yyyy, hh:mm aaa}"
+                        styleClass="subheader-text"
+                      >
+                        <apex:param value="{!quoteLineItemFlightMultiCity.Line_Item_Detail__r.Arival_Date4__c}"
+                        />
+                      </apex:outputText>
+                    </td>
+
+                    <td width="8%" class="border center">
+                      <apex:outputText value="{!quoteLineItemFlightMultiCity.Line_Item_Detail__r.Class4__c} "
+                        styleClass="subheader-text"
+                      >
+                      </apex:outputText>
+                    </td>
+                    <td width="20%" class="border center">
+                      <!-- TODO  the description should be updated to be unquie for the round trip-->
+                      <apex:outputText value="{!quoteLineItemFlightMultiCity.Line_Item_Detail__r.Description__c} "
+                        styleClass="subheader-text"
+                      >
+                      </apex:outputText>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <td width="8%" class="border"></td>
+              <td width="10%" class="border"></td>
+            </tr>
+          </apex:repeat>
+        </tbody>
+      </table>
+    </apex:outputPanel>
+
+    <apex:outputPanel rendered="{!IF(QuoteLineItemsOtherProductsSize>0, true, false)}"
+    >
+      <p style="font-weight: bold" class="subheader-text">Other Services</p>
+
+      <table width="100%" id="theGrid">
+        <tbody>
+          <tr>
+            <th width="25%" class="border">
+              <apex:outputText value="Service Name"
+                styleClass="table-header-text"
+              >
+              </apex:outputText>
+            </th>
+            <th width="35%" class="border">
+              <apex:outputText value="Description"
+                styleClass="table-header-text"
+              >
+              </apex:outputText>
+            </th>
+            <th width="16%" class="border">
+              <apex:outputText value="Price" styleClass="table-header-text">
+              </apex:outputText>
+            </th>
+            <th width="20%" class="border">
+              <apex:outputText value="Selected" styleClass="table-header-text">
+              </apex:outputText>
+            </th>
+          </tr>
+          <apex:repeat value="{!QuoteLineItemsOtherProducts}"
+            var="quoteLineItemOtherProduct"
+          >
+            <tr>
+              <td width="25%" class="border center">
+                <apex:outputText value="{!quoteLineItemOtherProduct.Product2.Name}"
+                  styleClass="subheader-text"
+                >
+                </apex:outputText>
+              </td>
+
+              <td width="35%" class="border center">
+                <apex:outputText value="{!quoteLineItemOtherProduct.Line_Item_Detail__r.Description__c} " 
+                  styleClass="subheader-text"
+                >
+                </apex:outputText>
+              </td>
+
+              <td width="16%" class="border center">
+                <apex:outputText value="{0, number, ###,###.##}" styleClass="subheader-text">
+                  <apex:param value="{!quoteLineItemOtherProduct.TotalPrice}"
+                  />
+                </apex:outputText>
+              </td>
+              <td width="20%" class="border center"></td>
+            </tr>
+          </apex:repeat>
+        </tbody>
+      </table>
+    </apex:outputPanel>
+    <p class="subheader-text">
+      <span class="subheader-text">Quotation prepared by: </span>
+      <span class="subheader-text"></span>
+    </p>
+    <p class="subheader-text">
+      <span class="subheader-text"
+        >This is a quotation on the goods named, subject to the conditions noted
+        below: All sales final, payment due upon receipt.
+      </span>
+    </p>
+    <p class="subheader-text">
+      <span class="subheader-text"
+        >To accept this quotation, mark the selected option in the above table,
+        sign below and return:
+      </span>
+      <span class="subheader-text"></span>
+    </p>
+    <hr />
+
+    <p class="header-text">Thank you for your business!</p>
+  </div>
+</apex:page>

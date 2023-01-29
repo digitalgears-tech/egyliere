@@ -1,0 +1,174 @@
+<apex:page >
+    
+    <ul class="slds-list_horizontal" style="padding:40px">
+  <li><div class="slds-region_narrow" style="width:360px & padding:20px">
+  <dl class="slds-dl_horizontal">
+    <dt class="slds-dl_horizontal__label">   
+     
+<span class="slds-icon_container slds-icon-custom-custom5" title="Description of icon when needed">
+  <svg class="slds-icon" aria-hidden="true">
+    <use href="{!URLFOR($Asset.SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#call')}"></use>
+  </svg>
+  <span class="slds-assistive-text">Description of icon when needed</span>
+</span></dt>
+    <dd class="slds-dl_horizontal__detail">0123131</dd>
+    <dt class="slds-dl_horizontal__label">
+        <span class="slds-icon_container slds-icon-custom-custom5" title="Description of icon when needed">
+  <svg class="slds-icon" aria-hidden="true">
+    <use href="{!URLFOR($Asset.SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#call')}"></use>
+  </svg>
+  <span class="slds-assistive-text">Description of icon when needed</span>
+</span></dt>
+    <dd class="slds-dl_horizontal__detail">Second description</dd>
+  </dl>
+</div> </li>
+  <li> sList Item</li>
+  <li>List Item</li>
+</ul>
+    <span class="slds-icon_container slds-icon-standard-account" title="description of icon when needed">  
+  <svg aria-hidden="true" class="slds-icon">  
+    <use href="{!URLFOR($Asset.SLDS, 'assets/icons/standard-sprite/svg/symbols.svg#account')}"></use>
+  </svg> 
+   <span class="slds-assistive-text">Icon Assistive Text</span> 
+</span>
+
+<span class="slds-icon_container slds-icon-custom-custom5" title="Description of icon when needed">
+  <svg class="slds-icon" aria-hidden="true">
+    <use href="{!URLFOR($Asset.SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#call')}"></use>
+  </svg>
+  <span class="slds-assistive-text">Description of icon when needed</span>
+</span>
+   <html>
+        <body>
+            <apex:slds />
+            <apex:form id="form" styleClass="slds-scope">
+                <div class="slds-modal__header">
+                    <h2 class="slds-text-heading_medium">Hotel Name</h2>
+                </div>
+                <div class="slds-modal__content slds-p-around_medium">
+                    <apex:commandLink value="Cancel" styleClass="slds-button slds-button_brand"></apex:commandLink>
+                </div>
+                <table class="slds-table slds-table_cell-buffer slds-table_header-hidden slds-table_bordered" aria-label="Example headless table of Opportunities" >
+<thead class="slds-assistive-text">
+<tr class="slds-line-height_reset">
+<th class="" scope="col">
+<div class="slds-truncate" title="Opportunity Name" style="font-size:10px">Opportunity Name</div>
+</th>
+<th class="" scope="col">
+<div class="slds-truncate" title="Account Name">Account Name</div>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="slds-hint-parent">
+<th data-label="Opportunity Name" scope="row">
+<div class="slds-truncate" title="Cloudhub" style="font-size:20px; text-align:center"> Passenger Name
+</div>
+</th>
+<td data-label="Account Name">
+<div class="slds-truncate" title="Cloudhub" style="font-size:20px; text-align:center">First Name,Last Name</div>
+</td>
+</tr>
+<tr class="slds-hint-parent">
+<th data-label="Opportunity Name" scope="row">
+<div class="slds-truncate" title="Cloudhub + Anypoint Connectors" style="font-size:20px; text-align:center">
+    Service Type:
+</div>
+</th>
+<td data-label="Account Name">
+<div class="slds-truncate" title="Cloudhub" style="font-size:20px; text-align:center">Hotel</div>
+</td>
+</tr>
+<tr class="slds-hint-parent">
+<th data-label="Opportunity Name" scope="row">
+<div class="slds-truncate" title="Cloudhub" style="font-size:20px; text-align:center">Check-in
+</div>
+</th>
+<td data-label="Account Name">
+<div class="slds-truncate" title="Cloudhub" style="font-size:20px; text-align:center">08 October 2022</div>
+</td>
+</tr>
+    
+    <tr class="slds-hint-parent">
+<th data-label="Opportunity Name" scope="row">
+<div class="slds-truncate" title="Cloudhub + Anypoint Connectors" style="font-size:20px; text-align:center">
+    Service Type:
+</div>
+</th>
+<td data-label="Account Name">
+<div class="slds-truncate" title="Cloudhub" style="font-size:20px; text-align:center">Hotel</div>
+</td>
+</tr>
+
+    <tr class="slds-hint-parent">
+<th data-label="Opportunity Name" scope="row">
+<div class="slds-truncate" title="Cloudhub + Anypoint Connectors" style="font-size:20px; text-align:center">
+    Service Type:
+</div>
+</th>
+<td data-label="Account Name">
+<div class="slds-truncate" title="Cloudhub" style="font-size:20px; text-align:center">Hotel</div>
+</td>
+</tr>
+<tr class="slds-hint-parent">
+<th data-label="Opportunity Name" scope="row">
+<div class="slds-truncate" title="Cloudhub + Anypoint Connectors" style="font-size:20px; text-align:center">
+    Service Type:
+</div>
+</th>
+<td data-label="Account Name">
+<div class="slds-truncate" title="Cloudhub" style="font-size:20px; text-align:center">Hotel</div>
+</td>
+</tr>
+
+    <tr class="slds-hint-parent">
+<th data-label="Opportunity Name" scope="row">
+<div class="slds-truncate" title="Cloudhub + Anypoint Connectors" style="font-size:20px; text-align:center">
+    Service Type:
+</div>
+</th>
+<td data-label="Account Name">
+<div class="slds-truncate" title="Cloudhub" style="font-size:20px; text-align:center">Hotel</div>
+</td>
+</tr>
+
+    <tr class="slds-hint-parent">
+<th data-label="Opportunity Name" scope="row">
+<div class="slds-truncate" title="Cloudhub + Anypoint Connectors" style="font-size:20px; text-align:center">
+    Service Type:
+</div>
+</th>
+<td data-label="Account Name">
+<div class="slds-truncate" title="Cloudhub" style="font-size:20px; text-align:center">Hotel</div>
+</td>
+</tr>
+
+</tbody>
+                    
+                    
+                    
+</table>
+
+     
+                <div class="slds-region_narrow" style="width:360px;position: fixed;
+    bottom: 10px;
+    right: 0;
+">
+<dl class="slds-dl_horizontal">
+<dt class="slds-dl_horizontal__label">Reg No:</dt>
+<dd class="slds-dl_horizontal__detail">47671</dd>
+<dt class="slds-dl_horizontal__label">Tax ID:</dt>
+<dd class="slds-dl_horizontal__detail">347-698-530</dd>
+</dl>
+</div>
+                
+
+            </apex:form>
+            
+        </body>
+    </html>
+    
+    
+     
+
+</apex:page>

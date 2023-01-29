@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Excursions Planning / Travel Experiences</fullName>
+        <default>false</default>
+        <label>Excursions Planning / Travel Experiences</label>
+    </customValue>
+    <customValue>
+        <fullName>Event Ticketing</fullName>
+        <default>false</default>
+        <label>Event Ticketing</label>
+    </customValue>
+    <customValue>
+        <fullName>Dining &amp; Nightspots Reservations</fullName>
+        <default>false</default>
+        <label>Dining &amp; Nightspots Reservations</label>
+    </customValue>
+    <customValue>
+        <fullName>Transport Arrangement - Booking</fullName>
+        <default>false</default>
+        <label>Transport Arrangement - Booking</label>
+    </customValue>
+    <customValue>
+        <fullName>VIP Airport Services</fullName>
+        <default>false</default>
+        <label>VIP Airport Services</label>
+    </customValue>
+    <customValue>
+        <fullName>Full Concierge Support</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Full Concierge Support</label>
+    </customValue>
+    <customValue>
+        <fullName>Airport Express Check-In</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Airport Express Check-In</label>
+    </customValue>
+    <customValue>
+        <fullName>Airport Meet &amp; Greet</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Airport Meet &amp; Greet</label>
+    </customValue>
+    <customValue>
+        <fullName>VIP Airport Service / Lounge Access</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>VIP Airport Service / Lounge Access</label>
+    </customValue>
+    <customValue>
+        <fullName>VIP Airport Transfers</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>VIP Airport Transfers</label>
+    </customValue>
+    <customValue>
+        <fullName>Benefits at Exclusive Venues</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Benefits at Exclusive Venues</label>
+    </customValue>
+    <customValue>
+        <fullName>VIP Event Ticketing</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>VIP Event Ticketing</label>
+    </customValue>
+    <masterLabel>ConciergeService</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

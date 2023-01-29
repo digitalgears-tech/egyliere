@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Concerts</fullName>
+        <default>false</default>
+        <label>Concerts</label>
+    </customValue>
+    <customValue>
+        <fullName>Music Festivals</fullName>
+        <default>false</default>
+        <label>Music Festivals</label>
+    </customValue>
+    <customValue>
+        <fullName>Fashion Shows</fullName>
+        <default>false</default>
+        <label>Fashion Shows</label>
+    </customValue>
+    <customValue>
+        <fullName>Opera</fullName>
+        <default>false</default>
+        <label>Opera</label>
+    </customValue>
+    <customValue>
+        <fullName>Theatre</fullName>
+        <default>false</default>
+        <label>Theatre</label>
+    </customValue>
+    <customValue>
+        <fullName>Art &amp; Antique Fairs</fullName>
+        <default>false</default>
+        <label>Art &amp; Antique Fairs</label>
+    </customValue>
+    <customValue>
+        <fullName>Water Sports</fullName>
+        <default>false</default>
+        <label>Water Sports</label>
+    </customValue>
+    <customValue>
+        <fullName>Sports</fullName>
+        <default>false</default>
+        <label>Sports</label>
+    </customValue>
+    <customValue>
+        <fullName>Sightseeing</fullName>
+        <default>false</default>
+        <label>Sightseeing</label>
+    </customValue>
+    <customValue>
+        <fullName>Wilderness &amp; Wildlife</fullName>
+        <default>false</default>
+        <label>Wilderness &amp; Wildlife</label>
+    </customValue>
+    <customValue>
+        <fullName>Desert Safari</fullName>
+        <default>false</default>
+        <label>Desert Safari</label>
+    </customValue>
+    <customValue>
+        <fullName>Cups &amp; Championships</fullName>
+        <default>false</default>
+        <label>Cups &amp; Championships</label>
+    </customValue>
+    <customValue>
+        <fullName>Meditation</fullName>
+        <default>false</default>
+        <label>Meditation</label>
+    </customValue>
+    <customValue>
+        <fullName>Relaxation</fullName>
+        <default>false</default>
+        <label>Relaxation</label>
+    </customValue>
+    <customValue>
+        <fullName>Beauty</fullName>
+        <default>false</default>
+        <label>Beauty</label>
+    </customValue>
+    <customValue>
+        <fullName>Fitness</fullName>
+        <default>false</default>
+        <label>Fitness</label>
+    </customValue>
+    <customValue>
+        <fullName>Wellness Festivals</fullName>
+        <default>false</default>
+        <label>Wellness Festivals</label>
+    </customValue>
+    <customValue>
+        <fullName>Spirituality</fullName>
+        <default>false</default>
+        <label>Spirituality</label>
+    </customValue>
+    <customValue>
+        <fullName>Rejuvenation</fullName>
+        <default>false</default>
+        <label>Rejuvenation</label>
+    </customValue>
+    <customValue>
+        <fullName>Cuisine</fullName>
+        <default>false</default>
+        <label>Cuisine</label>
+    </customValue>
+    <customValue>
+        <fullName>Culture</fullName>
+        <default>false</default>
+        <label>Culture</label>
+    </customValue>
+    <customValue>
+        <fullName>History</fullName>
+        <default>false</default>
+        <label>History</label>
+    </customValue>
+    <customValue>
+        <fullName>Social Happenings</fullName>
+        <default>false</default>
+        <label>Social Happenings</label>
+    </customValue>
+    <customValue>
+        <fullName>Seasonal Celebrations</fullName>
+        <default>false</default>
+        <label>Seasonal Celebrations</label>
+    </customValue>
+    <customValue>
+        <fullName>Family</fullName>
+        <default>false</default>
+        <label>Family</label>
+    </customValue>
+    <customValue>
+        <fullName>Business Travel</fullName>
+        <default>false</default>
+        <label>Business Travel</label>
+    </customValue>
+    <customValue>
+        <fullName>Entrepreneurship</fullName>
+        <default>false</default>
+        <label>Entrepreneurship</label>
+    </customValue>
+    <customValue>
+        <fullName>Trade Shows &amp; Expos</fullName>
+        <default>false</default>
+        <label>Trade Shows &amp; Expos</label>
+    </customValue>
+    <customValue>
+        <fullName>Incentive Trips &amp; Company Retreats</fullName>
+        <default>false</default>
+        <label>Incentive Trips &amp; Company Retreats</label>
+    </customValue>
+    <customValue>
+        <fullName>Conferences &amp; Events</fullName>
+        <default>false</default>
+        <label>Conferences &amp; Events</label>
+    </customValue>
+    <customValue>
+        <fullName>Bleisure Travel</fullName>
+        <default>false</default>
+        <label>Bleisure Travel</label>
+    </customValue>
+    <customValue>
+        <fullName>Sea &amp; River Cruises</fullName>
+        <default>false</default>
+        <label>Sea &amp; River Cruises</label>
+    </customValue>
+    <customValue>
+        <fullName>Eco Hotels &amp; Lodges</fullName>
+        <default>false</default>
+        <label>Eco Hotels &amp; Lodges</label>
+    </customValue>
+    <customValue>
+        <fullName>Luxury Brands</fullName>
+        <default>false</default>
+        <label>Luxury Brands</label>
+    </customValue>
+    <customValue>
+        <fullName>Boutique Hotels</fullName>
+        <default>false</default>
+        <label>Boutique Hotels</label>
+    </customValue>
+    <customValue>
+        <fullName>Wellness Resorts</fullName>
+        <default>false</default>
+        <label>Wellness Resorts</label>
+    </customValue>
+    <customValue>
+        <fullName>Extended Stays</fullName>
+        <default>false</default>
+        <label>Extended Stays</label>
+    </customValue>
+    <customValue>
+        <fullName>Luxury Homes &amp; Villas</fullName>
+        <default>false</default>
+        <label>Luxury Homes &amp; Villas</label>
+    </customValue>
+    <customValue>
+        <fullName>Lifestyle Hotels</fullName>
+        <default>false</default>
+        <label>Lifestyle Hotels</label>
+    </customValue>
+    <customValue>
+        <fullName>Ski Resorts</fullName>
+        <default>false</default>
+        <label>Ski Resorts</label>
+    </customValue>
+    <customValue>
+        <fullName>Gastro Hotels</fullName>
+        <default>false</default>
+        <label>Gastro Hotels</label>
+    </customValue>
+    <customValue>
+        <fullName>Extraordinary Experiences</fullName>
+        <default>false</default>
+        <label>Extraordinary Experiences</label>
+    </customValue>
+    <customValue>
+        <fullName>Tamer Hosney</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Tamer Hosney</label>
+    </customValue>
+    <customValue>
+        <fullName>Barcelona</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Barcelona</label>
+    </customValue>
+    <masterLabel>Sub-Tags</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ServiceType__c</fullName>
+    <externalId>false</externalId>
+    <label>ServiceType</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Travel Services</fullName>
+                <default>false</default>
+                <label>Travel Services</label>
+            </value>
+            <value>
+                <fullName>Concierge Services</fullName>
+                <default>false</default>
+                <label>Concierge Services</label>
+            </value>
+            <value>
+                <fullName>Lifestyle Management Services</fullName>
+                <default>false</default>
+                <label>Lifestyle Management Services</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>3</visibleLines>
+</CustomField>

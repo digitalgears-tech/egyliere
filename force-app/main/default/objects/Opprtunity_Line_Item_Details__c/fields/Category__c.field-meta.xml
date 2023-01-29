@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Category__c</fullName>
+    <externalId>false</externalId>
+    <label>Category</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Sub_Type__c</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>vaccine</fullName>
+                <default>false</default>
+                <label>vaccine</label>
+            </value>
+            <value>
+                <fullName>PCR</fullName>
+                <default>false</default>
+                <label>PCR</label>
+            </value>
+            <value>
+                <fullName>Honeymoon</fullName>
+                <default>false</default>
+                <label>Honeymoon</label>
+            </value>
+            <value>
+                <fullName>Group Travel</fullName>
+                <default>false</default>
+                <label>Group Travel</label>
+            </value>
+            <value>
+                <fullName>Wellness</fullName>
+                <default>false</default>
+                <label>Wellness</label>
+            </value>
+            <value>
+                <fullName>Corporate</fullName>
+                <default>false</default>
+                <label>Corporate</label>
+            </value>
+            <value>
+                <fullName>Cultural and historical</fullName>
+                <default>false</default>
+                <label>Cultural and historical</label>
+            </value>
+            <value>
+                <fullName>Water sports</fullName>
+                <default>false</default>
+                <label>Water sports</label>
+            </value>
+            <value>
+                <fullName>Adventure tours</fullName>
+                <default>false</default>
+                <label>Adventure tours</label>
+            </value>
+            <value>
+                <fullName>General site seeing tours</fullName>
+                <default>false</default>
+                <label>General site seeing tours</label>
+            </value>
+            <value>
+                <fullName>cuisine and culture tours</fullName>
+                <default>false</default>
+                <label>cuisine and culture tours</label>
+            </value>
+            <value>
+                <fullName>Wilderness and wildLife</fullName>
+                <default>false</default>
+                <label>Wilderness and wildLife</label>
+            </value>
+            <value>
+                <fullName>Relaxation and Meditation</fullName>
+                <default>false</default>
+                <label>Relaxation and Meditation</label>
+            </value>
+            <value>
+                <fullName>Sports</fullName>
+                <default>false</default>
+                <label>Sports</label>
+            </value>
+            <value>
+                <fullName>Fashion</fullName>
+                <default>false</default>
+                <label>Fashion</label>
+            </value>
+            <value>
+                <fullName>Product launch</fullName>
+                <default>false</default>
+                <label>Product launch</label>
+            </value>
+            <value>
+                <fullName>Beauty</fullName>
+                <default>false</default>
+                <label>Beauty</label>
+            </value>
+            <value>
+                <fullName>Concert</fullName>
+                <default>false</default>
+                <label>Concert</label>
+            </value>
+            <value>
+                <fullName>Festival</fullName>
+                <default>false</default>
+                <label>Festival</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>VIP Airport Transfers</fullName>
+                <default>false</default>
+                <label>VIP Airport Transfers</label>
+            </value>
+            <value>
+                <fullName>VIP Airport Service / Lounge Access</fullName>
+                <default>false</default>
+                <label>VIP Airport Service / Lounge Access</label>
+            </value>
+            <value>
+                <fullName>Airport Meet &amp; Greet</fullName>
+                <default>false</default>
+                <label>Airport Meet &amp; Greet</label>
+            </value>
+            <value>
+                <fullName>Airport Express Check-In</fullName>
+                <default>false</default>
+                <label>Airport Express Check-In</label>
+            </value>
+            <value>
+                <fullName>Transfer service</fullName>
+                <default>false</default>
+                <label>Transfer service</label>
+            </value>
+            <value>
+                <fullName>Private Chauffeurs</fullName>
+                <default>false</default>
+                <label>Private Chauffeurs</label>
+            </value>
+            <value>
+                <fullName>Hotel</fullName>
+                <default>false</default>
+                <label>Hotel</label>
+            </value>
+            <value>
+                <fullName>Beach House</fullName>
+                <default>false</default>
+                <label>Beach House</label>
+            </value>
+            <value>
+                <fullName>Villa</fullName>
+                <default>false</default>
+                <label>Villa</label>
+            </value>
+            <value>
+                <fullName>Apartment</fullName>
+                <default>false</default>
+                <label>Apartment</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Event Ticketing</controllingFieldValue>
+            <valueName>Sports</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Event Ticketing</controllingFieldValue>
+            <valueName>Fashion</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Event Ticketing</controllingFieldValue>
+            <valueName>Product launch</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Event Ticketing</controllingFieldValue>
+            <valueName>Beauty</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Event Ticketing</controllingFieldValue>
+            <valueName>Concert</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Event Ticketing</controllingFieldValue>
+            <valueName>Festival</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Event Ticketing</controllingFieldValue>
+            <valueName>Other</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Health and Vaccine</controllingFieldValue>
+            <valueName>vaccine</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Health and Vaccine</controllingFieldValue>
+            <valueName>PCR</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>VIP Airport Services</controllingFieldValue>
+            <valueName>VIP Airport Transfers</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>VIP Airport Services</controllingFieldValue>
+            <valueName>VIP Airport Service / Lounge Access</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>VIP Airport Services</controllingFieldValue>
+            <valueName>Airport Meet &amp; Greet</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>VIP Airport Services</controllingFieldValue>
+            <valueName>Airport Express Check-In</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Transport Arrangement - Booking</controllingFieldValue>
+            <valueName>Transfer service</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Transport Arrangement - Booking</controllingFieldValue>
+            <valueName>Private Chauffeurs</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Travel Planning</controllingFieldValue>
+            <valueName>Honeymoon</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Travel Planning</controllingFieldValue>
+            <valueName>Group Travel</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Travel Planning</controllingFieldValue>
+            <valueName>Wellness</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Specialty Travel Planning</controllingFieldValue>
+            <valueName>Corporate</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Accommodation Management</controllingFieldValue>
+            <valueName>Hotel</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Accommodation Management</controllingFieldValue>
+            <valueName>Beach House</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Accommodation Management</controllingFieldValue>
+            <valueName>Villa</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Accommodation Management</controllingFieldValue>
+            <valueName>Apartment</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Excursions Planning / Travel Experiences</controllingFieldValue>
+            <valueName>Cultural and historical</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Excursions Planning / Travel Experiences</controllingFieldValue>
+            <valueName>Water sports</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Excursions Planning / Travel Experiences</controllingFieldValue>
+            <valueName>Adventure tours</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Excursions Planning / Travel Experiences</controllingFieldValue>
+            <valueName>General site seeing tours</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Excursions Planning / Travel Experiences</controllingFieldValue>
+            <valueName>cuisine and culture tours</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Excursions Planning / Travel Experiences</controllingFieldValue>
+            <valueName>Wilderness and wildLife</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Excursions Planning / Travel Experiences</controllingFieldValue>
+            <valueName>Relaxation and Meditation</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>
