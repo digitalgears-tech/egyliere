@@ -24,7 +24,7 @@ global class CatalogueAPI {
         return CatalogueServiceInstance.GetCatalogueListByRecordType(type);
       }
     }
-
+ 
     return null;
   }
 }
