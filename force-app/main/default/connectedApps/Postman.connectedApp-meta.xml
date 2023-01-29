@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>demos@digitalgears.tech</contactEmail>
+    <label>Postman</label>
+    <oauthConfig>
+        <callbackUrl>https://egylieretravel--dev.sandbox.my.salesforce.com/services/authcallback/Api_Integration</callbackUrl>
+        <consumerKey>3MVG9ETm0tIcsfrxEy4.kP2BXXx1.azw4EP2FyHtWQmk5ckJIT.j75Y9OYimrDD3wleYQfwS71sVxnNuZ4ok0</consumerKey>
+        <isAdminApproved>false</isAdminApproved>
+        <isClientCredentialEnabled>true</isClientCredentialEnabled>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <scopes>Api</scopes>
+        <scopes>Full</scopes>
+        <scopes>RefreshToken</scopes>
+        <scopes>CDPIngest</scopes>
+        <scopes>CDPProfile</scopes>
+        <scopes>CDPIdentityResolution</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+    </oauthPolicy>
+</ConnectedApp>

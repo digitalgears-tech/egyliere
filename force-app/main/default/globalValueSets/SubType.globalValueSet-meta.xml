@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Visa Management</fullName>
+        <default>false</default>
+        <label>Visa Management</label>
+    </customValue>
+    <customValue>
+        <fullName>Flight Management</fullName>
+        <default>false</default>
+        <label>Flight Management</label>
+    </customValue>
+    <customValue>
+        <fullName>Accommodation Management</fullName>
+        <default>false</default>
+        <label>Accommodation Management</label>
+    </customValue>
+    <customValue>
+        <fullName>Specialty Travel Planning</fullName>
+        <default>false</default>
+        <label>Specialty Travel Planning</label>
+    </customValue>
+    <customValue>
+        <fullName>Health and Vaccine</fullName>
+        <default>false</default>
+        <label>Health and Vaccine</label>
+    </customValue>
+    <customValue>
+        <fullName>Excursions Planning / Travel Experiences</fullName>
+        <default>false</default>
+        <label>Excursions Planning / Travel Experiences</label>
+    </customValue>
+    <customValue>
+        <fullName>Event Ticketing</fullName>
+        <default>false</default>
+        <label>Event Ticketing</label>
+    </customValue>
+    <customValue>
+        <fullName>Dining &amp; Nightspots Reservations</fullName>
+        <default>false</default>
+        <label>Dining &amp; Nightspots Reservations</label>
+    </customValue>
+    <customValue>
+        <fullName>VIP Airport Services</fullName>
+        <default>false</default>
+        <label>VIP Airport Services</label>
+    </customValue>
+    <customValue>
+        <fullName>Transport Arrangement - Booking</fullName>
+        <default>false</default>
+        <label>Transport Arrangement - Booking</label>
+    </customValue>
+    <customValue>
+        <fullName>Education Planning</fullName>
+        <default>false</default>
+        <label>Education Planning</label>
+    </customValue>
+    <customValue>
+        <fullName>Luxury Goods Sourcing</fullName>
+        <default>false</default>
+        <label>Luxury Goods Sourcing</label>
+    </customValue>
+    <customValue>
+        <fullName>Property Management / Estate Management</fullName>
+        <default>false</default>
+        <label>Property Management / Estate Management</label>
+    </customValue>
+    <customValue>
+        <fullName>Yacht / Watercraft / Private Jet Management</fullName>
+        <default>false</default>
+        <label>Yacht / Watercraft / Private Jet Management</label>
+    </customValue>
+    <customValue>
+        <fullName>Commodity Consultancy</fullName>
+        <default>false</default>
+        <label>Commodity Consultancy</label>
+    </customValue>
+    <customValue>
+        <fullName>Security &amp; Close Protection</fullName>
+        <default>false</default>
+        <label>Security &amp; Close Protection</label>
+    </customValue>
+    <customValue>
+        <fullName>Aircraft Charters</fullName>
+        <default>false</default>
+        <label>Aircraft Charters</label>
+    </customValue>
+    <customValue>
+        <fullName>Luxury Sailing Boat &amp; Motor Yacht Charters</fullName>
+        <default>false</default>
+        <label>Luxury Sailing Boat &amp; Motor Yacht Charters</label>
+    </customValue>
+    <customValue>
+        <fullName>Private Event Planning / Special Celebrations</fullName>
+        <default>false</default>
+        <label>Private Event Planning / Special Celebrations</label>
+    </customValue>
+    <customValue>
+        <fullName>Personal Shopping &amp; Styling</fullName>
+        <default>false</default>
+        <label>Personal Shopping &amp; Styling</label>
+    </customValue>
+    <customValue>
+        <fullName>Luxury Shopping Experiences &amp; Benefits</fullName>
+        <default>false</default>
+        <label>Luxury Shopping Experiences &amp; Benefits</label>
+    </customValue>
+    <customValue>
+        <fullName>Personal Membership Management</fullName>
+        <default>false</default>
+        <label>Personal Membership Management</label>
+    </customValue>
+    <customValue>
+        <fullName>Exclusive Access to VIP / Invite-Only Events</fullName>
+        <default>false</default>
+        <label>Exclusive Access to VIP / Invite-Only Events</label>
+    </customValue>
+    <customValue>
+        <fullName>Private Island Rentals</fullName>
+        <default>false</default>
+        <label>Private Island Rentals</label>
+    </customValue>
+    <customValue>
+        <fullName>Rare, Sport &amp; Vintage Car Rentals</fullName>
+        <default>false</default>
+        <label>Rare, Sport &amp; Vintage Car Rentals</label>
+    </customValue>
+    <customValue>
+        <fullName>Private Access to Historical Venues</fullName>
+        <default>false</default>
+        <label>Private Access to Historical Venues</label>
+    </customValue>
+    <customValue>
+        <fullName>Villa &amp; Chalet Rentals - Long Holidays</fullName>
+        <default>false</default>
+        <label>Villa &amp; Chalet Rentals - Long Holidays</label>
+    </customValue>
+    <customValue>
+        <fullName>Yearly Tailored Global Event Calendar</fullName>
+        <default>false</default>
+        <label>Yearly Tailored Global Event Calendar</label>
+    </customValue>
+    <customValue>
+        <fullName>Property Sourcing</fullName>
+        <default>false</default>
+        <label>Property Sourcing</label>
+    </customValue>
+    <customValue>
+        <fullName>VIP Benefits &amp; Exclusive Privileges</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>VIP Benefits &amp; Exclusive Privileges</label>
+    </customValue>
+    <customValue>
+        <fullName>Detailed Itineraries</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Detailed Itineraries</label>
+    </customValue>
+    <customValue>
+        <fullName>Travel Upgrades</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Travel Upgrades</label>
+    </customValue>
+    <customValue>
+        <fullName>Wellness Travel Planning</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Wellness Travel Planning</label>
+    </customValue>
+    <customValue>
+        <fullName>Benefits at Exclusive Venues</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Benefits at Exclusive Venues</label>
+    </customValue>
+    <customValue>
+        <fullName>VIP Airport Transfers</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>VIP Airport Transfers</label>
+    </customValue>
+    <customValue>
+        <fullName>VIP Airport Service / Lounge Access</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>VIP Airport Service / Lounge Access</label>
+    </customValue>
+    <customValue>
+        <fullName>Airport Meet &amp; Greet</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Airport Meet &amp; Greet</label>
+    </customValue>
+    <customValue>
+        <fullName>VIP Event Ticketing</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>VIP Event Ticketing</label>
+    </customValue>
+    <customValue>
+        <fullName>Full Concierge Support</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Full Concierge Support</label>
+    </customValue>
+    <customValue>
+        <fullName>Airport Express Check-In</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Airport Express Check-In</label>
+    </customValue>
+    <masterLabel>SubType</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

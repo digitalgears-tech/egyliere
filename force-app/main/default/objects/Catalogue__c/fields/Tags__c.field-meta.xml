@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Tags__c</fullName>
+    <externalId>false</externalId>
+    <label>Tags</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Sun &amp; Beach</fullName>
+                <default>false</default>
+                <label>Sun &amp; Beach</label>
+            </value>
+            <value>
+                <fullName>Family</fullName>
+                <default>false</default>
+                <label>Family</label>
+            </value>
+            <value>
+                <fullName>yoga</fullName>
+                <default>false</default>
+                <label>yoga</label>
+            </value>
+            <value>
+                <fullName>Meditation</fullName>
+                <default>false</default>
+                <label>Meditation</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

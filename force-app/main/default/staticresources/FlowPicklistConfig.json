@@ -1,0 +1,327 @@
+[ {
+  "picklistValues" : [ {
+    "useIcon" : "true",
+    "optionValue" : "Travel Services",
+    "optionLabel" : "Travel Services",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Concierge Services",
+    "optionLabel" : "Concierge Services",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Lifestyle Management Services",
+    "optionLabel" : "Lifestyle Management Services",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  } ],
+  "objectName" : "Case",
+  "fieldName" : "Type"
+}, {
+  "picklistValues" : [ {
+    "useIcon" : "true",
+    "optionValue" : "Visa Management",
+    "optionLabel" : "Visa Management",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "PCR",
+    "optionLabel" : "PCR",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Flight Management",
+    "optionLabel" : "Flight Management",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Accommodation Management",
+    "optionLabel" : "Accommodation Management",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Detailed Itineraries",
+    "optionLabel" : "Detailed Itineraries",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "VIP Benefits & Exclusive Privileges",
+    "optionLabel" : "VIP Benefits & Exclusive Privileges",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Travel Upgrades",
+    "optionLabel" : "Travel Upgrades",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Wellness Travel Planning",
+    "optionLabel" : "Wellness Travel Planning",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Excursions Planning / Travel Experiences",
+    "optionLabel" : "Excursions Planning / Travel Experiences",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Event Ticketing",
+    "optionLabel" : "Event Ticketing",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Complimentary Benefits at Exclusive Venues",
+    "optionLabel" : "Complimentary Benefits at Exclusive Venues",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Dining & Nightspots Reservations",
+    "optionLabel" : "Dining & Nightspots Reservations",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "VIP Airport Transfers",
+    "optionLabel" : "VIP Airport Transfers",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "VIP Airport Service / Lounge Access",
+    "optionLabel" : "VIP Airport Service / Lounge Access",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Airport Meet & Greet",
+    "optionLabel" : "Airport Meet & Greet",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Airport Express Check-In",
+    "optionLabel" : "Airport Express Check-In",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Transport Arrangement - Booking",
+    "optionLabel" : "Transport Arrangement - Booking",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "VIP Event Ticketing",
+    "optionLabel" : "VIP Event Ticketing",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Full Concierge Support",
+    "optionLabel" : "Full Concierge Support",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Education Planning (by Q)",
+    "optionLabel" : "Education Planning (by Q)",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Luxury Goods Sourcing (T&C Apply)",
+    "optionLabel" : "Luxury Goods Sourcing (T&C Apply)",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Property Management / Estate Management",
+    "optionLabel" : "Property Management / Estate Management",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Yacht / Watercraft / Private Jet Management",
+    "optionLabel" : "Yacht / Watercraft / Private Jet Management",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Hospitality Business Consultancy",
+    "optionLabel" : "Hospitality Business Consultancy",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Commodity Consultancy",
+    "optionLabel" : "Commodity Consultancy",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Global Directory / City Guides",
+    "optionLabel" : "Global Directory / City Guides",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Security & Close Protection",
+    "optionLabel" : "Security & Close Protection",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Business Introductions & Opportunities",
+    "optionLabel" : "Business Introductions & Opportunities",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Reservations",
+    "optionLabel" : "Reservations",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Private Jet & Helicopter Charters",
+    "optionLabel" : "Private Jet & Helicopter Charters",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Luxury Sailing & Motor Yacht Charters",
+    "optionLabel" : "Luxury Sailing & Motor Yacht Charters",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Private Event Planning / Special Celebrations",
+    "optionLabel" : "Private Event Planning / Special Celebrations",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Personal Shopping & Styling",
+    "optionLabel" : "Personal Shopping & Styling",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Luxury Shopping Experiences & Benefits",
+    "optionLabel" : "Luxury Shopping Experiences & Benefits",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  } ],
+  "objectName" : "Opprtunity_Line_Item_Details__c",
+  "fieldName" : "Sub_Type__c"
+}, {
+  "picklistValues" : [ {
+    "useIcon" : "true",
+    "optionValue" : "Travel Services",
+    "optionLabel" : "Travel Services",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Concierge Services",
+    "optionLabel" : "Concierge Services",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Lifestyle Management Services",
+    "optionLabel" : "Lifestyle Management Services",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:default"
+  } ],
+  "objectName" : "Opprtunity_Line_Item_Details__c",
+  "fieldName" : "Type__c"
+}, {
+  "picklistValues" : [ {
+    "useIcon" : "false",
+    "optionValue" : "Travel Services",
+    "optionLabel" : "Travel Services",
+    "imageUrl" : "/resource/TravelService",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "false",
+    "optionValue" : "Concierge Services",
+    "optionLabel" : "Concierge Services",
+    "imageUrl" : "/resource/ConciergeService",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "false",
+    "optionValue" : "Lifestyle Management Services",
+    "optionLabel" : "Lifestyle Management Services",
+    "imageUrl" : "/resource/LifestyleService",
+    "iconName" : "standard:default"
+  } ],
+  "objectName" : "TypePicklist__c",
+  "fieldName" : "ServiceType__c"
+}, {
+  "picklistValues" : [ {
+    "useIcon" : "false",
+    "optionValue" : "Visa Management",
+    "optionLabel" : "Visa Management",
+    "imageUrl" : "/resource/VisaSubservice",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "false",
+    "optionValue" : "Flight Management",
+    "optionLabel" : "Flight Management",
+    "imageUrl" : "/resource/TravelService",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "false",
+    "optionValue" : "Accommodation Management",
+    "optionLabel" : "Accommodation Management",
+    "imageUrl" : "/resource/HotelSubservice",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "false",
+    "optionValue" : "Detailed Itineraries",
+    "optionLabel" : "Detailed Itineraries",
+    "imageUrl" : "/resource/ItinerarySubservice",
+    "iconName" : "/resource/ItinerarySubservice"
+  }, {
+    "useIcon" : "false",
+    "optionValue" : "VIP Benefits & Exclusive Privileges",
+    "optionLabel" : "VIP Benefits & Exclusive Privileges",
+    "imageUrl" : "/resource/VIPSubservice",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "false",
+    "optionValue" : "Travel Upgrades",
+    "optionLabel" : "Travel Upgrades",
+    "imageUrl" : "/resource/UpgradeSubservice",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "false",
+    "optionValue" : "Wellness Travel Planning",
+    "optionLabel" : "Wellness Travel Planning",
+    "imageUrl" : "/resource/WellnessSubservice",
+    "iconName" : "standard:default"
+  }, {
+    "useIcon" : "false",
+    "optionValue" : "PCR",
+    "optionLabel" : "PCR",
+    "imageUrl" : "/resource/PCRSubservice",
+    "iconName" : "standard:default"
+  } ],
+  "objectName" : "TypePicklist__c",
+  "fieldName" : "TravelService__c"
+} ]

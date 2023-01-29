@@ -1,0 +1,17 @@
+<!--
+  @description       : 
+  @author            : Mohamed Tarek
+  @group             : 
+  @last modified on  : 10-31-2022
+  @last modified by  : Mohamed Tarek
+--> 
+<template>      
+    <div class="slds-m-top_small slds-m-bottom_medium">   
+   
+        <!-- Brand variant: Identifies the primary action in a group of buttons --> 
+        <template if:true={Show_Remove_Button}><lightning-button variant="destructive" label={Remove_Button_Label} onclick={handleClickSubtract} class="slds-m-left_x-small" >  </lightning-button></template>
+        <template if:true={Show_Add_Button}><lightning-button variant="brand" label={Add_Button_Label} onclick={handleClickAdd} class="slds-m-left_xx-large"></lightning-button></template> 
+
+    </div>
+ 
+</template>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Egyliere Info</label>
+    <protected>false</protected>
+    <values>
+        <field>Address__c</field>
+        <value xsi:type="xsd:string">Suez  Canal Tower, 4 Ibn Katheer  Street - Giza, Egypt</value>
+    </values>
+    <values>
+        <field>Email__c</field>
+        <value xsi:type="xsd:string">info@egyliere.com</value>
+    </values>
+    <values>
+        <field>License_No__c</field>
+        <value xsi:type="xsd:string">2096</value>
+    </values>
+    <values>
+        <field>Phone__c</field>
+        <value xsi:type="xsd:string">+201002103030</value>
+    </values>
+    <values>
+        <field>Reg_No__c</field>
+        <value xsi:type="xsd:string">47671</value>
+    </values>
+    <values>
+        <field>Tax_ID__c</field>
+        <value xsi:type="xsd:string">347-698-530</value>
+    </values>
+    <values>
+        <field>Url__c</field>
+        <value xsi:type="xsd:string">www.egylieretravel.com</value>
+    </values>
+</CustomMetadata>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Education Planning (by Q)</fullName>
+        <default>false</default>
+        <label>Education Planning (by Q)</label>
+    </customValue>
+    <customValue>
+        <fullName>Luxury Goods Sourcing (T&amp;C Apply)</fullName>
+        <default>false</default>
+        <label>Luxury Goods Sourcing (T&amp;C Apply)</label>
+    </customValue>
+    <customValue>
+        <fullName>Property Management / Estate Management</fullName>
+        <default>false</default>
+        <label>Property Management / Estate Management</label>
+    </customValue>
+    <customValue>
+        <fullName>Yacht / Private Jet Management</fullName>
+        <default>false</default>
+        <label>Yacht / Private Jet Management</label>
+    </customValue>
+    <customValue>
+        <fullName>Hospitality Business Consultancy</fullName>
+        <default>false</default>
+        <label>Hospitality Business Consultancy</label>
+    </customValue>
+    <customValue>
+        <fullName>Commodity Consultancy</fullName>
+        <default>false</default>
+        <label>Commodity Consultancy</label>
+    </customValue>
+    <customValue>
+        <fullName>Global Directory / City Guides</fullName>
+        <default>false</default>
+        <label>Global Directory / City Guides</label>
+    </customValue>
+    <customValue>
+        <fullName>Security &amp; Close Protection</fullName>
+        <default>false</default>
+        <label>Security &amp; Close Protection</label>
+    </customValue>
+    <customValue>
+        <fullName>Business Introductions &amp; Opportunities</fullName>
+        <default>false</default>
+        <label>Business Introductions &amp; Opportunities</label>
+    </customValue>
+    <customValue>
+        <fullName>Reservations</fullName>
+        <default>false</default>
+        <label>Reservations</label>
+    </customValue>
+    <customValue>
+        <fullName>Private Jet &amp; Helicopter Charters</fullName>
+        <default>false</default>
+        <label>Private Jet &amp; Helicopter Charters</label>
+    </customValue>
+    <customValue>
+        <fullName>Luxury Sailing &amp; Motor Yacht Charters</fullName>
+        <default>false</default>
+        <label>Luxury Sailing &amp; Motor Yacht Charters</label>
+    </customValue>
+    <customValue>
+        <fullName>Private Event Planning</fullName>
+        <default>false</default>
+        <label>Private Event Planning</label>
+    </customValue>
+    <customValue>
+        <fullName>Personal Shopping &amp; Styling</fullName>
+        <default>false</default>
+        <label>Personal Shopping &amp; Styling</label>
+    </customValue>
+    <customValue>
+        <fullName>Luxury Shopping Experiences &amp; Benefits</fullName>
+        <default>false</default>
+        <label>Luxury Shopping Experiences &amp; Benefits</label>
+    </customValue>
+    <masterLabel>LifeStyleService</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

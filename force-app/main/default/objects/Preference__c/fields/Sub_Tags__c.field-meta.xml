@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sub_Tags__c</fullName>
+    <externalId>false</externalId>
+    <label>Sub Tags</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <controllingField>Main_Tag__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetName>Sub_Tags</valueSetName>
+        <valueSettings>
+            <controllingFieldValue>Entertainment</controllingFieldValue>
+            <valueName>Concerts</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Entertainment</controllingFieldValue>
+            <valueName>Music Festivals</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Entertainment</controllingFieldValue>
+            <valueName>Fashion Shows</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Entertainment</controllingFieldValue>
+            <valueName>Opera</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Entertainment</controllingFieldValue>
+            <valueName>Theatre</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Entertainment</controllingFieldValue>
+            <valueName>Art &amp; Antique Fairs</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Adventure</controllingFieldValue>
+            <valueName>Water Sports</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Adventure</controllingFieldValue>
+            <valueName>Sports</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Adventure</controllingFieldValue>
+            <valueName>Sightseeing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Adventure</controllingFieldValue>
+            <valueName>Wilderness &amp; Wildlife</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Adventure</controllingFieldValue>
+            <valueName>Desert Safari</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Adventure</controllingFieldValue>
+            <valueName>Cups &amp; Championships</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wellness</controllingFieldValue>
+            <valueName>Meditation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wellness</controllingFieldValue>
+            <valueName>Relaxation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wellness</controllingFieldValue>
+            <valueName>Beauty</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wellness</controllingFieldValue>
+            <valueName>Fitness</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wellness</controllingFieldValue>
+            <valueName>Wellness Festivals</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wellness</controllingFieldValue>
+            <valueName>Spirituality</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wellness</controllingFieldValue>
+            <valueName>Rejuvenation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Recreation</controllingFieldValue>
+            <valueName>Cuisine</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Recreation</controllingFieldValue>
+            <valueName>Culture</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Recreation</controllingFieldValue>
+            <valueName>History</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Recreation</controllingFieldValue>
+            <valueName>Social Happenings</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Recreation</controllingFieldValue>
+            <valueName>Seasonal Celebrations</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Recreation</controllingFieldValue>
+            <valueName>Family</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business</controllingFieldValue>
+            <valueName>Business Travel</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business</controllingFieldValue>
+            <valueName>Entrepreneurship</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business</controllingFieldValue>
+            <valueName>Trade Shows &amp; Expos</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business</controllingFieldValue>
+            <valueName>Incentive Trips &amp; Company Retreats</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business</controllingFieldValue>
+            <valueName>Conferences &amp; Events</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business</controllingFieldValue>
+            <valueName>Bleisure Travel</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel</controllingFieldValue>
+            <valueName>Sea &amp; River Cruises</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel</controllingFieldValue>
+            <valueName>Eco Hotels &amp; Lodges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel</controllingFieldValue>
+            <valueName>Luxury Brands</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel</controllingFieldValue>
+            <valueName>Boutique Hotels</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel</controllingFieldValue>
+            <valueName>Wellness Resorts</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel</controllingFieldValue>
+            <valueName>Extended Stays</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel</controllingFieldValue>
+            <valueName>Luxury Homes &amp; Villas</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel</controllingFieldValue>
+            <valueName>Lifestyle Hotels</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel</controllingFieldValue>
+            <valueName>Ski Resorts</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel</controllingFieldValue>
+            <valueName>Gastro Hotels</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Travel</controllingFieldValue>
+            <valueName>Extraordinary Experiences</valueName>
+        </valueSettings>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

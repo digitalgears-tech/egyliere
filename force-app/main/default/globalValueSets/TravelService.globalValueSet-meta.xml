@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Visa Management</fullName>
+        <default>false</default>
+        <label>Visa Management</label>
+    </customValue>
+    <customValue>
+        <fullName>Flight Management</fullName>
+        <default>false</default>
+        <label>Flight Management</label>
+    </customValue>
+    <customValue>
+        <fullName>Accommodation Management</fullName>
+        <default>false</default>
+        <label>Accommodation Management</label>
+    </customValue>
+    <customValue>
+        <fullName>Specialty Travel Planning</fullName>
+        <default>false</default>
+        <label>Specialty Travel Planning</label>
+    </customValue>
+    <customValue>
+        <fullName>Health and Vaccine</fullName>
+        <default>false</default>
+        <label>Health and Vaccine</label>
+    </customValue>
+    <customValue>
+        <fullName>Travel Upgrades</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Travel Upgrades</label>
+    </customValue>
+    <customValue>
+        <fullName>VIP Benefits &amp; Exclusive Privileges</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>VIP Benefits &amp; Exclusive Privileges</label>
+    </customValue>
+    <customValue>
+        <fullName>Detailed Itineraries</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Detailed Itineraries</label>
+    </customValue>
+    <customValue>
+        <fullName>PCR</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>PCR</label>
+    </customValue>
+    <customValue>
+        <fullName>Wellness Travel Planning</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Wellness Travel Planning</label>
+    </customValue>
+    <masterLabel>TravelService</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

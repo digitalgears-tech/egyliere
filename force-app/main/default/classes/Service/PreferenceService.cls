@@ -1,0 +1,125 @@
+public class PreferenceService {
+    private static PreferenceService instance = null;
+    public  PreferenceRepository preferenceRepositoryInstance;
+    public  ContactRepository contactRepositoryInstance;
+    private PreferenceService() {
+       preferenceRepositoryInstance = PreferenceRepository.getInstance();
+       contactRepositoryInstance = ContactRepository.getInstance();
+    }
+
+    public static PreferenceService getInstance() {
+        if (instance == null) {
+          instance = new PreferenceService();
+        }
+        return instance;
+      }
+
+    public List<String> getMainTagsList() {
+       
+        List<String> tagslist = new List<String>();
+       
+        Schema.DescribeFieldResult fieldResult = preference__c.Main_Tag__c.getDescribe();
+        List<Schema.PicklistEntry> ple = fieldResult.getPicklistValues();
+         for( Schema.PicklistEntry f : ple)
+        {
+            tagslist.add(f.getLabel());
+        }     
+    
+        return tagslist;
+    
+    }
+
+
+    public Map<String, List<String>>  getTagsMap() {
+         Map<String, List<String>> tagsMap= DependencyForPicklistApex.getFieldDependencies('preference__c','Main_Tag__c','Sub_Tags__c');
+    
+    
+        return tagsMap;
+    
+}
+
+
+    public List<String> getContactMainTagsList(String Id , String app) {
+        List<String> tagslist = new List<String>();
+        List<preference__c>  preferences ;
+        if(app.equals('orange')){
+        preferences = preferenceRepositoryInstance.findByContact(contactRepositoryInstance.findByOrangeId(Id));
+        }else{
+        preferences = preferenceRepositoryInstance.findByContact(contactRepositoryInstance.findByRecordId(Id));
+        }
+        for( preference__c p : preferences)
+        {
+            if (!(tagslist.contains(p.Main_Tag__c))){
+            tagslist.add(p.Main_Tag__c);}
+        }   
+
+        return tagslist;
+    }
+
+    public  Map<String, List<String>>  getContactTagsMap(String Id , String app) {
+        Map<String, List<String>> tagsMap = new Map<String, List<String>>();
+        List<preference__c>  preferences ;
+        if(app.equals('orange')){
+        preferences = preferenceRepositoryInstance.findByContact(contactRepositoryInstance.findByOrangeId(Id));
+        }else{
+        preferences = preferenceRepositoryInstance.findByContact(contactRepositoryInstance.findByRecordId(Id));
+        }
+        for( preference__c p : preferences)
+        {  
+             List<String> subTags;
+            if (!(tagsMap.containskey(p.Main_Tag__c))){
+                subTags=  new List<String>();
+                subTags.add(p.Sub_Tags__c);
+                tagsMap.put(p.Main_Tag__c,subTags);
+            }else{
+                subTags = tagsMap.get(p.Main_Tag__c);
+                subTags.add(p.Sub_Tags__c);
+                tagsMap.put(p.Main_Tag__c, subTags);
+            }
+
+            if (p.Main_Tag__c.equals('General'))
+            tagsMap.put(p.Main_Tag__c, p.General_Preferences__c.split(';'));
+        }   
+
+        return tagsMap;
+    }
+    public void updateContactPreferenceByID(String Id, String app, Map<String, List<String>> newTags){
+
+        Contact contact;
+        List<preference__c>  preferences = new List<preference__c>();
+        if(app.equals('orange')) {
+            contact = contactRepositoryInstance.findByOrangeId(Id);
+        }else{
+            contact = contactRepositoryInstance.findByRecordId(Id);
+        }
+
+        List<preference__c> currentTagList = preferenceRepositoryInstance.findExceptGeneralByContact(contact);
+
+        for( string tag : newTags.keySet()){
+              if(!(tag.equals('General'))){
+                preference__c p = new preference__c();
+                p.Main_Tag__c = tag;
+                p.Sub_Tags__c = String.join(newTags.get(tag),';');
+                p.Contact__c = contact.Id;
+                preferences.add(p);
+              }else{
+               try{
+                preference__c generalPreference = preferenceRepositoryInstance.findGeneralByContact(contact);
+                generalPreference.General_Preferences__c = String.join(newTags.get(tag),';');
+                update generalPreference ;
+             }catch(Exception e){
+                preference__c p = new preference__c();
+                p.Main_Tag__c = 'General';
+                p.General_Preferences__c = String.join(newTags.get(tag),';');
+                p.Contact__c = contact.Id;
+                preferences.add(p);
+                
+             }
+             }
+        }
+        delete currentTagList;
+        insert preferences;
+       
+    }
+
+}

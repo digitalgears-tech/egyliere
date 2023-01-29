@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Breakfast</fullName>
+        <default>false</default>
+        <label>Breakfast</label>
+    </customValue>
+    <customValue>
+        <fullName>Half board</fullName>
+        <default>false</default>
+        <label>Half board</label>
+    </customValue>
+    <customValue>
+        <fullName>Full board</fullName>
+        <default>false</default>
+        <label>Full board</label>
+    </customValue>
+    <masterLabel>Meal Plan</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

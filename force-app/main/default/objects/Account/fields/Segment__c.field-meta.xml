@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Segment__c</fullName>
+    <externalId>false</externalId>
+    <label>Segment</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Corporate</fullName>
+                <default>false</default>
+                <label>Corporate</label>
+            </value>
+            <value>
+                <fullName>FIT</fullName>
+                <default>false</default>
+                <label>FIT</label>
+            </value>
+            <value>
+                <fullName>Members</fullName>
+                <default>false</default>
+                <label>Members</label>
+            </value>
+            <value>
+                <fullName>DMC</fullName>
+                <default>false</default>
+                <label>DMC</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
