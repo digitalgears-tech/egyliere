@@ -22,6 +22,11 @@ public  class ServiceService {
             
          selectionLists.put('Type of Visa', DependencyForPicklistApex.getPickList('Opprtunity_Line_Item_Details__c', 'Type_of_visa__c'));
         }
+
+        if(type.equals('Transport Arrangement - Booking')){
+            selectionLists.put('Class', DependencyForPicklistApex.getPickList('Opprtunity_Line_Item_Details__c', 'Class__c'));
+            selectionLists.put('Transportation Type', DependencyForPicklistApex.getPickList('Opprtunity_Line_Item_Details__c', 'Transport_Type__c'));
+        }
    
        return selectionLists;
    

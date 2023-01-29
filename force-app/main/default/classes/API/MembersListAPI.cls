@@ -20,6 +20,7 @@ global class MembersListAPI {
             return contactServiceInstance.getContactMembers(recordId);
           }
         }catch(Exception e){
+            
         }
         return null;
     }
