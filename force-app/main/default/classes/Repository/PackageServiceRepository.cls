@@ -17,7 +17,9 @@ public class PackageServiceRepository {
         return [
           SELECT
           Id,
-          Name
+          Name,
+          Total_Points__c,
+          Opportunity.StageName	
           FROM OpportunityLineItem
           ];
     }
@@ -29,7 +31,9 @@ public class PackageServiceRepository {
           Id,
           Name,
           Opportunity_Line_Item_Details__c,
-          PricebookEntry.Product2.Logo__c
+          PricebookEntry.Product2.Logo__c,
+          Total_Points__c,
+          Opportunity.StageName		
           FROM OpportunityLineItem
           WHERE OpportunityId = :opportunityId
           ];

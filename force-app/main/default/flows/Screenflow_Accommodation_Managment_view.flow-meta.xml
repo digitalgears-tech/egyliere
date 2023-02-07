@@ -514,13 +514,13 @@
             <inputParameters>
                 <name>objectApiName</name>
                 <value>
-                    <stringValue>Opprtunity_Line_Item_Details__c,Catalogue__c</stringValue>
+                    <stringValue>Opprtunity_Line_Item_Details__c</stringValue>
                 </value>
             </inputParameters>
             <inputParameters>
                 <name>fields</name>
                 <value>
-                    <stringValue>Supplier__c</stringValue>
+                    <stringValue>Supplier__c,Catalogue__c</stringValue>
                 </value>
             </inputParameters>
             <inputParameters>
@@ -850,7 +850,7 @@
             <targetReference>Get_OpportunityLineItemDetails</targetReference>
         </connector>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <name>varR_OpportuityLineItemDetails</name>
         <dataType>SObject</dataType>

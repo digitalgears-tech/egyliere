@@ -36,8 +36,10 @@ public class ContactService {
          }else{
         contactMap.put('ID', contact.Id);}
         contactMap.put('Account ID', Account.Id);
+        if(!Account.Guest__c){
         contactMap.put('Total Points', Account.Balance__c +'');
         contactMap.put('Consumed Points', Account.Consumed__c+'');
+        contactMap.put('Total Hold', Account.Total_Hold__c+'');}
         contactMap.put('Guest', Account.Guest__c+'');
         If(Account.Guest__c){
           List<Contact_City_Guide__c> contactCityGuide=contactCityGuideRepositoryInstance.FindAllCityGuidesbyContactAndActive(contact.Id);

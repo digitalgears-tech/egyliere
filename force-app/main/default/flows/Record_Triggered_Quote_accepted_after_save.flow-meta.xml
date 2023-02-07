@@ -58,8 +58,8 @@
     <recordUpdates>
         <name>Update_OpportunityLineItem</name>
         <label>Update OpportunityLineItem</label>
-        <locationX>808</locationX>
-        <locationY>582</locationY>
+        <locationX>788</locationX>
+        <locationY>562</locationY>
         <connector>
             <targetReference>Update_opportunityLineItemDetails</targetReference>
         </connector>
@@ -76,6 +76,13 @@
             <operator>EqualTo</operator>
             <value>
                 <elementReference>through_QuoteLineItem.OpportunityLineItem.OpportunityId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>through_QuoteLineItem.OpportunityLineItemId</elementReference>
             </value>
         </filters>
         <inputAssignments>
@@ -109,12 +116,6 @@
             </value>
         </inputAssignments>
         <inputAssignments>
-            <field>TotalPrice</field>
-            <value>
-                <elementReference>through_QuoteLineItem.TotalPrice</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
             <field>Total_rate__c</field>
             <value>
                 <elementReference>through_QuoteLineItem.Total_rate__c</elementReference>
@@ -137,8 +138,8 @@
     <recordUpdates>
         <name>Update_opportunityLineItemDetails</name>
         <label>Update opportunityLineItemDetails</label>
-        <locationX>819</locationX>
-        <locationY>389</locationY>
+        <locationX>782</locationX>
+        <locationY>388</locationY>
         <connector>
             <targetReference>Get</targetReference>
         </connector>
@@ -304,7 +305,7 @@
     </recordUpdates>
     <start>
         <locationX>410</locationX>
-        <locationY>48</locationY>
+        <locationY>49</locationY>
         <connector>
             <targetReference>Get</targetReference>
         </connector>

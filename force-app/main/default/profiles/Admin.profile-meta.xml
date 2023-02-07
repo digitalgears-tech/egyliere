@@ -1655,10 +1655,11 @@
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>Catalogue_Photos__c.Link</recordType>
-        <visible>false</visible>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
+        <personAccountDefault>true</personAccountDefault>
         <recordType>Catalogue_Photos__c.Photo_Gallery</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>

@@ -43,4 +43,12 @@ public class CatalogueService {
  
        }
 
+       public Map<String, List<String>>  getCategoriesMap() {
+        Map<String, List<String>> CategoriesMap= DependencyForPicklistApex.getFieldDependencies('Catalogue__c','RecordTypeId','Type__c');
+   
+   
+       return CategoriesMap;
+   
+}
+
 }

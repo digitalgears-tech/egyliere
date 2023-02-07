@@ -148,9 +148,6 @@
         <label>Update Quote LineItem Details</label>
         <locationX>374</locationX>
         <locationY>827</locationY>
-        <connector>
-            <targetReference>Get_Quote_LineItem_Detail</targetReference>
-        </connector>
         <inputReference>Get_Quote_LineItem_Detail</inputReference>
     </recordUpdates>
     <screens>

@@ -7,13 +7,6 @@
         <locationX>517</locationX>
         <locationY>525</locationY>
         <assignmentItems>
-            <assignToReference>varR_OpportunityLineItemDetails.Confirmation_Number__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Flight_Number</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
             <assignToReference>varR_OpportunityLineItemDetails.Supplier__c</assignToReference>
             <operator>Assign</operator>
             <value>
@@ -102,15 +95,12 @@
         <label>update_OpportunityLineItemDetails</label>
         <locationX>161</locationX>
         <locationY>340</locationY>
-        <connector>
-            <targetReference>Flight_Management_view</targetReference>
-        </connector>
         <inputReference>varR_OpportunityLineItemDetails</inputReference>
     </recordUpdates>
     <screens>
         <name>Flight_Management_edit</name>
         <label>Flight Management edit</label>
-        <locationX>516</locationX>
+        <locationX>517</locationX>
         <locationY>400</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
@@ -186,16 +176,6 @@
                     <fieldType>ObjectProvided</fieldType>
                     <isRequired>false</isRequired>
                     <objectFieldReference>varR_OpportunityLineItemDetails.Destination__c</objectFieldReference>
-                </fields>
-                <fields>
-                    <name>Flight_Number</name>
-                    <dataType>String</dataType>
-                    <defaultValue>
-                        <elementReference>varR_OpportunityLineItemDetails.Confirmation_Number__c</elementReference>
-                    </defaultValue>
-                    <fieldText>Flight Number</fieldText>
-                    <fieldType>InputField</fieldType>
-                    <isRequired>false</isRequired>
                 </fields>
                 <fields>
                     <fieldType>ObjectProvided</fieldType>
@@ -328,7 +308,7 @@
             <isRequired>false</isRequired>
             <regionContainerType>SectionWithHeader</regionContainerType>
             <visibilityRule>
-                <conditionLogic>(1 AND 2) OR (1 AND 3)</conditionLogic>
+                <conditionLogic>1 AND (2 OR 3)</conditionLogic>
                 <conditions>
                     <leftValueReference>varR_OpportunityLineItemDetails.Trip_type__c</leftValueReference>
                     <operator>EqualTo</operator>
@@ -407,7 +387,7 @@
             <isRequired>false</isRequired>
             <regionContainerType>SectionWithHeader</regionContainerType>
             <visibilityRule>
-                <conditionLogic>3 AND (1 OR 2)</conditionLogic>
+                <conditionLogic>1 AND (2 OR 3)</conditionLogic>
                 <conditions>
                     <leftValueReference>MultiCity_button.Current_Number_Of_Fields</leftValueReference>
                     <operator>GreaterThanOrEqualTo</operator>
@@ -416,17 +396,17 @@
                     </rightValue>
                 </conditions>
                 <conditions>
-                    <leftValueReference>varR_OpportunityLineItemDetails.Departure_1__c</leftValueReference>
-                    <operator>IsNull</operator>
-                    <rightValue>
-                        <booleanValue>false</booleanValue>
-                    </rightValue>
-                </conditions>
-                <conditions>
                     <leftValueReference>varR_OpportunityLineItemDetails.Trip_type__c</leftValueReference>
                     <operator>EqualTo</operator>
                     <rightValue>
                         <stringValue>Multi-city</stringValue>
+                    </rightValue>
+                </conditions>
+                <conditions>
+                    <leftValueReference>varR_OpportunityLineItemDetails.Departure_1__c</leftValueReference>
+                    <operator>IsNull</operator>
+                    <rightValue>
+                        <booleanValue>false</booleanValue>
                     </rightValue>
                 </conditions>
             </visibilityRule>
@@ -486,7 +466,7 @@
             <isRequired>false</isRequired>
             <regionContainerType>SectionWithHeader</regionContainerType>
             <visibilityRule>
-                <conditionLogic>3 AND (1 OR 2)</conditionLogic>
+                <conditionLogic>1 AND (2 OR 3)</conditionLogic>
                 <conditions>
                     <leftValueReference>MultiCity_button.Current_Number_Of_Fields</leftValueReference>
                     <operator>GreaterThanOrEqualTo</operator>
@@ -495,17 +475,17 @@
                     </rightValue>
                 </conditions>
                 <conditions>
-                    <leftValueReference>varR_OpportunityLineItemDetails.Departure_2__c</leftValueReference>
-                    <operator>IsNull</operator>
-                    <rightValue>
-                        <booleanValue>false</booleanValue>
-                    </rightValue>
-                </conditions>
-                <conditions>
                     <leftValueReference>varR_OpportunityLineItemDetails.Trip_type__c</leftValueReference>
                     <operator>EqualTo</operator>
                     <rightValue>
                         <stringValue>Multi-city</stringValue>
+                    </rightValue>
+                </conditions>
+                <conditions>
+                    <leftValueReference>varR_OpportunityLineItemDetails.Departure_2__c</leftValueReference>
+                    <operator>IsNull</operator>
+                    <rightValue>
+                        <booleanValue>false</booleanValue>
                     </rightValue>
                 </conditions>
             </visibilityRule>
@@ -565,7 +545,7 @@
             <isRequired>false</isRequired>
             <regionContainerType>SectionWithHeader</regionContainerType>
             <visibilityRule>
-                <conditionLogic>3 AND (1 OR 2)</conditionLogic>
+                <conditionLogic>1 AND (2 OR 3)</conditionLogic>
                 <conditions>
                     <leftValueReference>MultiCity_button.Current_Number_Of_Fields</leftValueReference>
                     <operator>GreaterThanOrEqualTo</operator>
@@ -574,17 +554,17 @@
                     </rightValue>
                 </conditions>
                 <conditions>
-                    <leftValueReference>varR_OpportunityLineItemDetails.Departure_3__c</leftValueReference>
-                    <operator>IsNull</operator>
-                    <rightValue>
-                        <booleanValue>false</booleanValue>
-                    </rightValue>
-                </conditions>
-                <conditions>
                     <leftValueReference>varR_OpportunityLineItemDetails.Trip_type__c</leftValueReference>
                     <operator>EqualTo</operator>
                     <rightValue>
                         <stringValue>Multi-city</stringValue>
+                    </rightValue>
+                </conditions>
+                <conditions>
+                    <leftValueReference>varR_OpportunityLineItemDetails.Departure_3__c</leftValueReference>
+                    <operator>IsNull</operator>
+                    <rightValue>
+                        <booleanValue>false</booleanValue>
                     </rightValue>
                 </conditions>
             </visibilityRule>
@@ -644,7 +624,7 @@
             <isRequired>false</isRequired>
             <regionContainerType>SectionWithHeader</regionContainerType>
             <visibilityRule>
-                <conditionLogic>3 AND (1 OR 2)</conditionLogic>
+                <conditionLogic>1 AND (2 OR 3)</conditionLogic>
                 <conditions>
                     <leftValueReference>MultiCity_button.Current_Number_Of_Fields</leftValueReference>
                     <operator>GreaterThanOrEqualTo</operator>
@@ -653,17 +633,17 @@
                     </rightValue>
                 </conditions>
                 <conditions>
-                    <leftValueReference>varR_OpportunityLineItemDetails.Departure_4__c</leftValueReference>
-                    <operator>IsNull</operator>
-                    <rightValue>
-                        <booleanValue>false</booleanValue>
-                    </rightValue>
-                </conditions>
-                <conditions>
                     <leftValueReference>varR_OpportunityLineItemDetails.Trip_type__c</leftValueReference>
                     <operator>EqualTo</operator>
                     <rightValue>
                         <stringValue>Multi-city</stringValue>
+                    </rightValue>
+                </conditions>
+                <conditions>
+                    <leftValueReference>varR_OpportunityLineItemDetails.Departure_4__c</leftValueReference>
+                    <operator>EqualTo</operator>
+                    <rightValue>
+                        <booleanValue>false</booleanValue>
                     </rightValue>
                 </conditions>
             </visibilityRule>
@@ -771,7 +751,7 @@
             <inputParameters>
                 <name>labels</name>
                 <value>
-                    <stringValue>Supplier,Catalogue__c,Trip Type,Class,Airline</stringValue>
+                    <stringValue>Supplier,Catalogue,Trip Type,Class,Airline</stringValue>
                 </value>
             </inputParameters>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
@@ -973,19 +953,12 @@
             <isRequired>false</isRequired>
             <regionContainerType>SectionWithHeader</regionContainerType>
             <visibilityRule>
-                <conditionLogic>(1 AND 2) AND 3 AND 4</conditionLogic>
+                <conditionLogic>1 AND (2 OR 3)</conditionLogic>
                 <conditions>
                     <leftValueReference>varR_OpportunityLineItemDetails.Trip_type__c</leftValueReference>
                     <operator>EqualTo</operator>
                     <rightValue>
                         <stringValue>Multi-city</stringValue>
-                    </rightValue>
-                </conditions>
-                <conditions>
-                    <leftValueReference>MultiCity_button.Current_Number_Of_Fields</leftValueReference>
-                    <operator>GreaterThanOrEqualTo</operator>
-                    <rightValue>
-                        <numberValue>1.0</numberValue>
                     </rightValue>
                 </conditions>
                 <conditions>
@@ -1060,19 +1033,12 @@
             <isRequired>false</isRequired>
             <regionContainerType>SectionWithHeader</regionContainerType>
             <visibilityRule>
-                <conditionLogic>(1 AND 2) AND 3 AND 4</conditionLogic>
+                <conditionLogic>1 AND (2 OR 3)</conditionLogic>
                 <conditions>
                     <leftValueReference>varR_OpportunityLineItemDetails.Trip_type__c</leftValueReference>
                     <operator>EqualTo</operator>
                     <rightValue>
                         <stringValue>Multi-city</stringValue>
-                    </rightValue>
-                </conditions>
-                <conditions>
-                    <leftValueReference>MultiCity_button.Current_Number_Of_Fields</leftValueReference>
-                    <operator>GreaterThanOrEqualTo</operator>
-                    <rightValue>
-                        <numberValue>2.0</numberValue>
                     </rightValue>
                 </conditions>
                 <conditions>
@@ -1147,19 +1113,12 @@
             <isRequired>false</isRequired>
             <regionContainerType>SectionWithHeader</regionContainerType>
             <visibilityRule>
-                <conditionLogic>(1 AND 2) AND 3 AND 4</conditionLogic>
+                <conditionLogic>1 AND (2 OR 3)</conditionLogic>
                 <conditions>
                     <leftValueReference>varR_OpportunityLineItemDetails.Trip_type__c</leftValueReference>
                     <operator>EqualTo</operator>
                     <rightValue>
                         <stringValue>Multi-city</stringValue>
-                    </rightValue>
-                </conditions>
-                <conditions>
-                    <leftValueReference>MultiCity_button.Current_Number_Of_Fields</leftValueReference>
-                    <operator>GreaterThanOrEqualTo</operator>
-                    <rightValue>
-                        <numberValue>3.0</numberValue>
                     </rightValue>
                 </conditions>
                 <conditions>
@@ -1234,19 +1193,12 @@
             <isRequired>false</isRequired>
             <regionContainerType>SectionWithHeader</regionContainerType>
             <visibilityRule>
-                <conditionLogic>(1 AND 2) AND 3 AND 4</conditionLogic>
+                <conditionLogic>1 AND (2 OR 3)</conditionLogic>
                 <conditions>
                     <leftValueReference>varR_OpportunityLineItemDetails.Trip_type__c</leftValueReference>
                     <operator>EqualTo</operator>
                     <rightValue>
                         <stringValue>Multi-city</stringValue>
-                    </rightValue>
-                </conditions>
-                <conditions>
-                    <leftValueReference>MultiCity_button.Current_Number_Of_Fields</leftValueReference>
-                    <operator>GreaterThanOrEqualTo</operator>
-                    <rightValue>
-                        <numberValue>4.0</numberValue>
                     </rightValue>
                 </conditions>
                 <conditions>
@@ -1321,19 +1273,12 @@
             <isRequired>false</isRequired>
             <regionContainerType>SectionWithHeader</regionContainerType>
             <visibilityRule>
-                <conditionLogic>(1 AND 2) AND 3 AND 4</conditionLogic>
+                <conditionLogic>1 AND (2 OR 3)</conditionLogic>
                 <conditions>
                     <leftValueReference>varR_OpportunityLineItemDetails.Trip_type__c</leftValueReference>
                     <operator>EqualTo</operator>
                     <rightValue>
                         <stringValue>Multi-city</stringValue>
-                    </rightValue>
-                </conditions>
-                <conditions>
-                    <leftValueReference>MultiCity_button.Current_Number_Of_Fields</leftValueReference>
-                    <operator>GreaterThanOrEqualTo</operator>
-                    <rightValue>
-                        <numberValue>5.0</numberValue>
                     </rightValue>
                 </conditions>
                 <conditions>

@@ -186,6 +186,8 @@
       <apex:outputText value="{!ContactInfo.Phone}"></apex:outputText>
     </li>
 
+    <apex:outputPanel rendered="{!IF(QuoteLineItemsAccomedationSize>0, true, false)}"
+    >
     <p style="font-weight: bold" class="subheader-text">Accommodation</p>
 
     <!-- <table border=" 0" width="100% " id="theGrid ">
@@ -319,6 +321,7 @@
         </apex:repeat>
       </tbody>
     </table>
+  </apex:outputPanel>
 
     
     <apex:outputPanel rendered="{!IF(QuoteLineItemsFlightOneWaySize>0, true, false)}"
@@ -384,14 +387,14 @@
               </td>
 
               <td width="10%" class="border center">
-                <apex:outputText value="{!quoteLineItemFlightOneWay.Line_Item_Detail__r.Class__c} "
+                <apex:outputText value="{!quoteLineItemFlightOneWay.Line_Item_Detail__r.Departure__c} "
                   styleClass="subheader-text"
                 >
                 </apex:outputText>
               </td>
 
               <td width="10%" class="border center">
-                <apex:outputText value="{!quoteLineItemFlightOneWay.Line_Item_Detail__r.Class__c} "
+                <apex:outputText value="{!quoteLineItemFlightOneWay.Line_Item_Detail__r.Destination__c} "
                   styleClass="subheader-text"
                 >
                 </apex:outputText>
@@ -621,8 +624,14 @@
                   </tr>
                 </table>
               </td>
-              <td width="8%" class="border"></td>
+              <td width="8%" class="border">
+                <apex:outputText value="{0, number, ###,###.##}">
+                  <apex:param value="{!quoteLineItemFlightRoundTrip.TotalPrice}"
+                  />
+                </apex:outputText>
+              </td>
               <td width="10%" class="border"></td>
+              
             </tr>
           </apex:repeat>
         </tbody>
@@ -970,7 +979,12 @@
                   </tr>
                 </table>
               </td>
-              <td width="8%" class="border"></td>
+              <td width="8%" class="border">
+                <apex:outputText value="{0, number, ###,###.##}">
+                  <apex:param value="{!quoteLineItemFlightMultiCity.TotalPrice}"
+                  />
+                </apex:outputText>
+              </td>
               <td width="10%" class="border"></td>
             </tr>
           </apex:repeat>

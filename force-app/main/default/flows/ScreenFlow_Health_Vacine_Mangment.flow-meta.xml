@@ -95,9 +95,6 @@
         <label>update OpportunityLineItemDetails</label>
         <locationX>295</locationX>
         <locationY>416</locationY>
-        <connector>
-            <targetReference>Get_opportunityLineItemDetails</targetReference>
-        </connector>
         <inputReference>varR_OpportunityLineItemDetails</inputReference>
     </recordUpdates>
     <screens>

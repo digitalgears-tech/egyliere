@@ -5,7 +5,7 @@
     <formulas>
         <name>forC_YotalPrice</name>
         <dataType>Currency</dataType>
-        <expression>{!$Record.Total_rate__c}+{!$Record.Breakfast__c}+{!$Record.Commission__c}</expression>
+        <expression>{!$Record.Total_rate__c}+{!$Record.Breakfast__c}+{!$Record.Commission__c} + {!$Record.Markup_Amount__c} + {!$Record.Extra_Charges_Amount__c}  + (({!$Record.Total_rate__c}+{!$Record.Breakfast__c}+{!$Record.Commission__c} + {!$Record.Markup_Amount__c} + {!$Record.Extra_Charges_Amount__c})  * ({!$Record.Markup__c}/100))</expression>
         <scale>2</scale>
     </formulas>
     <interviewLabel>T {!$Flow.CurrentDateTime}</interviewLabel>

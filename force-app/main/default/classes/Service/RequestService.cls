@@ -131,15 +131,15 @@ public class RequestService {
          packageServices.addAll(packageServiceRepositoryInstance.findAllPackageServiceByOpportunity(opportunitiesIDs));
 
          List <String> packageServicesIDs=  new List<String>();
-         Map<String,String> packageServiceLogoMap = new Map<String,String>();
+         Map<String,PackageServiceMapper> packageServiceMap = new Map<String,PackageServiceMapper>();
 
          for(OpportunityLineItem o :packageServices){
-            packageServiceLogoMap.put(o.Id, o.PricebookEntry.Product2.Logo__c);
+            packageServiceMap.put(o.Id, new PackageServiceMapper(o.PricebookEntry.Product2.Logo__c,o.Total_Points__c,o.Opportunity.StageName,o.Id));
             packageServicesIDs.add(o.Id);
          }
          services.addAll(serviceRepositoryInstance.findServiceByOpportunityProduct(packageServicesIDs));
 
-        return  serviceMapper.ServiceobjectListToMapperList(services, packageServiceLogoMap);
+        return  serviceMapper.ServiceobjectListToMapperList(services, packageServiceMap);
 
       }
 

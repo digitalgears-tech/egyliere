@@ -397,7 +397,7 @@
     <formulas>
         <name>ForT_VisaManagement</name>
         <dataType>String</dataType>
-        <expression>TEXT({!$Record.Opportunity_Line_Item_Details__r.Category__c}) + &quot; &quot;+ TEXT({!$Record.Opportunity_Line_Item_Details__r.Type_of_visa__c})</expression>
+        <expression>&quot;Adult: &quot; +TEXT({!$Record.Opportunity_Line_Item_Details__r.Adult__c}) + &quot; Infant: &quot;+ TEXT({!$Record.Opportunity_Line_Item_Details__r.Child_0_2yr__c})+&quot; Chilfd: &quot;+TEXT({!$Record.Opportunity_Line_Item_Details__r.Child_3_12yr__c})+ &quot; Type of visa: &quot;+TEXT({!$Record.Opportunity_Line_Item_Details__r.Type_of_visa__c})</expression>
     </formulas>
     <interviewLabel>Record-Trigger: {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Record-Trigger: Quote Line Item Detail after-save</label>
@@ -593,5 +593,5 @@
         <recordTriggerType>Create</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
 </Flow>

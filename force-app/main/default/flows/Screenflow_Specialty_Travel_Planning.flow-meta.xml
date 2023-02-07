@@ -94,9 +94,6 @@
         <label>Update opportunityLineitemDetails</label>
         <locationX>295</locationX>
         <locationY>421</locationY>
-        <connector>
-            <targetReference>Specialty_Travel_Planning_view</targetReference>
-        </connector>
         <inputReference>varR_OpportunityLineItemDetails</inputReference>
     </recordUpdates>
     <screens>
@@ -391,7 +388,7 @@
             <targetReference>Get_OpportunityLineItemDetails</targetReference>
         </connector>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <name>varR_OpportunityLineItemDetails</name>
         <dataType>SObject</dataType>

@@ -17,7 +17,8 @@ public class OpportunityRepository {
         return [
           SELECT
           Id,
-          Name
+          Name,
+          StageName
           FROM Opportunity
           WHERE Request__c = :requestID
           ];

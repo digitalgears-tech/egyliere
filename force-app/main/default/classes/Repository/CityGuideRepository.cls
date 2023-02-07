@@ -21,7 +21,20 @@ public class CityGuideRepository {
           FROM City_Guide__c
         ];
       }
-      public City_Guide__c FindAllCityGuideById(String id){
+      public City_Guide__c FindCityGuideById(String id){
+        return [
+          SELECT
+          Name,
+          Id,
+          Image__c,
+          City__c,
+          Price__c,
+          Duration__c	
+          FROM City_Guide__c
+          WHERE Id =:id
+        ];
+      }
+      public List<City_Guide__c> FindAllCityGuideById(List<String> id){
         return [
           SELECT
           Name,

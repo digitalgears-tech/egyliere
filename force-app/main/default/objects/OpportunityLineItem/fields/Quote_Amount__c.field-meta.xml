@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Quote_Amount__c</fullName>
     <externalId>false</externalId>
-    <formula>Total_rate__c  +  Commission__c + Breakfast__c</formula>
+    <formula>Total_rate__c  +  Commission__c + Breakfast__c + Markup_Amount__c + Extra_Charges_Amount__c + ((Total_rate__c  +  Commission__c + Breakfast__c + Markup_Amount__c + Extra_Charges_Amount__c) * (Markup__c))</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Quote Amount</label>
     <precision>18</precision>
