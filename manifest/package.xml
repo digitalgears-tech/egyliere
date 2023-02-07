@@ -9,11 +9,7 @@
 		<members>*</members>
 		<name>CompactLayout</name>
 	</types>
-	<types>
-		<members>Orange_App</members>
-		<members>Postman</members>
-		<name>ConnectedApp</name>
-	</types>
+
 	<types>
 		<members>*</members>
 		<name>ContentAsset</name>
