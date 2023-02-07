@@ -24,7 +24,7 @@ public class CityGuideService {
        }
 
        public void SetContactCityGuideList(String contactId, String cityGuideId) {
-        City_Guide__c cityGuide =cityGuideRepositoryInstance.FindAllCityGuideById(cityGuideId);
+        City_Guide__c cityGuide =cityGuideRepositoryInstance.FindCityGuideById(cityGuideId);
         Contact contact = contactRepositoryInstance.findByRecordId(contactId);
         Contact_City_Guide__c contactCityGuideObjectList = new Contact_City_Guide__c();
         contactCityGuideObjectList.Contact__c = contact.Id;

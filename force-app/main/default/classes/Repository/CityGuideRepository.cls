@@ -34,6 +34,7 @@ public class CityGuideRepository {
           WHERE Id =:id
         ];
       }
+      
       public List<City_Guide__c> FindAllCityGuideById(List<String> id){
         return [
           SELECT
