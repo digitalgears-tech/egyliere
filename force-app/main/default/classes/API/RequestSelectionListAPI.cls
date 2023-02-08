@@ -17,13 +17,28 @@ global class RequestSelectionListAPI {
 
             if(app.equals('Internal')){
                 return serviceServiceInstance.getServiceCategoryList(type);
-              }
-        }catch(Exception e){
-            requestResponse.statusCode=400;
-            requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
-        }
-
-        return null;
+              }else{
+                throw new GeneralException(' not allowed for external apps');
+            }
+        
+            
+            }catch (System.NullPointerException e) {
+                requestResponse.statusCode=500;
+                requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
+                throw new GeneralException(e.getMessage());
+           }
+        
+            catch (System.DmlException e) {
+                requestResponse.statusCode=500;
+                requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
+                throw new GeneralException(e.getMessage());
+            }
+        
+            catch(GeneralException e){
+                requestResponse.statusCode=400;
+                requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
+                throw new GeneralException(e.getMessage());
+            }
 
 }
 }

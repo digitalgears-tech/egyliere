@@ -8,6 +8,9 @@ global  class ExternalMembershipsAPI {
     @HttpGet
     global static List<ExternalMembershipsMapper>  getCustomerExternalMemberships(){
         RestRequest getReuest= RestContext.request;
+        RestResponse requestResponse= RestContext.response;
+
+        try{
         String app = getReuest.params.get('App');
         String id;
 
@@ -15,16 +18,35 @@ global  class ExternalMembershipsAPI {
             id = getReuest.params.get('orangeID');
             return externalMembershipsServiceInstance.GetContactMemberships(id, app);
         }
-        if (app.equals('Internal')){
+        else if(app.equals('Internal')){
             id = getReuest.params.get('recordID');
            return externalMembershipsServiceInstance.GetContactMemberships(id, app);
+        }else{
+            throw new GeneralException('No allowed for external apps');
         }
+   }catch (System.NullPointerException e) {
+        requestResponse.statusCode=500;
+        requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
+        throw new GeneralException(e.getMessage());
+   }
 
-        return null;
+    catch (System.DmlException e) {
+        requestResponse.statusCode=500;
+        requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
+        throw new GeneralException(e.getMessage());
+    }
+
+    catch(GeneralException e){
+        requestResponse.statusCode=400;
+        requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
+        throw new GeneralException(e.getMessage());
+    }
     }
     @HttpPost
     global static void SetCustomerExternalMemberships(){
         RestRequest getReuest= RestContext.request;
+        RestResponse requestResponse= RestContext.response;
+        try{
         String app = getReuest.params.get('App');
         String id;
         if(app.equals('Internal')){
@@ -32,13 +54,31 @@ global  class ExternalMembershipsAPI {
             List< Object> body = (List< Object>)JSON.deserializeUntyped(RestContext.request.requestbody.tostring());
             externalMembershipsServiceInstance.AddContactMembership(id, body);
         }
- 
+    }catch (System.NullPointerException e) {
+        requestResponse.statusCode=500;
+        requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
+   
+   }
+
+    catch (System.DmlException e) {
+        requestResponse.statusCode=500;
+        requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
+   
+    }
+
+    catch(GeneralException e){
+        requestResponse.statusCode=400;
+        requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
+  
+    }
+
     }
 
     @HttpDelete
     global static void DeleteCustomerExternalMemberships(){
        RestRequest getReuest= RestContext.request;
-       RestResponse errorResponse= RestContext.response;
+       RestResponse requestResponse= RestContext.response;
+
        String app = getReuest.params.get('App');
        String id;
        try{ 
@@ -47,10 +87,20 @@ global  class ExternalMembershipsAPI {
             List< Object> body = (List< Object>)JSON.deserializeUntyped(RestContext.request.requestbody.tostring());
             externalMembershipsServiceInstance.deleteContactMembership(body);
          }
-        }catch(Exception e){
-            errorResponse.statusCode = 400; 
-            errorResponse.responseBody = Blob.valueOf(e.getMessage());
-        }
+        }catch (System.NullPointerException e) {
+            requestResponse.statusCode=500;
+            requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
+}
+
+    catch (System.DmlException e) {
+            requestResponse.statusCode=500;
+            requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
+}
+
+    catch(GeneralException e){
+            requestResponse.statusCode=400;
+            requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
+}
 
     }
 }

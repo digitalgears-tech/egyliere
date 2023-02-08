@@ -13,16 +13,32 @@ global class CityGuideDetailsAPI {
         try{
           
             String app = getReuest.params.get('App');
+            String type = getReuest.params.get('Type');
+            Map< String,Object> body = (Map< String,Object>)JSON.deserializeUntyped(RestContext.request.requestbody.tostring());  
+            String id = (String)body.get('cityGuide');
             if(app.equals('Internal')){
-                   Map< String,Object> body = (Map< String,Object>)JSON.deserializeUntyped(RestContext.request.requestbody.tostring());  
-                   String id = (String)body.get('cityGuide');
-                return CatalogueServiceInstance.GetCityGuideCatalogueList(id);
+                if(type!=null){
+                return CatalogueServiceInstance.GetCityGuideCatalogueListType(id,type);
+
+                }else{ 
+                return CatalogueServiceInstance.GetCityGuideCatalogueList(id);}
+              }else{
+                requestResponse.statusCode=503;
+                throw new GeneralException('Not allowed for External apps');
               }
-        }catch(Exception e){
-            requestResponse.statusCode=400;
+        }catch (System.NullPointerException e) {
+            requestResponse.statusCode=500;
             requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
-        }
-        return null;
+            throw new GeneralException(e.getMessage());}
+       
+        catch (System.DmlException e) {
+              requestResponse.statusCode=500;
+              requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
+              throw new GeneralException(e.getMessage());}
+       
+        catch(GeneralException e){
+              requestResponse.statusCode=400;
+              throw new GeneralException(e.getMessage());}
     }
 
     @HttpPost
@@ -39,10 +55,20 @@ global class CityGuideDetailsAPI {
                    cityGuideServiceInstance.SetContactCityGuideList(recordId,id);
                 
              }
-       }catch(Exception e){
-            requestResponse.statusCode=400;
-            requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
-        }
+            }catch (System.NullPointerException e) {
+                requestResponse.statusCode=500;
+                requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
+             throw new GeneralException(e.getMessage());}
+    
+            catch (System.DmlException e) {
+                requestResponse.statusCode=500;
+                requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
+           throw new GeneralException(e.getMessage());}
+    
+            catch(GeneralException e){
+                requestResponse.statusCode=400;
+           throw new GeneralException(e.getMessage());}
+        
 
     }
 

@@ -23,6 +23,9 @@ global class PublicationAPI {
                  String recordId = getReuest.params.get('recordID');
                 return publicationServiceInstance.getPublicationByTags(recordId ,app);
                 }
+                when else{
+                    throw new GeneralException(' not allowed for external apps');
+                }
             }
        
             } else if (!(getReuest.params.get('Type')==null) && (!(getReuest.params.get('orangeID')==null) || !(getReuest.params.get('recordID') == null))){
@@ -36,6 +39,9 @@ global class PublicationAPI {
                          String recordId = getReuest.params.get('recordID');
                         return publicationServiceInstance.getPublicationByTagsandType(recordId ,app,type);
                         }
+                        when else{
+                            throw new GeneralException(' not allowed for external apps');
+                        }
                     }
                 }else{
                          String type = getReuest.params.get('Type');
@@ -43,13 +49,25 @@ global class PublicationAPI {
                     }
 
             
-      
-        }catch(Exception e){
-             requestResponse.statusCode=400;
-             requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
-         }
+                }catch (System.NullPointerException e) {
+                    requestResponse.statusCode=500;
+                    requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
+                    throw new GeneralException(e.getMessage());
+               }
+            
+                catch (System.DmlException e) {
+                    requestResponse.statusCode=500;
+                    requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
+                    throw new GeneralException(e.getMessage());
+                }
+            
+                catch(GeneralException e){
+                    requestResponse.statusCode=400;
+                    requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
+                    throw new GeneralException(e.getMessage());
+                }
+           
 
-         return null;
 }
 
     

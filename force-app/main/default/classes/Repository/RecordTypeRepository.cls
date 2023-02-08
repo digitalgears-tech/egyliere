@@ -19,4 +19,8 @@ public class RecordTypeRepository {
             FROM RecordType
             WHERE Id =: id];
     }
+    public List<RecordType> getRecordTypebyObject(String obj){
+
+    return[select Id,Name,DeveloperName from RecordType where SobjectType = :obj];}
+
 }

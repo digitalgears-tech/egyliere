@@ -1,4 +1,4 @@
-public with sharing class addValueToPicklist {
+public  class addValueToPicklist {
     static String picklistId;
     public addValueToPicklist() {
 

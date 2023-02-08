@@ -13,14 +13,23 @@ global class CityGuideAPI {
             
             String app = getReuest.params.get('App');
             if(app.equals('Internal')){
-                return cityGuideServiceInstance.GetCityGuideList();
-              }
-        }catch(Exception e){
-            requestResponse.statusCode=400;
-            requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
-        }
-
-        return null;
-}
-
+                return cityGuideServiceInstance.GetCityGuideList();}  
+              else{
+                requestResponse.statusCode=503;
+                throw new GeneralException('Not allowed for External apps');}
+            }catch (System.NullPointerException e) {
+                requestResponse.statusCode=500;
+                requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
+             throw new GeneralException(e.getMessage());}
+    
+            catch (System.DmlException e) {
+                requestResponse.statusCode=500;
+                requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
+            throw new GeneralException(e.getMessage());}
+    
+            catch(GeneralException e){
+                requestResponse.statusCode=400;
+           throw new GeneralException(e.getMessage());}
+        
+    }
 }

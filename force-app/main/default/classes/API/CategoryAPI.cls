@@ -10,14 +10,25 @@ global class CategoryAPI {
         RestRequest getReuest= RestContext.request;
         RestResponse requestResponse= RestContext.response;
         try{
-            
             String app = getReuest.params.get('App');
-            if(app.equals('Internal')){
+        if(app.equals('Internal')){
                 return CatalogueServiceInstance.getCategoriesMap();
-              }
-            }catch(Exception e){
+        }else{
+            requestResponse.statusCode=503;
+            throw new GeneralException('Not allowed for External apps');}
+        }catch (System.NullPointerException e) {
+            requestResponse.statusCode=500;
+            requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
+         throw new GeneralException(e.getMessage());}
 
-            }
-            return null;
-    }
+        catch (System.DmlException e) {
+       requestResponse.statusCode=500;
+       requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
+       throw new GeneralException(e.getMessage());}
+
+     catch(GeneralException e){
+       requestResponse.statusCode=400;
+       throw new GeneralException(e.getMessage());}
+    
 }
+    }

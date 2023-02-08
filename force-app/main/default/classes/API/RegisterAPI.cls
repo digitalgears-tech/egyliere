@@ -19,10 +19,24 @@ global class RegisterAPI {
            Contact contact = contactServiceInstance.CreateRegisterContact(body, account);           
             requestResponse.responseBody=Blob.valueOf(' Accepted registeration');
             requestResponse.statusCode=200;
-            }catch(Exception e){
-               requestResponse.statusCode=400;
-               requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
-            }
+        }catch (System.NullPointerException e) {
+            requestResponse.statusCode=500;
+            requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
+            throw new GeneralException(e.getMessage());
+       }
+    
+        catch (System.DmlException e) {
+            requestResponse.statusCode=500;
+            requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
+            throw new GeneralException(e.getMessage());
+        }
+    
+        catch(GeneralException e){
+            requestResponse.statusCode=400;
+            requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
+            throw new GeneralException(e.getMessage());
+        }
+    
          }
         
     }

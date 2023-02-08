@@ -73,6 +73,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Catalogue_Photos__c.Video_Link__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Catalogue_Photos__c.thumbnail_Image__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Catalogue__c.Address__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1364,19 +1374,15 @@
         <recordType>Account.Supplier</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Case-Reservation Layout</layout>
-        <recordType>Case.Reservation</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Case-Subscription</layout>
-        <recordType>Case.Subscription</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
         <layout>Catalogue_Photos__c-Link</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Catalogue_Photos__c-Link</layout>
         <recordType>Catalogue_Photos__c.Link</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Catalogue_Photos__c-Link</layout>
+        <recordType>Catalogue_Photos__c.Video</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Catalogue_Photos__c-Photo Gallery</layout>
@@ -1492,6 +1498,11 @@
     <recordTypeVisibilities>
         <default>true</default>
         <recordType>Catalogue_Photos__c.Photo_Gallery</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>Catalogue_Photos__c.Video</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>

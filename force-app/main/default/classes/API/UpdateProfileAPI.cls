@@ -20,9 +20,16 @@ global class UpdateProfileAPI {
         requestResponse.statusCode=200;
       
      }
-     }catch(Exception e){
-      requestResponse.statusCode=400;
-      requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
-    }
+     }
+     catch (System.NullPointerException e) {
+          requestResponse.statusCode=500;
+          requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());}
+      catch (System.DmlException e) {
+            requestResponse.statusCode=500;
+            requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());}
+      catch(System.Exception e){
+            requestResponse.statusCode=400;
+            requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());}
+         
  }
 }

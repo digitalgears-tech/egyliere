@@ -73,6 +73,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Catalogue_Photos__c.Video_Link__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Catalogue_Photos__c.thumbnail_Image__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Catalogue__c.Address__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -1378,6 +1388,10 @@
         <recordType>Catalogue_Photos__c.Photo_Gallery</recordType>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>Catalogue_Photos__c-Link</layout>
+        <recordType>Catalogue_Photos__c.Video</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Catalogue__c-catalogue Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -1508,6 +1522,11 @@
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>Catalogue_Photos__c.Photo_Gallery</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>Catalogue_Photos__c.Video</recordType>
         <visible>false</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>

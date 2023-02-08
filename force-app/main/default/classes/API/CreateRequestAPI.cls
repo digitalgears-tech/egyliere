@@ -21,9 +21,19 @@ global class CreateRequestAPI {
             requestResponse.responseBody = Blob.valueOf('Request successfully created');
            
          }
-        }catch(Exception e){
-            requestResponse.statusCode=400;
+        }catch (System.NullPointerException e) {
+            requestResponse.statusCode=500;
             requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
-         }
+         throw new GeneralException(e.getMessage());}
+
+        catch (System.DmlException e) {
+            requestResponse.statusCode=500;
+            requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
+       throw new GeneralException(e.getMessage());}
+
+        catch(GeneralException e){
+            requestResponse.statusCode=400;
+       throw new GeneralException(e.getMessage());}
+    
      }
 }
