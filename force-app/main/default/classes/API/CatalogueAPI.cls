@@ -2,8 +2,8 @@
  * @description       :
  * @author            : Ahmed Abdelraouf
  * @group             :
- * @last modified on  : 01-24-2023
- * @last modified by  : Ahmed Abdelraouf
+ * @last modified on  : 02-12-2023
+ * @last modified by  : Mohamed Tarek
  **/
 
 @RestResource(urlMapping='/CatalogueListAPI/*')
@@ -31,9 +31,18 @@ global class CatalogueAPI {
     try{
     if (app.equals('Internal')) {
       if (type == null) {
-        return CatalogueServiceInstance.GetCatalogueList(pageSize, pageNumber);
+        List<CatalogueMapper> catalogueList= CatalogueServiceInstance.GetCatalogueList(pageSize, pageNumber);
+        if(catalogueList.size()==0){
+          throw new NoRecordsException('No Catalogues Found');
+ 
+        }
+        return catalogueList;
       } else {
-        return CatalogueServiceInstance.GetCatalogueListByRecordType(type,pageSize, pageNumber);
+        List<CatalogueMapper> catalogueListByRecordType= CatalogueServiceInstance.GetCatalogueListByRecordType(type,pageSize, pageNumber);
+        if(catalogueListByRecordType.size()==0){
+          throw new NoRecordsException('No Catalogues Found');
+        }
+        return catalogueListByRecordType;
       }
     }else{
         requestResponse.statusCode=503;
@@ -53,6 +62,10 @@ catch (System.NullPointerException e) {
  catch(GeneralException e){
        requestResponse.statusCode=400;
        throw new GeneralException(e.getMessage());}
+catch(NoRecordsException e){
+        requestResponse.statusCode=404;
+        throw new NoRecordsException(e.getMessage());}
     
 }
+
 }

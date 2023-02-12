@@ -1,3 +1,10 @@
+/**
+ * @description       : 
+ * @author            : Mohamed Tarek
+ * @group             : 
+ * @last modified on  : 02-12-2023
+ * @last modified by  : Mohamed Tarek
+**/
 @RestResource(urlMapping='/PlansAPI/*')
 global class PlansAPI {
     public static PlansService plansServiceInstance = PlansService.getInstance();
@@ -12,7 +19,12 @@ global class PlansAPI {
         try{
         String app = getReuest.params.get('App');
         if(app.equals('Internal')){
-           return plansServiceInstance.getPlanList();
+            List<PlansMapper> details=plansServiceInstance.getPlanList();
+            if(details.size()==0){
+                throw new NoRecordsException('No records found');
+            }
+            
+           return details;
         }else{
             throw new GeneralException(' not allowed for external apps');
         }
@@ -32,6 +44,9 @@ global class PlansAPI {
         requestResponse.statusCode=400;
         requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
         throw new GeneralException(e.getMessage());
+    }catch(NoRecordsException e){
+        requestResponse.statusCode=404;
+        throw new NoRecordsException(e.getMessage());
     }
 
     }

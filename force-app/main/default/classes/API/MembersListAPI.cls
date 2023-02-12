@@ -1,3 +1,10 @@
+/**
+ * @description       : 
+ * @author            : Mohamed Tarek
+ * @group             : 
+ * @last modified on  : 02-12-2023
+ * @last modified by  : Mohamed Tarek
+**/
 @RestResource(urlMapping='/MembersListAPI/*')
 global class MembersListAPI {
     public static ContactService contactServiceInstance = ContactService.getInstance();
@@ -17,7 +24,11 @@ global class MembersListAPI {
         
           if(app.equals('Internal')){
             String recordId = getReuest.params.get('recordID');
-            return contactServiceInstance.getContactMembers(recordId);
+            List<Contact> members=contactServiceInstance.getContactMembers(recordId);
+            if(members.size()==0){
+              throw new NoRecordsException('No records found');
+            }
+            return members;
           }else{
             throw new GeneralException(' not allowed for external apps');
           }
@@ -37,6 +48,9 @@ global class MembersListAPI {
             requestResponse.statusCode=400;
             requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
             throw new GeneralException(e.getMessage());
+}catch(NoRecordsException e){
+  requestResponse.statusCode=404;
+  throw new NoRecordsException(e.getMessage());
 }
     }
 }

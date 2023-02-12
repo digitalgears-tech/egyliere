@@ -1,3 +1,10 @@
+/**
+ * @description       : 
+ * @author            : Mohamed Tarek
+ * @group             : 
+ * @last modified on  : 02-12-2023
+ * @last modified by  : Mohamed Tarek
+**/
 @RestResource(urlMapping='/RequestSelectionListAPI/*')
 global class RequestSelectionListAPI {
     public static RequestService requestServiceInstance = RequestService.getInstance();
@@ -16,7 +23,12 @@ global class RequestSelectionListAPI {
             String type = getReuest.params.get('Type');
 
             if(app.equals('Internal')){
-                return serviceServiceInstance.getServiceCategoryList(type);
+                Map<String,List<String>> services=serviceServiceInstance.getServiceCategoryList(type);
+                if(services.isEmpty()){
+                    throw new NoRecordsException('No records found');
+                }
+                return services;
+
               }else{
                 throw new GeneralException(' not allowed for external apps');
             }
@@ -38,6 +50,9 @@ global class RequestSelectionListAPI {
                 requestResponse.statusCode=400;
                 requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
                 throw new GeneralException(e.getMessage());
+            }catch(NoRecordsException e){
+                requestResponse.statusCode=404;
+                throw new NoRecordsException(e.getMessage());
             }
 
 }

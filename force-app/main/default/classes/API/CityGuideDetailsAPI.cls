@@ -1,3 +1,10 @@
+/**
+ * @description       : 
+ * @author            : Mohamed Tarek
+ * @group             : 
+ * @last modified on  : 02-12-2023
+ * @last modified by  : Mohamed Tarek
+**/
 @RestResource(urlMapping='/CityGuideDetailsAPI/*')
 global class CityGuideDetailsAPI {
     public static CatalogueService CatalogueServiceInstance = CatalogueService.getInstance();
@@ -17,12 +24,22 @@ global class CityGuideDetailsAPI {
             Map< String,Object> body = (Map< String,Object>)JSON.deserializeUntyped(RestContext.request.requestbody.tostring());  
             String id = (String)body.get('cityGuide');
             if(app.equals('Internal')){
+                List<CatalogueMapper> catalogues=new List<CatalogueMapper>();
+
                 if(type!=null){
-                return CatalogueServiceInstance.GetCityGuideCatalogueListType(id,type);
+                 catalogues=CatalogueServiceInstance.GetCityGuideCatalogueListType(id,type);
+                
 
                 }else{ 
-                return CatalogueServiceInstance.GetCityGuideCatalogueList(id);}
-              }else{
+                catalogues=CatalogueServiceInstance.GetCityGuideCatalogueList(id);
+                }
+                if(catalogues.size()==0){
+                    throw new NoRecordsException('No records found');
+
+                }
+                return catalogues;
+              }
+              else{
                 requestResponse.statusCode=503;
                 throw new GeneralException('Not allowed for External apps');
               }
@@ -39,6 +56,10 @@ global class CityGuideDetailsAPI {
         catch(GeneralException e){
               requestResponse.statusCode=400;
               throw new GeneralException(e.getMessage());}
+        catch(NoRecordsException e){
+            requestResponse.statusCode=404;
+            throw new NoRecordsException(e.getMessage());
+        }      
     }
 
     @HttpPost
@@ -53,6 +74,9 @@ global class CityGuideDetailsAPI {
                    String recordId = postReuest.params.get('recordID');
                    String id = (String)body.get('cityGuide');
                    cityGuideServiceInstance.SetContactCityGuideList(recordId,id);
+                   requestResponse.responseBody=Blob.valueOf('Cityguide set' );
+                   requestResponse.statusCode=200;
+              
                 
              }
             }catch (System.NullPointerException e) {
@@ -68,7 +92,6 @@ global class CityGuideDetailsAPI {
             catch(GeneralException e){
                 requestResponse.statusCode=400;
            throw new GeneralException(e.getMessage());}
-        
 
     }
 

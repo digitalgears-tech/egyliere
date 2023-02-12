@@ -1,3 +1,10 @@
+/**
+ * @description       : 
+ * @author            : Mohamed Tarek
+ * @group             : 
+ * @last modified on  : 02-12-2023
+ * @last modified by  : Mohamed Tarek
+**/
 @RestResource(urlMapping='/CustomerLoginAPI/*')
 global  class CustomerLoginAPI {
     public static ContactService contactServiceInstance = ContactService.getInstance();
@@ -21,7 +28,8 @@ global  class CustomerLoginAPI {
         }catch(Exception e){
         RestContext.response.statusCode = 400;
         responseMap.put('Status', 'error');
-        responseMap.put('Message', 'Please enter username and password in correct format');
+        responseMap.put('Message', 'Invalid username or password');
+        System.debug(e.getMessage());
         return responseMap;
         }
       }
@@ -29,6 +37,8 @@ global  class CustomerLoginAPI {
         RestContext.response.statusCode = 400;
         responseMap.put('Status', 'error');
         responseMap.put('Message', 'Please enter your application name');
+        System.debug(e.getMessage());
+
         return responseMap;
       }
       return null;

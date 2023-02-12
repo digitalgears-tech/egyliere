@@ -1,3 +1,10 @@
+/**
+ * @description       : 
+ * @author            : Mohamed Tarek
+ * @group             : 
+ * @last modified on  : 02-12-2023
+ * @last modified by  : Mohamed Tarek
+**/
 @RestResource(urlMapping='/CityGuideAPI/*')
 global class CityGuideAPI {
     public static CityGuideService cityGuideServiceInstance = CityGuideService.getInstance();
@@ -9,11 +16,24 @@ global class CityGuideAPI {
     global static List<CityGuideMapper> getAllCityGuide(){
         RestRequest getReuest= RestContext.request;
         RestResponse requestResponse= RestContext.response;
+    
         try{
             
             String app = getReuest.params.get('App');
+
+            if(getReuest.params.get('Featured')!=null){
+                List<CityGuideMapper> featuredCityGuides=cityGuideServiceInstance.GetFeaturedCityGuide();
+                if(featuredCityGuides.size()==0){
+                    throw new NoRecordsException('No records found');
+                }
+                return featuredCityGuides;}  
             if(app.equals('Internal')){
-                return cityGuideServiceInstance.GetCityGuideList();}  
+                List<CityGuideMapper> cityGuides=cityGuideServiceInstance.GetCityGuideList();
+                if(cityGuides.size()==0){
+                    throw new NoRecordsException('No records found');
+                }
+
+                return cityGuides;}  
               else{
                 requestResponse.statusCode=503;
                 throw new GeneralException('Not allowed for External apps');}
@@ -30,6 +50,11 @@ global class CityGuideAPI {
             catch(GeneralException e){
                 requestResponse.statusCode=400;
            throw new GeneralException(e.getMessage());}
+           catch(NoRecordsException e){
+            requestResponse.statusCode=404;
+            throw new NoRecordsException(e.getMessage());
+        }
+ 
+           }
         
     }
-}

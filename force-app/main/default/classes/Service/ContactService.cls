@@ -1,3 +1,10 @@
+/**
+ * @description       : 
+ * @author            : Mohamed Tarek
+ * @group             : 
+ * @last modified on  : 02-12-2023
+ * @last modified by  : Mohamed Tarek
+**/
 public class ContactService {
     private static ContactService instance = null;
     public  ContactRepository contactRepositoryInstance;
@@ -22,7 +29,7 @@ public class ContactService {
     public Map<String,String> checkContactPassword(String username, String password , String app) {
 
       Map<String,String> contactMap = new Map<String,String>();
-      try{
+     
       Contact contact = contactRepositoryInstance.findByUsername(username);
       Account account = accountRepositoryInstance.findByAccountId(contact.AccountId);
       if(password.equals(contact.Password__c)) {
@@ -59,12 +66,9 @@ public class ContactService {
         }
 
      }else{
-      contactMap.put('Status', 'Rejected');
+      throw new GeneralException('invalid password');
      }
-    }catch(Exception e){
-      
-
-    }
+   
      return contactMap;
   }
 
