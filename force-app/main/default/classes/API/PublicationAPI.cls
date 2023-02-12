@@ -6,22 +6,31 @@ global class PublicationAPI {
     global static  List<PublicationMapper> upsertPublication() {
         RestRequest getReuest= RestContext.request;
         RestResponse requestResponse= RestContext.response;
+        Integer pageSize;
+        Integer pageNumber;
+        try{
+         pageSize = Integer.valueOf(getReuest.params.get('PageSize'));
+         pageNumber = Integer.valueOf(getReuest.params.get('PageNumber'));
+        }catch(Exception e){
+            pageSize=100;
+            pageNumber=1;
+        }
        try{
         String app = getReuest.params.get('App');
       
         
          if(getReuest.params.get('Type')==null && getReuest.params.get('orangeID')==null && getReuest.params.get('recordID') == null){
-            return publicationServiceInstance.getPublicationByTags(app);
+            return publicationServiceInstance.getPublicationByTags(app,pageSize,pageNumber);
             }else if(getReuest.params.get('Type')==null){
            
             switch on app {
                 when 'orange' {
                 String orangeId = getReuest.params.get('orangeID');
-                return publicationServiceInstance.getPublicationByTags(orangeId ,app);
+                return publicationServiceInstance.getPublicationByTags(orangeId ,app,pageSize,pageNumber);
                 }
                 when 'Internal' {
                  String recordId = getReuest.params.get('recordID');
-                return publicationServiceInstance.getPublicationByTags(recordId ,app);
+                return publicationServiceInstance.getPublicationByTags(recordId ,app,pageSize,pageNumber);
                 }
                 when else{
                     throw new GeneralException(' not allowed for external apps');
@@ -33,11 +42,11 @@ global class PublicationAPI {
                     switch on app {
                         when 'orange' {
                         String orangeId = getReuest.params.get('orangeID');
-                        return publicationServiceInstance.getPublicationByTagsandType(orangeId ,app,type);
+                        return publicationServiceInstance.getPublicationByTagsandType(orangeId ,app,type,pageSize,pageNumber);
                         }
                         when 'Internal' {
                          String recordId = getReuest.params.get('recordID');
-                        return publicationServiceInstance.getPublicationByTagsandType(recordId ,app,type);
+                        return publicationServiceInstance.getPublicationByTagsandType(recordId ,app,type,pageSize,pageNumber);
                         }
                         when else{
                             throw new GeneralException(' not allowed for external apps');
@@ -45,7 +54,7 @@ global class PublicationAPI {
                     }
                 }else{
                          String type = getReuest.params.get('Type');
-                        return  publicationServiceInstance.getPublicationByTagsandType(app,type);
+                        return  publicationServiceInstance.getPublicationByTagsandType(app,type,pageSize,pageNumber);
                     }
 
             

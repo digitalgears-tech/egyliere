@@ -111,6 +111,13 @@ public class ContactService {
     update contact;
   }
 
+  public void setNewPassword(List< Object> contactDetails){
+    Map<String, Object> contactsmap = (Map<String, Object>) contactDetails.get(0);
+    Contact contact = contactRepositoryInstance.findByUsername((String)contactsmap.get('username'));
+      contact.Password__c =(String)contactsmap.get('password');
+      update contact;
+  }
+
  public List<Contact> getContactMembers( String id){
   Contact contact = contactRepositoryInstance.findByRecordId(id);
   List<Contact> members = contactRepositoryInstance.findByAccountId(contact.AccountId);

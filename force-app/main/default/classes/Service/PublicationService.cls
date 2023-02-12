@@ -18,7 +18,7 @@ public class PublicationService {
         return instance;
       }
 
-      public  List<PublicationMapper> getPublicationByTags(String ID, String app){
+      public  List<PublicationMapper> getPublicationByTags(String ID, String app,Integer pageSize,Integer pageNumber){
         PublicationService publicationServiceInstance = PublicationService.getInstance();
         Contact contact;
         List<preference__c>  preference;
@@ -38,33 +38,33 @@ public class PublicationService {
               tagslist.add(tag);}
            }
         if (app.equals('orange')){
-          return publicationMapperInstance.PublicationObjectListToMapperList(publicationRepositoryInstance.findExternalappByTags(tagslist));
+          return publicationMapperInstance.PublicationObjectListToMapperList(publicationRepositoryInstance.findExternalappByTags(tagslist,pageSize,pageNumber));
         }else{
-        return publicationMapperInstance.PublicationObjectListToMapperList(publicationRepositoryInstance.findByTags(tagslist));}
+        return publicationMapperInstance.PublicationObjectListToMapperList(publicationRepositoryInstance.findByTags(tagslist,pageSize,pageNumber));}
       }
 
-      public  List<PublicationMapper> getPublicationByTags(String app){
+      public  List<PublicationMapper> getPublicationByTags(String app,Integer pageSize,Integer pageNumber){
         List<Publication__c>  publication;
         if (app.equals('Internal')){
-          publication = publicationRepositoryInstance.findAllPublications();
+          publication = publicationRepositoryInstance.findAllPublications(pageSize,pageNumber);
         }else if(app.equals('orange')){
-          publication = publicationRepositoryInstance.findAllPublicationsShowOnExternalApp();
+          publication = publicationRepositoryInstance.findAllPublicationsShowOnExternalApp(pageSize,pageNumber);
         }
         return publicationMapperInstance.PublicationObjectListToMapperList(publication);
       }
 
-      public  List<PublicationMapper> getPublicationByTagsandType(String app,String type){
+      public  List<PublicationMapper> getPublicationByTagsandType(String app,String type,Integer pageSize,Integer pageNumber){
         Id recordTypeId = Schema.SObjectType.Publication__c.getRecordTypeInfosByName().get(type).getRecordTypeId();
         List<Publication__c>  publication;
         if (app.equals('Internal')){
-          publication = publicationRepositoryInstance.findPublicationsByRecordId(recordTypeId);
+          publication = publicationRepositoryInstance.findPublicationsByRecordId(recordTypeId,pageSize,pageNumber);
         }else if(app.equals('orange')){
-          publication = publicationRepositoryInstance.findPublicationsByRecordIdShowOnExternalApp(recordTypeId);
+          publication = publicationRepositoryInstance.findPublicationsByRecordIdShowOnExternalApp(recordTypeId,pageSize,pageNumber);
         }
         return publicationMapperInstance.PublicationObjectListToMapperList(publication);
       }
 
-      public  List<PublicationMapper> getPublicationByTagsandType(String ID, String app, String type){
+      public  List<PublicationMapper> getPublicationByTagsandType(String ID, String app, String type,Integer pageSize,Integer pageNumber){
         Id recordTypeId = Schema.SObjectType.Publication__c.getRecordTypeInfosByName().get(type).getRecordTypeId();
         PublicationService publicationServiceInstance = PublicationService.getInstance();
         Contact contact;
@@ -85,8 +85,8 @@ public class PublicationService {
               tagslist.add(tag);}
            }
         if (app.equals('orange')){
-          return publicationMapperInstance.PublicationObjectListToMapperList(publicationRepositoryInstance.findExternalappByTagsandRecordId(tagslist,recordTypeId));
+          return publicationMapperInstance.PublicationObjectListToMapperList(publicationRepositoryInstance.findExternalappByTagsandRecordId(tagslist,recordTypeId,pageSize,pageNumber));
         }else{
-        return publicationMapperInstance.PublicationObjectListToMapperList(publicationRepositoryInstance.findByTagsandRecordId(tagslist,recordTypeId));}
+        return publicationMapperInstance.PublicationObjectListToMapperList(publicationRepositoryInstance.findByTagsandRecordId(tagslist,recordTypeId,pageSize,pageNumber));}
       }
 }

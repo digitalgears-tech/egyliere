@@ -18,16 +18,25 @@ global class CatalogueAPI {
     RestResponse requestResponse= RestContext.response;
     String app = getReuest.params.get('App');
     String type = getReuest.params.get('Type');
+    Integer pageSize;
+    Integer pageNumber;
+    try{
+     pageSize = Integer.valueOf(getReuest.params.get('PageSize'));
+     pageNumber = Integer.valueOf(getReuest.params.get('PageNumber'));
+    }catch(Exception e){
+        pageSize=100;
+        pageNumber=1;
+    }
 
     try{
     if (app.equals('Internal')) {
       if (type == null) {
-        return CatalogueServiceInstance.GetCatalogueList();
+        return CatalogueServiceInstance.GetCatalogueList(pageSize, pageNumber);
       } else {
-        return CatalogueServiceInstance.GetCatalogueListByRecordType(type);
+        return CatalogueServiceInstance.GetCatalogueListByRecordType(type,pageSize, pageNumber);
       }
     }else{
-        requestResponse.statusCode=400;
+        requestResponse.statusCode=503;
         throw new GeneralException('Not allowed for External apps');
     }
 }  

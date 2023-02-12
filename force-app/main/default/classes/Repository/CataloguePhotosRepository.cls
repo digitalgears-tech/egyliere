@@ -17,7 +17,9 @@ public class CataloguePhotosRepository {
           SELECT
           Name,
           Link__c,
-          Photos__c	
+          Photos__c,
+          thumbnail_Image__c,
+          Video_Link__c	
           FROM Catalogue_Photos__c
           WHERE Catalogue__c = :catalogueid
           AND RecordTypeId = :rt.Id

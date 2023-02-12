@@ -11,7 +11,9 @@ public class CatalogueRepository {
         return instance;
       }
 
-      public List<Catalogue__c> FindAllCatalogue(){
+      public List<Catalogue__c> FindAllCatalogue(Integer pageSize,Integer pageNumber){
+        Integer offset = pageSize*(pageNumber-1);
+
         return [
           SELECT
           Name,
@@ -30,10 +32,13 @@ public class CatalogueRepository {
           Recommendations__c,
           RecordTypeId	
           FROM Catalogue__c
+          ORDER BY createddate 
+          DESC LIMIT :pageSize OFFSET :offset
         ];
       }
 
       public List<Catalogue__c> FindAllCatalogueByType(String type){
+       // Integer offset = pageSize*(pageNumber-1);
         return [
           SELECT
           Name,
@@ -53,10 +58,13 @@ public class CatalogueRepository {
           RecordTypeId	
           FROM Catalogue__c
           WHERE Type__c = :type
+         // ORDER BY createddate 
+         // DESC LIMIT :pageSize OFFSET :offset
         ];
       }
 
       public List<Catalogue__c> FindAllCatalogueByCityGuide(String cityGuideId){
+       // Integer offset = pageSize*(pageNumber-1);
         return [
           SELECT
           Name,
@@ -76,6 +84,8 @@ public class CatalogueRepository {
           RecordTypeId	
           FROM Catalogue__c
           WHERE City_Guide__c =: cityGuideId
+         // ORDER BY createddate 
+         // DESC LIMIT :pageSize OFFSET :offset
         ];
       }
       public List<Catalogue__c> FindAllCatalogueByCityGuideType(String cityGuideId, String recordTypeId){
@@ -103,7 +113,8 @@ public class CatalogueRepository {
       }
 
 
-      public List<Catalogue__c> FindAllCatalogueByRecordType(String recordTypeId){
+      public List<Catalogue__c> FindAllCatalogueByRecordType(String recordTypeId ,Integer pageSize,Integer pageNumber){
+        Integer offset = pageSize*(pageNumber-1);
         return [
           SELECT
           Name,
@@ -123,6 +134,8 @@ public class CatalogueRepository {
           RecordTypeId	
           FROM Catalogue__c
           WHERE RecordTypeId = :recordTypeId
+          ORDER BY createddate 
+          DESC LIMIT :pageSize OFFSET :offset
         ];
       }
       

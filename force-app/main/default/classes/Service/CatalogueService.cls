@@ -21,20 +21,20 @@ public class CatalogueService {
 
       }
 
-      public List<CatalogueMapper> GetCatalogueList() {
-        List<Catalogue__c> catalogueObjectList = CatalogueRepositoryInstance.FindAllCatalogue();
+      public List<CatalogueMapper> GetCatalogueList(Integer pageSize,Integer pageNumber) {
+        List<Catalogue__c> catalogueObjectList = CatalogueRepositoryInstance.FindAllCatalogue(pageSize, pageNumber);
         return CatalogueMapper.catalogueObjectListToMapperList(catalogueObjectList);
  
        }
 
-       public List<CatalogueMapper> GetCatalogueListByRecordType(String type) {
+       public List<CatalogueMapper> GetCatalogueListByRecordType(String type,Integer pageSize,Integer pageNumber) {
         RecordType rt =[
           SELECT
           Id
           FROM RecordType
           WHERE Name = :type
           ];
-        List<Catalogue__c> catalogueObjectList = CatalogueRepositoryInstance.FindAllCatalogueByRecordType(rt.Id);
+        List<Catalogue__c> catalogueObjectList = CatalogueRepositoryInstance.FindAllCatalogueByRecordType(rt.Id,pageSize,pageNumber);
         return CatalogueMapper.catalogueObjectListToMapperList(catalogueObjectList);
  
        }

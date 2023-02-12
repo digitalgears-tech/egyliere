@@ -20,6 +20,7 @@ public class RequestMapper {
     String slot;
     String operatinghours;
     String cancellationPolicy;
+    String catalogueId;
 
     static final String VALUE_Flight = 'Flight Management';
     static final String VALUE_Visa = 'Visa Management';
@@ -59,6 +60,7 @@ public class RequestMapper {
         String subType = (String)serviceDetails.get('subType');
         service.Type__c = productRepositoryInstance.findByName(subType).Family;
         service.Sub_Type__c = (String)serviceDetails.get('subType');
+        service.Catalogue__c= (String)serviceDetails.get('Catalogue');
 
 
         if (subType.equals(VALUE_Flight)){

@@ -53,6 +53,9 @@ global  class ExternalMembershipsAPI {
             id = getReuest.params.get('recordID');
             List< Object> body = (List< Object>)JSON.deserializeUntyped(RestContext.request.requestbody.tostring());
             externalMembershipsServiceInstance.AddContactMembership(id, body);
+        }else{
+            throw new GeneralException(' not allowed for external apps');
+
         }
     }catch (System.NullPointerException e) {
         requestResponse.statusCode=500;
