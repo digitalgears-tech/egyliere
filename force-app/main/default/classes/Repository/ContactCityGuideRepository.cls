@@ -1,3 +1,10 @@
+/**
+ * @description       : 
+ * @author            : Mohamed Tarek
+ * @group             : 
+ * @last modified on  : 02-12-2023
+ * @last modified by  : Mohamed Tarek
+**/
 public  class ContactCityGuideRepository {
     private static ContactCityGuideRepository instance = null;
     private ContactCityGuideRepository() {}
@@ -12,7 +19,8 @@ public  class ContactCityGuideRepository {
         return [
             SELECT
             Name,
-            City_Guide__c
+            City_Guide__c,
+            End_Date__c
             FROM Contact_City_Guide__c
             WHERE Contact__c =: contactId
             AND Active__c =: true

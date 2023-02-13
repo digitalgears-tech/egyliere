@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Mohamed Tarek
  * @group             : 
- * @last modified on  : 02-12-2023
+ * @last modified on  : 02-13-2023
  * @last modified by  : Mohamed Tarek
 **/
 public class ContactService {
@@ -26,9 +26,9 @@ public class ContactService {
       }
      
       
-    public Map<String,String> checkContactPassword(String username, String password , String app) {
+    public Map<String,Object> checkContactPassword(String username, String password , String app) {
 
-      Map<String,String> contactMap = new Map<String,String>();
+      Map<String,Object> contactMap = new Map<String,Object>();
      
       Contact contact = contactRepositoryInstance.findByUsername(username);
       Account account = accountRepositoryInstance.findByAccountId(contact.AccountId);
@@ -50,12 +50,10 @@ public class ContactService {
         contactMap.put('Guest', Account.Guest__c+'');
         If(Account.Guest__c){
           List<Contact_City_Guide__c> contactCityGuide=contactCityGuideRepositoryInstance.FindAllCityGuidesbyContactAndActive(contact.Id);
-          String cityGuide= '';
-          for (Contact_City_Guide__c c :contactCityGuide ){
-              cityGuide = c.City_Guide__c+';'+cityGuide;
-          }
+          ContactCityGuideMapper mapperInstance=new ContactCityGuideMapper();
+          List<ContactCityGuideMapper> contactCityGuideMapperList=mapperInstance.mapObjectListToMapper(contactCityGuide); 
 
-          contactMap.put('CityGuide', cityGuide);
+          contactMap.put('CityGuide', contactCityGuideMapperList);
         }
         try{      
           Plan__c plan = plansRepositoryInstance.FindPlansById(Account.Plan__c);
