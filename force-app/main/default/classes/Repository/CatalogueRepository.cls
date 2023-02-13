@@ -17,6 +17,7 @@ public class CatalogueRepository {
         return [
           SELECT
           Name,
+          Id,
           Logo__c,
           City__c,
           Address__c,
@@ -42,6 +43,7 @@ public class CatalogueRepository {
         return [
           SELECT
           Name,
+          Id,
           Logo__c,
           City__c,
           Address__c,
@@ -68,6 +70,7 @@ public class CatalogueRepository {
         return [
           SELECT
           Name,
+          Id,
           Logo__c,
           City__c,
           Address__c,
@@ -92,6 +95,7 @@ public class CatalogueRepository {
         return [
           SELECT
           Name,
+          Id,
           Logo__c,
           City__c,
           Address__c,
@@ -118,6 +122,7 @@ public class CatalogueRepository {
         return [
           SELECT
           Name,
+          Id,
           Logo__c,
           City__c,
           Address__c,

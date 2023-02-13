@@ -8,6 +8,8 @@ global class PublicationAPI {
         RestResponse requestResponse= RestContext.response;
         Integer pageSize;
         Integer pageNumber;
+        String app;
+        String page;
         try{
          pageSize = Integer.valueOf(getReuest.params.get('PageSize'));
          pageNumber = Integer.valueOf(getReuest.params.get('PageNumber'));
@@ -15,10 +17,12 @@ global class PublicationAPI {
             pageSize=100;
             pageNumber=1;
         }
-       try{
-        String app = getReuest.params.get('App');
-      
         
+       try{
+        app = getReuest.params.get('App');
+        if(getReuest.params.get('Page')!=null){
+            return publicationServiceInstance.getPublicationbyPage('Internal',getReuest.params.get('Page'));
+        }
          if(getReuest.params.get('Type')==null && getReuest.params.get('orangeID')==null && getReuest.params.get('recordID') == null){
             return publicationServiceInstance.getPublicationByTags(app,pageSize,pageNumber);
             }else if(getReuest.params.get('Type')==null){

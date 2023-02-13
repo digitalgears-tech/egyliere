@@ -48,4 +48,18 @@ public class CityGuideRepository {
           WHERE Id =:id
         ];
       }
+
+      public City_Guide__c FindFeaturedCityGuide(){
+        return [
+          SELECT
+          Name,
+          Id,
+          Image__c,
+          City__c,
+          Price__c,
+          Duration__c	
+          FROM City_Guide__c
+          WHERE Featured__c = true
+        ];
+      }
 }

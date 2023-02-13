@@ -89,4 +89,11 @@ public class PublicationService {
         }else{
         return publicationMapperInstance.PublicationObjectListToMapperList(publicationRepositoryInstance.findByTagsandRecordId(tagslist,recordTypeId,pageSize,pageNumber));}
       }
+
+
+      public  List<PublicationMapper> getPublicationbyPage(String app, String page){
+        List<Publication__c> publication = new List<Publication__c>();
+        publication.add(publicationRepositoryInstance.findPublicationbyPage(page));
+        return publicationMapperInstance.PublicationObjectListToMapperList(publication);
+      }
 }

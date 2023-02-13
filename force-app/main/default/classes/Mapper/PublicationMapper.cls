@@ -6,6 +6,7 @@ global class PublicationMapper {
     public String tags;
     public List<String> images;
     public String description;
+    public String id;
 
     public PublicationMapper() {
        
@@ -24,6 +25,7 @@ global class PublicationMapper {
         PublicationMapper mapper = PublicationMapper.getInstance();
         ImageListMapper ImageListMapperInstance = ImageListMapper.getInstance();
         mapper.name = publicationObject.Name;
+        mapper.id = publicationObject.Id;
         mapper.tags = publicationObject.Tag__c;
         mapper.location= publicationObject.Location__c;
         mapper.startDate= publicationObject.Start_Date__c;  

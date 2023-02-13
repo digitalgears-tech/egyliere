@@ -38,4 +38,10 @@ public class CityGuideService {
  
        }
 
+       public List<CityGuideMapper> GetFeaturedCityGuide() {
+        List<City_Guide__c> cityGuideObjectList = new List<City_Guide__c>();
+        cityGuideObjectList.add(cityGuideRepositoryInstance.FindFeaturedCityGuide());
+        return CityGuideMapper.CityGuideobjectListToMapperList(cityGuideObjectList);
+       }
+
 }

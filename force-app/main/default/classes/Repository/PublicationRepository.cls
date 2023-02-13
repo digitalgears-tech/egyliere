@@ -175,4 +175,22 @@ public class PublicationRepository {
           ORDER BY createddate 
           DESC LIMIT :pageSize OFFSET :offset];
       }
+      public Publication__c findPublicationbyPage(String page){
+       
+        return [
+          SELECT
+            Name,
+            Start_Date__c,
+            End_Date__c,
+            Discount_Amount__c,
+            Discount_Type__c,
+            Image__c,
+            Tag__c,
+            Location__c,
+            Description__c
+          FROM Publication__c
+          WHERE Page__c	 = :page
+          AND Active__c = true];
+      }
+      
 }

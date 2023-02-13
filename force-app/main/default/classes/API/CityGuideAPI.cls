@@ -9,9 +9,13 @@ global class CityGuideAPI {
     global static List<CityGuideMapper> getAllCityGuide(){
         RestRequest getReuest= RestContext.request;
         RestResponse requestResponse= RestContext.response;
+    
         try{
             
             String app = getReuest.params.get('App');
+
+            if(getReuest.params.get('Featured')!=null){
+                return cityGuideServiceInstance.GetFeaturedCityGuide();}  
             if(app.equals('Internal')){
                 return cityGuideServiceInstance.GetCityGuideList();}  
               else{

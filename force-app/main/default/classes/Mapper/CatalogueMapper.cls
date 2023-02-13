@@ -1,6 +1,7 @@
 global class CatalogueMapper {
 
     public String name;
+    String id;
     public List<String> Logo;
     public String city;
     public String address;
@@ -29,6 +30,7 @@ global class CatalogueMapper {
         RecordTypeRepository recordTypeRepositoryInstance = RecordTypeRepository.getInstance();
 
         catalogueMap.name = catalogueObject.name;
+        catalogueMap.id = catalogueObject.Id;
         catalogueMap.Logo = ImageListMapperInstance.ConvertToImageList(catalogueObject.Logo__c);
         catalogueMap.city = catalogueObject.City__c;
         catalogueMap.address = catalogueObject.Address__c;
