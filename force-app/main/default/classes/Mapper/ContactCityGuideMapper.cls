@@ -13,7 +13,7 @@ Global  class ContactCityGuideMapper {
    public ContactCityGuideMapper mapObjectToMapper(Contact_City_Guide__c guide){
     ContactCityGuideMapper cityGuideMapper=new ContactCityGuideMapper();
     cityGuideMapper.Id=guide.Id;
-    cityGuideMapper.expiryDate=guide.End_Date__c.Day()+'/'+guide.End_Date__c.Month()+'/'+guide.End_Date__c.Year();
+    cityGuideMapper.expiryDate=guide.End_Date__c.Month()+'/'+guide.End_Date__c.Day()+'/'+guide.End_Date__c.Year();
     cityGuideMapper.name=guide.Name;
     return cityGuideMapper;
    }

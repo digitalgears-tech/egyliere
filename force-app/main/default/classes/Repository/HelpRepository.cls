@@ -14,8 +14,8 @@ public  class HelpRepository {
         }
         return instance;
       }
-    public List<Help_QA__c> getHelpQAByCategory(String category){
-        return [SELECT Id,Question__c,Answer__c From Help_QA__c WHERE Category__c=:category];
+    public List<Help_QA__c> getHelpQAByType(String Type){
+        return [SELECT Id,Body__c,Header__c,Category__c From Help_QA__c WHERE Type__c=:type];
     }
 
 }

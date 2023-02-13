@@ -20,7 +20,7 @@ public class HelpService {
         }
         return instance;
       }
-    public List<HelpMapper> mapObjectListToMapper(String category){
-        return helpMapperInstance.helpListToObject(helpRepositoryInstance.getHelpQAByCategory(category));
+    public Map<String,List<HelpMapper>> mapObjectListToMapper(String type){
+        return helpMapperInstance.helpListToObject(helpRepositoryInstance.getHelpQAByType(type));  
     }
 }

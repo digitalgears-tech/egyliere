@@ -6,26 +6,36 @@
  * @last modified by  : Mohamed Tarek
 **/
 global class HelpMapper {
-    public String question;
-    public String answer;
+    public String header;
+    public String body;
     public String id;
 
 
     public HelpMapper HelpMapperToObject(Help_QA__c helpObject){
         HelpMapper mapper=new HelpMapper();
-        mapper.question=helpObject.Question__c;
-        mapper.answer=helpObject.Answer__c;
+        mapper.header=helpObject.Header__c;
+        mapper.body=helpObject.Body__c;
         mapper.Id=helpObject.Id;
         return mapper;
     }
-    public List<HelpMapper>  helpListToObject(List<Help_QA__c> helpObjectList){
-        List<HelpMapper> helpMapper = new List<HelpMapper>();
+    public Map<String,List<HelpMapper>> helpListToObject(List<Help_QA__c> helpObjectList){
+       Map<String,list<HelpMapper>> helpMap=new Map<String,List<HelpMapper>>();
+
+
        
         for( Help_QA__c p : helpObjectList ){
+            List<HelpMapper> currentList=helpMap.get(p.Category__c);
+            if(currentList==null){
+                helpMap.put(p.Category__c,new List<HelpMapper>{helpMapperToObject(p)});
+                
+            }else{
+                currentList.add(helpMapperToObject(p));
+            }
 
-            helpMapper.add(HelpMapperToObject(p));
         }
 
-        return helpMapper;
+        return helpMap;
 
-    }}
+    }
+
+}

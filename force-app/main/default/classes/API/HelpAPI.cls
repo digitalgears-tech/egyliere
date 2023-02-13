@@ -9,19 +9,19 @@
 global class HelpAPI { 
     public static HelpService helpServiceInstance = HelpService.getInstance();
 @HttpGet
-global static  List<HelpMapper>  getHelpByCategory(){
+global static  Map<String,List<HelpMapper>>  getHelpByCategory(){
     
         RestRequest getRequest= RestContext.request;
         RestResponse requestResponse= RestContext.response;
     try{
-        String category = getRequest.params.get('Category');
+        String type = getRequest.params.get('Type');
+
     
-    
-        List<HelpMapper> helpQAs=helpServiceInstance.mapObjectListToMapper(category);
+        Map<String,List<HelpMapper>> helpQAs=helpServiceInstance.mapObjectListToMapper(type);
         if(helpQAs.size()==0){
           throw new NoRecordsException('No records found');
         }
-
+ 
         return helpQAs;
      
     }catch (System.NullPointerException e) {
