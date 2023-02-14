@@ -1,3 +1,10 @@
+/**
+ * @description       : 
+ * @author            : Mohamed Tarek
+ * @group             : 
+ * @last modified on  : 02-13-2023
+ * @last modified by  : Mohamed Tarek
+**/
 public class ContactService {
     private static ContactService instance = null;
     public  ContactRepository contactRepositoryInstance;
@@ -19,10 +26,10 @@ public class ContactService {
       }
      
       
-    public Map<String,String> checkContactPassword(String username, String password , String app) {
+    public Map<String,Object> checkContactPassword(String username, String password , String app) {
 
-      Map<String,String> contactMap = new Map<String,String>();
-      try{
+      Map<String,Object> contactMap = new Map<String,Object>();
+     
       Contact contact = contactRepositoryInstance.findByUsername(username);
       Account account = accountRepositoryInstance.findByAccountId(contact.AccountId);
       if(password.equals(contact.Password__c)) {
@@ -43,12 +50,10 @@ public class ContactService {
         contactMap.put('Guest', Account.Guest__c+'');
         If(Account.Guest__c){
           List<Contact_City_Guide__c> contactCityGuide=contactCityGuideRepositoryInstance.FindAllCityGuidesbyContactAndActive(contact.Id);
-          String cityGuide= '';
-          for (Contact_City_Guide__c c :contactCityGuide ){
-              cityGuide = c.City_Guide__c+';'+cityGuide;
-          }
+          ContactCityGuideMapper mapperInstance=new ContactCityGuideMapper();
+          List<ContactCityGuideMapper> contactCityGuideMapperList=mapperInstance.mapObjectListToMapper(contactCityGuide); 
 
-          contactMap.put('CityGuide', cityGuide);
+          contactMap.put('CityGuide', contactCityGuideMapperList);
         }
         try{      
           Plan__c plan = plansRepositoryInstance.FindPlansById(Account.Plan__c);
@@ -59,12 +64,9 @@ public class ContactService {
         }
 
      }else{
-      contactMap.put('Status', 'Rejected');
+      throw new GeneralException('invalid password');
      }
-    }catch(Exception e){
-      
-
-    }
+   
      return contactMap;
   }
 
@@ -95,17 +97,17 @@ public class ContactService {
 
     Map<String, Object> contactsmap = (Map<String, Object>) contactDetails.get(0);
     Contact contact = contactRepositoryInstance.findByRecordId(id);
-    if(contact.Password__c.equals(contactsmap.get('Password'))){
+   
       contact.FirstName = (String)contactsmap.get('First Name');
       contact.LastName = (String)contactsmap.get('Last Name');
       contact.Email = (String)contactsmap.get('Email');
       contact.Phone = (String)contactsmap.get('Phone');
 
-      if(contactsmap.get('New Password') != null){
+      if(contactsmap.get('New Password') != null && contact.Password__c.equals(contactsmap.get('Password'))){
         contact.Password__c= (String)contactsmap.get('New Password');
       }
-    }else{
-      throw new DMLException(' Wrong Password');
+      else{
+      throw new DMLException('Wrong Password');
     }
   
     update contact;

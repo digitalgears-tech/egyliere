@@ -1,3 +1,10 @@
+/**
+ * @description       : 
+ * @author            : Mohamed Tarek
+ * @group             : 
+ * @last modified on  : 02-12-2023
+ * @last modified by  : Mohamed Tarek
+**/
 @RestResource(urlMapping='/PublicationListAPI/*')
 global class PublicationAPI {
     public static PublicationService publicationServiceInstance = PublicationService.getInstance();
@@ -24,17 +31,29 @@ global class PublicationAPI {
             return publicationServiceInstance.getPublicationbyPage('Internal',getReuest.params.get('Page'));
         }
          if(getReuest.params.get('Type')==null && getReuest.params.get('orangeID')==null && getReuest.params.get('recordID') == null){
-            return publicationServiceInstance.getPublicationByTags(app,pageSize,pageNumber);
+            List<PublicationMapper> publications=publicationServiceInstance.getPublicationByTags(app,pageSize,pageNumber);
+            if(publications.size()==0){
+                throw new NoRecordsException('No records found');
+            }
+            return publications;
             }else if(getReuest.params.get('Type')==null){
            
             switch on app {
                 when 'orange' {
                 String orangeId = getReuest.params.get('orangeID');
-                return publicationServiceInstance.getPublicationByTags(orangeId ,app,pageSize,pageNumber);
+                List<PublicationMapper> publications=publicationServiceInstance.getPublicationByTags(orangeId ,app,pageSize,pageNumber);
+                if(publications.size()==0){
+                    throw new NoRecordsException('No records found');
+                }
+                return publications;
                 }
                 when 'Internal' {
                  String recordId = getReuest.params.get('recordID');
-                return publicationServiceInstance.getPublicationByTags(recordId ,app,pageSize,pageNumber);
+                 List<PublicationMapper> publications=publicationServiceInstance.getPublicationByTags(recordId ,app,pageSize,pageNumber);
+                 if(publications.size()==0){
+                    throw new NoRecordsException('No records found');
+                 }
+                return publications;
                 }
                 when else{
                     throw new GeneralException(' not allowed for external apps');
@@ -46,11 +65,20 @@ global class PublicationAPI {
                     switch on app {
                         when 'orange' {
                         String orangeId = getReuest.params.get('orangeID');
-                        return publicationServiceInstance.getPublicationByTagsandType(orangeId ,app,type,pageSize,pageNumber);
+                        List<PublicationMapper> publications=publicationServiceInstance.getPublicationByTagsandType(orangeId ,app,type,pageSize,pageNumber);
+                        if(publications.size()==0){
+                            throw new NoRecordsException('No records found');
+                         }
+                        return publications;
                         }
                         when 'Internal' {
                          String recordId = getReuest.params.get('recordID');
-                        return publicationServiceInstance.getPublicationByTagsandType(recordId ,app,type,pageSize,pageNumber);
+                         List<PublicationMapper> publications=publicationServiceInstance.getPublicationByTagsandType(recordId ,app,type,pageSize,pageNumber);
+                         if(publications.size()==0){
+                            throw new NoRecordsException('No Records found');
+
+                         }
+                         return publications;
                         }
                         when else{
                             throw new GeneralException(' not allowed for external apps');
@@ -58,7 +86,11 @@ global class PublicationAPI {
                     }
                 }else{
                          String type = getReuest.params.get('Type');
-                        return  publicationServiceInstance.getPublicationByTagsandType(app,type,pageSize,pageNumber);
+                         List<PublicationMapper> publications=publicationServiceInstance.getPublicationByTagsandType(app,type,pageSize,pageNumber);
+                         if(publications.size()==0){
+                            throw new NoRecordsException('No records found');
+                         }
+                        return publications;
                     }
 
             
@@ -78,6 +110,9 @@ global class PublicationAPI {
                     requestResponse.statusCode=400;
                     requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
                     throw new GeneralException(e.getMessage());
+                }catch(NoRecordsException e){
+                    requestResponse.statusCode=404;
+                    throw new NoRecordsException(e.getMessage());
                 }
            
 

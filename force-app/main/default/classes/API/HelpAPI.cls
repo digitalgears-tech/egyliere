@@ -2,32 +2,28 @@
  * @description       : 
  * @author            : Mohamed Tarek
  * @group             : 
- * @last modified on  : 02-12-2023
+ * @last modified on  : 02-13-2023
  * @last modified by  : Mohamed Tarek
 **/
-@RestResource(urlMapping='/PlansAPI/*')
-global class PlansAPI {
-    public static PlansService plansServiceInstance = PlansService.getInstance();
-    public PlansAPI() {
-
-    }
-
-    @HttpGet
-    global static List<PlansMapper> getPlansDetails(){
-        RestRequest getReuest= RestContext.request;
+@RestResource(urlMapping='/Help/*')
+global class HelpAPI { 
+    public static HelpService helpServiceInstance = HelpService.getInstance();
+@HttpGet
+global static  Map<String,List<HelpMapper>>  getHelpByCategory(){
+    
+        RestRequest getRequest= RestContext.request;
         RestResponse requestResponse= RestContext.response;
-        try{
-        String app = getReuest.params.get('App');
-        if(app.equals('Internal')){
-            List<PlansMapper> details=plansServiceInstance.getPlanList();
-            if(details.size()==0){
-                throw new NoRecordsException('No records found');
-            }
-            
-           return details;
-        }else{
-            throw new GeneralException(' not allowed for external apps');
+    try{
+        String type = getRequest.params.get('Type');
+
+    
+        Map<String,List<HelpMapper>> helpQAs=helpServiceInstance.mapObjectListToMapper(type);
+        if(helpQAs.size()==0){
+          throw new NoRecordsException('No records found');
         }
+ 
+        return helpQAs;
+     
     }catch (System.NullPointerException e) {
         requestResponse.statusCode=500;
         requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
@@ -45,9 +41,10 @@ global class PlansAPI {
         requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
         throw new GeneralException(e.getMessage());
     }catch(NoRecordsException e){
-        requestResponse.statusCode=404;
-        throw new NoRecordsException(e.getMessage());
-    }
+      requestResponse.statusCode=404;
+      throw new NoRecordsException(e.getMessage());
+  }
 
     }
+
 }

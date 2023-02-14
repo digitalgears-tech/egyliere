@@ -1,3 +1,10 @@
+/**
+ * @description       : 
+ * @author            : Mohamed Tarek
+ * @group             : 
+ * @last modified on  : 02-12-2023
+ * @last modified by  : Mohamed Tarek
+**/
 @RestResource(urlMapping='/CustomerPerferencesList/*')
 global  class CustomerPerferenceAPI {
     public static PreferenceService preferenceServiceInstance = PreferenceService.getInstance();
@@ -11,13 +18,19 @@ global  class CustomerPerferenceAPI {
 
         try{
         String app = getReuest.params.get('App');
+        Map<String,List<String>> contactTags=new Map<String,List<String>>();
         if(app.equals('orange')){
         String orangeId = getReuest.params.get('orangeID');
-        return preferenceServiceInstance.getContactTagsMap(orangeId ,app);
+        contactTags=preferenceServiceInstance.getContactTagsMap(orangeId ,app);
         }else{
         String recordId = getReuest.params.get('recordID');
-        return preferenceServiceInstance.getContactTagsMap(recordID ,app);
+        contactTags=preferenceServiceInstance.getContactTagsMap(recordID ,app); 
         }
+        if(contactTags.isEmpty()){
+            throw new NoRecordsException('No records found');
+
+        }
+        return contactTags;
         }catch (System.NullPointerException e) {
             requestResponse.statusCode=500;
             requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
@@ -34,6 +47,9 @@ global  class CustomerPerferenceAPI {
             requestResponse.statusCode=400;
             requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
             throw new GeneralException(e.getMessage());
+        }catch(NoRecordsException e){
+            requestResponse.statusCode=404;
+            throw new NoRecordsException(e.getMessage());
         }
 
         
@@ -54,6 +70,8 @@ global  class CustomerPerferenceAPI {
             String recordId = postReuest.params.get('recordID');
             preferenceServiceInstance.updateContactPreferenceByID(recordId, app, preference);
         }
+        requestResponse.responseBody=Blob.valueOf('Perference set' );
+        requestResponse.statusCode=200;
          }catch (System.NullPointerException e) {
                 requestResponse.statusCode=500;
                 requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
