@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Mohamed Tarek
  * @group             : 
- * @last modified on  : 02-12-2023
+ * @last modified on  : 02-13-2023
  * @last modified by  : Mohamed Tarek
 **/
 @RestResource(urlMapping='/PublicationListAPI/*')
@@ -112,7 +112,7 @@ global class PublicationAPI {
                     throw new GeneralException(e.getMessage());
                 }catch(NoRecordsException e){
                     requestResponse.statusCode=404;
-                    throw new NoRecordsException(e.getMessage());
+                    return new List<PublicationMapper>();
                 }
            
 
