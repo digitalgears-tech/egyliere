@@ -7,6 +7,7 @@ global class PublicationMapper {
     public List<String> images;
     public String description;
     public String id;
+    public String catalouge;
 
     public PublicationMapper() {
        
@@ -33,6 +34,7 @@ global class PublicationMapper {
         mapper.description= publicationObject.Description__c;
         //mapper.images= publicationObject.Image__c;
         mapper.images= ImageListMapperInstance.ConvertToImageList(publicationObject.Image__c);
+        mapper.catalouge = publicationObject.Catalogue__c;
 
         return mapper;
       }
