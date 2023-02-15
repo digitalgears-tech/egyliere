@@ -28,7 +28,11 @@ global class PublicationAPI {
        try{
         app = getReuest.params.get('App');
         if(getReuest.params.get('Page')!=null){
-            return publicationServiceInstance.getPublicationbyPage('Internal',getReuest.params.get('Page'));
+            List<PublicationMapper> publications=publicationServiceInstance.getPublicationbyPage('Internal',getReuest.params.get('Page'));
+            if(publications.size()==0){
+                throw new NoRecordsException('No records found');
+            }
+            return publications;
         }
          if(getReuest.params.get('Type')==null && getReuest.params.get('orangeID')==null && getReuest.params.get('recordID') == null){
             List<PublicationMapper> publications=publicationServiceInstance.getPublicationByTags(app,pageSize,pageNumber);

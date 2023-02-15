@@ -23,7 +23,9 @@ public class PublicationRepository {
             Promo_code__c,
             Tag__c,
             Location__c,
-            Description__c
+            Description__c,
+            Catalogue__r.Id,
+            Catalogue__r.RecordType.Name
           FROM Publication__c
           WHERE Active__c = true
           ORDER BY createddate 
@@ -42,7 +44,9 @@ public class PublicationRepository {
             Promo_code__c,
             Tag__c,
             Location__c,
-            Description__c
+            Description__c,
+            Catalogue__r.Id,
+            Catalogue__r.RecordType.Name
           FROM Publication__c
           WHERE Active__c = true
           AND RecordTypeId =:recordTypeId
@@ -63,7 +67,9 @@ public class PublicationRepository {
             Promo_code__c,
             Tag__c,
             Location__c,
-            Description__c
+            Description__c,
+            Catalogue__r.Id,
+            Catalogue__r.RecordType.Name
           FROM Publication__c
           WHERE Active__c = true
           AND RecordTypeId =:recordTypeId 
@@ -84,7 +90,9 @@ public class PublicationRepository {
             Promo_code__c,
             Tag__c,
             Location__c,
-            Description__c
+            Description__c,
+            Catalogue__r.Id,
+            Catalogue__r.RecordType.Name
           FROM Publication__c
           WHERE Show_on_External_App__c = true
           AND Active__c = true
@@ -105,7 +113,9 @@ public class PublicationRepository {
             Image__c,
             Tag__c,
             Location__c,
-            Description__c
+            Description__c,
+            Catalogue__r.Id,
+            Catalogue__r.RecordType.Name
           FROM Publication__c
           WHERE Tag__c = : tagslist
           AND Active__c = true
@@ -125,7 +135,9 @@ public class PublicationRepository {
             Image__c,
             Tag__c,
             Location__c,
-            Description__c
+            Description__c,
+            Catalogue__r.Id,
+            Catalogue__r.RecordType.Name
           FROM Publication__c
           WHERE Tag__c = : tagslist
           AND RecordTypeId =:recordTypeId 
@@ -146,7 +158,9 @@ public class PublicationRepository {
             Image__c,
             Tag__c,
             Location__c,
-            Description__c
+            Description__c,
+            Catalogue__r.Id,
+            Catalogue__r.RecordType.Name
           FROM Publication__c
           WHERE Tag__c = :tagslist
           AND Show_on_External_App__c = true
@@ -166,7 +180,9 @@ public class PublicationRepository {
             Image__c,
             Tag__c,
             Location__c,
-            Description__c
+            Description__c,
+            Catalogue__r.Id,
+            Catalogue__r.RecordType.Name
           FROM Publication__c
           WHERE Tag__c = :tagslist
           AND Show_on_External_App__c = true
@@ -187,7 +203,9 @@ public class PublicationRepository {
             Image__c,
             Tag__c,
             Location__c,
-            Description__c
+            Description__c,
+            Catalogue__r.Id,
+            Catalogue__r.RecordType.Name
           FROM Publication__c
           WHERE Page__c	 = :page
           AND Active__c = true];
