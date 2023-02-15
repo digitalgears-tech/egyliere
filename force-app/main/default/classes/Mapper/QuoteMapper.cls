@@ -50,10 +50,22 @@ String transportType;
 String triptype;
 String venu;
 
-
 public QuoteMapper() {
 
     }
+    public QuoteMapper quoteObjectToMapper(Quote_Line_Item_Detail__c quoteLineItemDetails, QuoteLineItem quoteLineItem){
+        return null;
+    }
+    public  List<QuoteMapper> quoteObjectListToMapperList( List<Quote_Line_Item_Detail__c> quoteLineItemDetails, Map<Id,QuoteLineItem> quoteLineItemDetailsIdQuoteLineItem){
 
+        List<QuoteMapper> mapperList = new List<QuoteMapper>();
+
+        for( Quote_Line_Item_Detail__c q : quoteLineItemDetails ){
+
+            mapperList.add(quoteObjectToMapper(q,quoteLineItemDetailsIdQuoteLineItem.get(q.Id)));
+        }
+
+        return mapperList;
+      }
 
 }

@@ -39,5 +39,19 @@ public class PackageServiceRepository {
           ];
     }
 
+    public OpportunityLineItem findPackageServiceById(String id){
+
+      return [
+        SELECT
+        Id,
+        Name,
+        Opportunity_Line_Item_Details__c,
+        PricebookEntry.Product2.Logo__c,
+        Total_Points__c,
+        Opportunity.StageName		
+        FROM OpportunityLineItem
+        WHERE Id = :id
+        ];
+  }
     
 }

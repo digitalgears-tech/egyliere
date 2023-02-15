@@ -59,7 +59,7 @@ public class QuoteLineItemRepository {
         ];
       }
 
-      public List<QuoteLineItem> findQuoteLineItemByQuoteLineItemDetailsId(String quoteLineItemDetails){
+      public List<QuoteLineItem> findQuoteLineItemByQuoteLineItemDetailsId(List<Id> quoteLineItemDetails){
         return [
             SELECT
             Breakfast__c,

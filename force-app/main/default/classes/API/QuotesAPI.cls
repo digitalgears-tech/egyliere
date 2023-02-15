@@ -20,7 +20,13 @@ global class QuotesAPI {
             pageNumber=1;
         }
         try{
-            app = getReuest.params.get('App');
+         app = getReuest.params.get('App');
+            if(app.equals('Internal')){
+                String packageServiceId = getReuest.params.get('recordID');
+
+            }
+
+       
             return null;
 
         }catch (System.NullPointerException e) {

@@ -66,7 +66,7 @@ public class QuoteLineItemDetailRepository {
         ];
       }
 
-      public List<Quote_Line_Item_Detail__c> findQuoteLineItemDetailBy(String opportunityLineItemDetails){
+      public List<Quote_Line_Item_Detail__c> findQuoteLineItemDetailBy(Id opportunityLineItemDetails){
         return [
             SELECT
             Airline__c,
