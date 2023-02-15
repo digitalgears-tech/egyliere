@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Mohamed Tarek
  * @group             : 
- * @last modified on  : 02-13-2023
+ * @last modified on  : 02-15-2023
  * @last modified by  : Mohamed Tarek
 **/
 @RestResource(urlMapping='/PlansAPI/*')
@@ -20,9 +20,7 @@ global class PlansAPI {
         String app = getReuest.params.get('App');
         if(app.equals('Internal')){
             List<PlansMapper> details=plansServiceInstance.getPlanList();
-            if(details.size()==0){
-                throw new NoRecordsException('No records found');
-            }
+           
             
            return details;
         }else{
@@ -44,9 +42,6 @@ global class PlansAPI {
         requestResponse.statusCode=400;
         requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
         throw new GeneralException(e.getMessage());
-    }catch(NoRecordsException e){
-        requestResponse.statusCode=404;
-        return new List<PlansMapper>();
     }
 
     }

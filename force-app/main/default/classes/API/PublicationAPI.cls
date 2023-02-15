@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Mohamed Tarek
  * @group             : 
- * @last modified on  : 02-13-2023
+ * @last modified on  : 02-15-2023
  * @last modified by  : Mohamed Tarek
 **/
 @RestResource(urlMapping='/PublicationListAPI/*')
@@ -29,16 +29,12 @@ global class PublicationAPI {
         app = getReuest.params.get('App');
         if(getReuest.params.get('Page')!=null){
             List<PublicationMapper> publications=publicationServiceInstance.getPublicationbyPage('Internal',getReuest.params.get('Page'));
-            if(publications.size()==0){
-                throw new NoRecordsException('No records found');
-            }
+            
             return publications;
         }
          if(getReuest.params.get('Type')==null && getReuest.params.get('orangeID')==null && getReuest.params.get('recordID') == null){
             List<PublicationMapper> publications=publicationServiceInstance.getPublicationByTags(app,pageSize,pageNumber);
-            if(publications.size()==0){
-                throw new NoRecordsException('No records found');
-            }
+            
             return publications;
             }else if(getReuest.params.get('Type')==null){
            
@@ -46,17 +42,13 @@ global class PublicationAPI {
                 when 'orange' {
                 String orangeId = getReuest.params.get('orangeID');
                 List<PublicationMapper> publications=publicationServiceInstance.getPublicationByTags(orangeId ,app,pageSize,pageNumber);
-                if(publications.size()==0){
-                    throw new NoRecordsException('No records found');
-                }
+               
                 return publications;
                 }
                 when 'Internal' {
                  String recordId = getReuest.params.get('recordID');
                  List<PublicationMapper> publications=publicationServiceInstance.getPublicationByTags(recordId ,app,pageSize,pageNumber);
-                 if(publications.size()==0){
-                    throw new NoRecordsException('No records found');
-                 }
+                 
                 return publications;
                 }
                 when else{
@@ -70,18 +62,13 @@ global class PublicationAPI {
                         when 'orange' {
                         String orangeId = getReuest.params.get('orangeID');
                         List<PublicationMapper> publications=publicationServiceInstance.getPublicationByTagsandType(orangeId ,app,type,pageSize,pageNumber);
-                        if(publications.size()==0){
-                            throw new NoRecordsException('No records found');
-                         }
+                        
                         return publications;
                         }
                         when 'Internal' {
                          String recordId = getReuest.params.get('recordID');
                          List<PublicationMapper> publications=publicationServiceInstance.getPublicationByTagsandType(recordId ,app,type,pageSize,pageNumber);
-                         if(publications.size()==0){
-                            throw new NoRecordsException('No Records found');
-
-                         }
+                        
                          return publications;
                         }
                         when else{
@@ -91,9 +78,7 @@ global class PublicationAPI {
                 }else{
                          String type = getReuest.params.get('Type');
                          List<PublicationMapper> publications=publicationServiceInstance.getPublicationByTagsandType(app,type,pageSize,pageNumber);
-                         if(publications.size()==0){
-                            throw new NoRecordsException('No records found');
-                         }
+                         
                         return publications;
                     }
 
@@ -114,9 +99,6 @@ global class PublicationAPI {
                     requestResponse.statusCode=400;
                     requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
                     throw new GeneralException(e.getMessage());
-                }catch(NoRecordsException e){
-                    requestResponse.statusCode=404;
-                    return new List<PublicationMapper>();
                 }
            
 

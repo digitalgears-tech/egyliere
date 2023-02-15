@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Mohamed Tarek
  * @group             : 
- * @last modified on  : 02-13-2023
+ * @last modified on  : 02-15-2023
  * @last modified by  : Mohamed Tarek
 **/
 @RestResource(urlMapping='/RequestSelectionListAPI/*')
@@ -24,9 +24,7 @@ global class RequestSelectionListAPI {
 
             if(app.equals('Internal')){
                 Map<String,List<String>> services=serviceServiceInstance.getServiceCategoryList(type);
-                if(services.isEmpty()){
-                    throw new NoRecordsException('No records found');
-                }
+                
                 return services;
 
               }else{
@@ -50,9 +48,6 @@ global class RequestSelectionListAPI {
                 requestResponse.statusCode=400;
                 requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
                 throw new GeneralException(e.getMessage());
-            }catch(NoRecordsException e){
-                requestResponse.statusCode=404;
-                return new Map<String, List<String>>();
             }
 
 }

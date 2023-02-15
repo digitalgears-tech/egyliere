@@ -2,7 +2,7 @@
  * @description       :
  * @author            : Ahmed Abdelraouf
  * @group             :
- * @last modified on  : 02-13-2023
+ * @last modified on  : 02-15-2023
  * @last modified by  : Mohamed Tarek
  **/
 
@@ -32,16 +32,11 @@ global class CatalogueAPI {
     if (app.equals('Internal')) {
       if (type == null) {
         List<CatalogueMapper> catalogueList= CatalogueServiceInstance.GetCatalogueList(pageSize, pageNumber);
-        if(catalogueList.size()==0){
-          throw new NoRecordsException('No Catalogues Found');
- 
-        }
+       
         return catalogueList;
       } else {
         List<CatalogueMapper> catalogueListByRecordType= CatalogueServiceInstance.GetCatalogueListByRecordType(type,pageSize, pageNumber);
-        if(catalogueListByRecordType.size()==0){
-          throw new NoRecordsException('No Catalogues Found');
-        }
+        
         return catalogueListByRecordType;
       }
     }else{
@@ -62,10 +57,7 @@ catch (System.NullPointerException e) {
  catch(GeneralException e){
        requestResponse.statusCode=400;
        throw new GeneralException(e.getMessage());}
-catch(NoRecordsException e){
-        requestResponse.statusCode=404;
-        return new List<CatalogueMapper>();
-}
+
     
 }
 

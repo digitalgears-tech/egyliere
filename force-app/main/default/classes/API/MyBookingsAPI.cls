@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Mohamed Tarek
  * @group             : 
- * @last modified on  : 02-13-2023
+ * @last modified on  : 02-15-2023
  * @last modified by  : Mohamed Tarek
 **/
 @RestResource(urlMapping='/MyBookingsAPI/*')
@@ -22,10 +22,7 @@ global static  List<ServiceMapper>  getAllService(){
       if(app.equals('Internal')){
         String recordId = getReuest.params.get('recordID');
         List<ServiceMapper> services=requestServiceInstance.GetReservationsRequest(recordId);
-        if(services.size()==0){
-          throw new NoRecordsException('No records found');
-        }
-
+       
         return services;
       }else{
         throw new GeneralException(' not allowed for external apps');
@@ -46,10 +43,7 @@ global static  List<ServiceMapper>  getAllService(){
         requestResponse.statusCode=400;
         requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
         throw new GeneralException(e.getMessage());
-    }catch(NoRecordsException e){
-      requestResponse.statusCode=404;
-      return new List<ServiceMapper>();
-  }
+    }
 
     }
 

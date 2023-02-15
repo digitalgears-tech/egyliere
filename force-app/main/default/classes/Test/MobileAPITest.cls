@@ -1,3 +1,10 @@
+/**
+ * @description       : 
+ * @author            : Mohamed Tarek
+ * @group             : 
+ * @last modified on  : 02-15-2023
+ * @last modified by  : Mohamed Tarek
+**/
 @istest
 public class MobileAPITest {
    
@@ -387,6 +394,23 @@ public class MobileAPITest {
     RestContext.response = res;
     Test.startTest();
     RequestSelectionListAPI.getRequestSelectionList();
+    Test.stopTest();
+    
+  }
+
+  @istest
+  static void TestHelpApi() {
+    RestRequest req = new RestRequest(); 
+    RestResponse res = new RestResponse();
+    DataFactoryTest dataFactory = DataFactoryTest.getInstance();
+    dataFactory.createHelp('Help',null,'Testing?','Yes testing');
+    req.requestURI = '/Help';  
+    req.httpMethod = 'GET';
+    req.params.put('Type', 'Help');
+    RestContext.request = req;
+    RestContext.response = res;
+    Test.startTest();
+    HelpApi.getHelpByType();
     Test.stopTest();
     
   }

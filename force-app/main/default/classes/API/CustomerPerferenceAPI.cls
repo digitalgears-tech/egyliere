@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Mohamed Tarek
  * @group             : 
- * @last modified on  : 02-13-2023
+ * @last modified on  : 02-15-2023
  * @last modified by  : Mohamed Tarek
 **/
 @RestResource(urlMapping='/CustomerPerferencesList/*')
@@ -26,10 +26,7 @@ global  class CustomerPerferenceAPI {
         String recordId = getReuest.params.get('recordID');
         contactTags=preferenceServiceInstance.getContactTagsMap(recordID ,app); 
         }
-        if(contactTags.isEmpty()){
-            throw new NoRecordsException('No records found');
-
-        }
+       
         return contactTags;
         }catch (System.NullPointerException e) {
             requestResponse.statusCode=500;
@@ -47,9 +44,6 @@ global  class CustomerPerferenceAPI {
             requestResponse.statusCode=400;
             requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
             throw new GeneralException(e.getMessage());
-        }catch(NoRecordsException e){
-            requestResponse.statusCode=404;
-            return new Map<String,List<String>>();
         }
 
         

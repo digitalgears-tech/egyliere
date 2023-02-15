@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Mohamed Tarek
  * @group             : 
- * @last modified on  : 02-13-2023
+ * @last modified on  : 02-15-2023
  * @last modified by  : Mohamed Tarek
 **/
 @RestResource(urlMapping='/ExternalMembershipsAPI/*')
@@ -32,9 +32,7 @@ global  class ExternalMembershipsAPI {
         }else{
             throw new GeneralException('No allowed for external apps');
         }
-        if(externalMemberships.size()==0){
-            throw new NoRecordsException('No records found');
-        }
+       
         return externalMemberships;
    }catch (System.NullPointerException e) {
         requestResponse.statusCode=500;
@@ -52,10 +50,8 @@ global  class ExternalMembershipsAPI {
         requestResponse.statusCode=400;
         requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
         throw new GeneralException(e.getMessage());
-    }catch(NoRecordsException e){
-        requestResponse.statusCode=404;
-        return new List<ExternalMembershipsMapper>();
     }
+
     }
     @HttpPost
     global static void SetCustomerExternalMemberships(){

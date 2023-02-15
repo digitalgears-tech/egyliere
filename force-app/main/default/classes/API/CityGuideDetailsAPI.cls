@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Mohamed Tarek
  * @group             : 
- * @last modified on  : 02-13-2023
+ * @last modified on  : 02-15-2023
  * @last modified by  : Mohamed Tarek
 **/
 @RestResource(urlMapping='/CityGuideDetailsAPI/*')
@@ -33,10 +33,7 @@ global class CityGuideDetailsAPI {
                 }else{ 
                 catalogues=CatalogueServiceInstance.GetCityGuideCatalogueList(id);
                 }
-                if(catalogues.size()==0){
-                    throw new NoRecordsException('No records found');
-
-                }
+               
                 return catalogues;
               }
               else{
@@ -56,10 +53,7 @@ global class CityGuideDetailsAPI {
         catch(GeneralException e){
               requestResponse.statusCode=400;
               throw new GeneralException(e.getMessage());}
-        catch(NoRecordsException e){
-            requestResponse.statusCode=404;
-            return new List<CatalogueMapper>();
-        }      
+       
     }
 
     @HttpPost

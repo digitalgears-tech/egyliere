@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Mohamed Tarek
  * @group             : 
- * @last modified on  : 01-24-2023
+ * @last modified on  : 02-15-2023
  * @last modified by  : Mohamed Tarek
 **/
 @isTest
@@ -111,6 +111,15 @@ public Opprtunity_Line_Item_Details__c createOpprtunity_Line_Items_Details(Strin
     opprtunityLineItemDetailsMock.Departure_Date__c=departure;
     insert opprtunityLineItemDetailsMock;
     return opprtunityLineItemDetailsMock;
+}
+public Help_QA__c createHelp(String type,String category,String header,String body){
+    Help_QA__c helpMock=new Help_QA__c();
+    helpMock.Type__c=type;
+    helpMock.Category__c=null;
+    helpMock.Header__c=header;
+    helpMock.Body__c=body;
+    insert helpMock;
+    return helpMock;
 }
 
  
