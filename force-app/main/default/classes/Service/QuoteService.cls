@@ -35,8 +35,25 @@ public  class QuoteService {
         for(QuoteLineItem q : quoteLineItems){
             quoteLineItemDetailsIdQuoteLineItem.put(q.Line_Item_Detail__c,q);
         }
-        quoteMapper.quoteObjectListToMapperList(quoteLineItemDetails, quoteLineItemDetailsIdQuoteLineItem);
-        return null;
+        return quoteMapper.quoteObjectListToMapperList(quoteLineItemDetails, quoteLineItemDetailsIdQuoteLineItem);
+       
 
+      }
+
+      public void setQuoteStatus(List<Object> quoteStatus){
+
+        Integer counter = 0;
+        Map<String,String> quoteMap = new Map<String,String>();
+        while(counter < quoteStatus.size()){
+            Map<String,Object> quoteDetails = (Map<String,Object>) quoteStatus.get(counter);
+            quoteMap.put((String) quoteDetails.get('id'),(String) quoteDetails.get('status'));
+            counter++;
+        }
+       List<Quote> quotes = quoteRepositoryInstance.findQuoteById(new List<String>(quoteMap.keySet()));
+        for(quote q : quotes){
+            q.status = quoteMap.get(q.Id);
+        }
+
+       update quotes;
       }
 }

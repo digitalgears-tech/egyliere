@@ -77,11 +77,13 @@ public class RequestMapper {
                 service.Departure__c = (String)serviceDetails.get('Depart Departure'); 
                 service.Destination__c = (String)serviceDetails.get('Depart Destination'); 
                 service.Departure_Date__c = DateTime.parse((String)serviceDetails.get('Depart Departure Date'));
-                service.Arival_Date__c= DateTime.parse((String)serviceDetails.get('Depart Arrival Date'));
+                if(serviceDetails.get('Depart Arrival Date')!=null){
+                service.Arival_Date__c= DateTime.parse((String)serviceDetails.get('Depart Arrival Date'));}
             }
             if(service.Trip_type__c.equals('RoundTrip')){
                 service.Departure_Date_1__c= DateTime.parse((String)serviceDetails.get('return Departure Date'));
-                service.Arival_Date1__c= DateTime.parse((String)serviceDetails.get('return Arrival Date'));
+                if(serviceDetails.get('Depart Arrival Date')!=null){
+                service.Arival_Date1__c= DateTime.parse((String)serviceDetails.get('return Arrival Date'));}
             }
             if(service.Trip_type__c.equals('Multi-city')){
                 service.Departure__c=(String)serviceDetails.get('Flight1 Departure'); 

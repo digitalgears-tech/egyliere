@@ -109,21 +109,6 @@
           <tbody>
             <tr>
               <td>
-                <span id="theFirst">
-                  <apex:outputText styleClass="header-text" value="Egylière">
-                  </apex:outputText>
-
-                  <!-- <apex:image value="{!URLFOR($Resource.EgyliereLogo)}" width="277" height="92" /> -->
-                </span>
-                <div>
-                  <apex:outputText styleClass="subheader-text"
-                    value="World Luxury Travel"
-                  >
-                  </apex:outputText>
-                </div>
-              </td>
-
-              <td>
                 <span id="theSecond" style="float: right">
                   <apex:image value="{!URLFOR($Resource.EgyliereLogo)}"
                     width="150"
@@ -147,7 +132,7 @@
           <td>
             <span id="theFirst">
               <li class="subheader-text">
-                Suez Canal Tower, 4 Ibn Katheer Street -Giza, Egypt
+                Suez Canal Tower, 4 Ibn Kathir St., Giza, Egypt - P.O. Box 12311
               </li>
               <li class="subheader-text">(+20)100 210 3030</li>
               <li class="subheader-text">info@egyliere.com</li>
@@ -1056,19 +1041,12 @@
     </p>
     <p class="subheader-text">
       <span class="subheader-text"
-        >This is a quotation on the goods named, subject to the conditions noted
-        below: All sales final, payment due upon receipt.
-      </span>
-    </p>
-    <p class="subheader-text">
-      <span class="subheader-text"
-        >To accept this quotation, mark the selected option in the above table,
-        sign below and return:
+        >Terms and Conditions:
       </span>
       <span class="subheader-text"></span>
     </p>
     <hr />
 
-    <p class="header-text">Thank you for your business!</p>
+    <p class="header-text">Thank you for choosing Egylière!</p>
   </div>
 </apex:page>

@@ -33,4 +33,19 @@ public class QuoteRepository {
         WHERE OpportunityId =:opportunityId
         ];
       }
+
+      public List<Quote> findQuoteById(List<String> id){
+        return [
+        SELECT
+        Id,
+        OpportunityId,
+        Phone,
+        Name,
+        TotalPrice,
+        Discount,
+        ExpirationDate
+        FROM Quote
+        WHERE Id =:id
+        ];
+      }
 }
