@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Mohamed Tarek
  * @group             : 
- * @last modified on  : 02-15-2023
+ * @last modified on  : 02-16-2023
  * @last modified by  : Mohamed Tarek
 **/
 @istest
@@ -411,6 +411,30 @@ public class MobileAPITest {
     RestContext.response = res;
     Test.startTest();
     HelpApi.getHelpByType();
+    Test.stopTest();
+    
+  }
+
+  @istest(seeAllData=true)
+  static void VoucherApiTest() {
+    RestRequest req = new RestRequest(); 
+    RestResponse res = new RestResponse();
+    DataFactoryTest dataFactory = DataFactoryTest.getInstance();
+    Account account = dataFactory.CreateAccount('Test', '1');
+
+    Opportunity opportunityMock=dataFactory.createOpportunity(Date.today(), account.Id, 'Qualification','test'); 
+    Opprtunity_Line_Item_Details__c opportunityLineDetailMock=dataFactory.createOpprtunity_Line_Items_Details(null,null,null,null);
+    OpportunityLineItem opportunityLineItemMock=dataFactory.createOpprtunityLineItem(opportunityLineDetailMock.Id,opportunityMock.Id,3,10);
+    ContentVersion contentVersionMock=dataFactory.createContentVersion();
+    ContentDocumentLink contentLinkMock=dataFactory.createContentDocumentLink(opportunityLineDetailMock.Id,contentVersionMock.Id);
+
+    req.requestURI = '/VoucherAPI';  
+    req.httpMethod = 'GET';
+    req.params.put('recordID', opportunityLineItemMock.Id);
+    RestContext.request = req;
+    RestContext.response = res;
+    Test.startTest();
+    VoucherAPI.getVoucher();
     Test.stopTest();
     
   }

@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Mohamed Tarek
  * @group             : 
- * @last modified on  : 02-15-2023
+ * @last modified on  : 02-16-2023
  * @last modified by  : Mohamed Tarek
 **/
 @isTest
@@ -111,6 +111,60 @@ public Opprtunity_Line_Item_Details__c createOpprtunity_Line_Items_Details(Strin
     opprtunityLineItemDetailsMock.Departure_Date__c=departure;
     insert opprtunityLineItemDetailsMock;
     return opprtunityLineItemDetailsMock;
+}
+public OpportunityLineItem createOpprtunityLineItem(String opportunityLineItemDetail,String opportunity,Integer quantity,Integer totalPrice){
+    Product2 p = new product2(name='x');
+    insert p;
+
+
+    //define the standart price for the product
+    Pricebook2 stdPb = [select Id from Pricebook2 where isStandard=true limit 1];
+    insert new PricebookEntry(pricebook2id = stdPb.id, product2id = p.id,unitprice=1.0, isActive=true);
+
+    Pricebook2 pb = new pricebook2(name='test');
+    insert pb;
+
+    PricebookEntry pbe = new PricebookEntry(pricebook2id=pb.id, product2id=p.id,unitprice=1.0, isActive=true);
+    insert pbe;
+    OpportunityLineItem opprtunityLineItemMock=new OpportunityLineItem();
+    opprtunityLineItemMock.Opportunity_Line_Item_Details__c=opportunityLineItemDetail;
+    opprtunityLineItemMock.OpportunityId=opportunity;
+    opprtunityLineItemMock.Quantity=quantity;
+    opprtunityLineItemMock.UnitPrice=100;
+    opprtunityLineItemMock.PricebookEntryId=pbe.Id;
+    insert opprtunityLineItemMock;
+    return opprtunityLineItemMock;
+}
+public ContentDocumentLink createContentDocumentLink(String linkedEntity,String contentId){
+    ContentDocumentLink contentlink=new ContentDocumentLink();
+    contentlink.LinkedEntityId=linkedEntity;
+    contentlink.contentdocumentid=[select contentdocumentid from contentversion where id =: contentId].contentdocumentid;
+    contentlink.ShareType = 'I';
+    contentlink.Visibility = 'AllUsers'; 
+    insert contentlink;
+    return contentlink;
+}
+
+public ContentVersion createContentVersion(){
+            
+    ContentVersion content=new ContentVersion(); 
+    content.Title='Header_Picture1'; 
+    content.PathOnClient='/' + content.Title + '.jpg'; 
+    Blob bodyBlob=Blob.valueOf('Unit Test ContentVersion Body'); 
+    content.VersionData=bodyBlob; 
+    //content.LinkedEntityId=sub.id;
+    content.origin = 'H';
+    insert content;
+    return content;
+}
+public Opportunity createOpportunity(Date closeDate,String accountId,String stage,String name){
+    Opportunity opp=new Opportunity();
+    opp.CloseDate=closeDate;
+    opp.AccountId=accountId;
+    opp.StageName=stage;
+    opp.Name=name;
+    insert opp;
+    return opp;
 }
 public Help_QA__c createHelp(String type,String category,String header,String body){
     Help_QA__c helpMock=new Help_QA__c();
