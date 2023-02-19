@@ -24,7 +24,7 @@ global class QuotesAPI {
         try{
          app = getReuest.params.get('App');
             if(app.equals('Internal')){
-                String packageServiceId = getReuest.params.get('recordID');
+                String packageServiceId = getReuest.params.get('bookingID');
                 return quoteServiceInstance.GetQuoteDetails(packageServiceId);
             }else{
                 requestResponse.statusCode=503;

@@ -11,12 +11,34 @@ global class VoucherAPI {
     global static VoucherMapper getVoucher(){
         RestRequest getRequest= RestContext.request;
         RestResponse requestResponse= RestContext.response;
-        String id= getRequest.params.get('recordID');
-        System.debug(id);
-        VoucherService voucherServiceInstance=VoucherService.getInstance();
+        String app;
+        try{
+        app = getRequest.params.get('App');
+            if(app.equals('Internal')){
+             String id= getRequest.params.get('recordID');
+             System.debug(id);
+             VoucherService voucherServiceInstance=VoucherService.getInstance();
+             return voucherServiceInstance.getVoucherById(id);
+            }else{
+             requestResponse.statusCode=503;
+             throw new GeneralException('Not allowed for External apps');}
 
-        return voucherServiceInstance.getVoucherById(id);
-
-    }
+        }  catch (System.NullPointerException e) {
+            requestResponse.statusCode=500;
+            requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
+            throw new GeneralException(e.getMessage());
+       }
     
+        catch (System.DmlException e) {
+            requestResponse.statusCode=500;
+            requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
+            throw new GeneralException(e.getMessage());
+        }
+    
+        catch(GeneralException e){
+            requestResponse.statusCode=400;
+            requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
+            throw new GeneralException(e.getMessage());
+        }
+    }  
 }
