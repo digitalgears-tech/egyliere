@@ -18,13 +18,13 @@ global static  List<ServiceMapper>  getAllService(){
         RestResponse requestResponse= RestContext.response;
     try{
         String app = getReuest.params.get('App');
-    
       if(app.equals('Internal')){
         String recordId = getReuest.params.get('recordID');
-        List<ServiceMapper> services=requestServiceInstance.GetReservationsRequest(recordId);
-       
-        return services;
-      }else{
+      if(getReuest.params.get('Status')!=null){
+           return requestServiceInstance.GetReservationsRequestByStatus(recordId,getReuest.params.get('Status'));
+        }else{ 
+            return requestServiceInstance.GetReservationsRequest(recordId);}
+        }else{
         throw new GeneralException(' not allowed for external apps');
       }
     }catch (System.NullPointerException e) {
@@ -43,8 +43,8 @@ global static  List<ServiceMapper>  getAllService(){
         requestResponse.statusCode=400;
         requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
         throw new GeneralException(e.getMessage());
-    }
-
+  }  
+    
     }
 
 }
