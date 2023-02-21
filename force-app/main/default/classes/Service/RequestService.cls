@@ -154,13 +154,12 @@ public class RequestService {
            statusList.add('Pricing');
            statusList.add('Proposal');
            statusList.add('Negotiation');
-           statusList.add('Ready for payment');
-           statusList.add('Paid');
          }else if(status.equals('history')){
           statusList.add('Closed Lost');
           statusList.add('Closed Won');
          }else if(status.equals('approved')){
           statusList.add('Ready for payment');
+          statusList.add('Paid');
          }
         Contact contact = contactRepositoryInstance.findByRecordId(recordId);
         Account account = accountRepositoryInstance.findByAccountId(contact.AccountId);

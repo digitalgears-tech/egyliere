@@ -15,7 +15,7 @@ global class VoucherAPI {
         try{
         app = getRequest.params.get('App');
             if(app.equals('Internal')){
-             String id= getRequest.params.get('recordID');
+             String id= getRequest.params.get('bookingID');
              System.debug(id);
              VoucherService voucherServiceInstance=VoucherService.getInstance();
              return voucherServiceInstance.getVoucherById(id);
