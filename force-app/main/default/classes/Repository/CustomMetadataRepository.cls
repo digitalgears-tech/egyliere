@@ -1,3 +1,10 @@
+/**
+ * @description       : 
+ * @author            : Mohamed Tarek
+ * @group             : 
+ * @last modified on  : 02-21-2023
+ * @last modified by  : Mohamed Tarek
+**/
 public class CustomMetadataRepository {
     private static CustomMetadataRepository instance = null;
 
@@ -22,5 +29,16 @@ public class CustomMetadataRepository {
         Tax_ID__c,
         Url__c 
         from Company_Info__mdt]; 
+    }
+    public Firebase_Credential__mdt getFirebaseCredentials(){
+      return [
+        SELECT
+        API_Key__c
+        FROM
+        Firebase_Credential__mdt
+        WHERE
+        Label='Credentials'
+
+      ];
     }
 }
