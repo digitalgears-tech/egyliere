@@ -18,7 +18,8 @@ public class OpportunityRepository {
           SELECT
           Id,
           Name,
-          StageName
+          StageName,
+          Amount
           FROM Opportunity
           WHERE Request__c = :requestID
           ];
@@ -29,19 +30,35 @@ public class OpportunityRepository {
         SELECT
         Id,
         Name,
-        StageName
+        StageName,
+        Amount
         FROM Opportunity
         WHERE Request__c = :requestID
         AND stageName = :stageName
         ];
   }
+  public List<Opportunity> findByCaseandStatusId(String requestID, List<String> stageName , String id){
+
+    return [
+      SELECT
+      Id,
+      Name,
+      StageName,
+      Amount
+      FROM Opportunity
+      WHERE Request__c = :requestID
+      AND stageName = :stageName
+      AND Id =:id
+      ];
+}
   public Opportunity findOpportunityById(String id){
 
     return [
       SELECT
       Id,
       Name,
-      StageName
+      StageName,
+      Amount
       FROM Opportunity
       WHERE Id = :id
       ];

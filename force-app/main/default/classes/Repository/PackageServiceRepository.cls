@@ -33,7 +33,9 @@ public class PackageServiceRepository {
           Opportunity_Line_Item_Details__c,
           PricebookEntry.Product2.Logo__c,
           Total_Points__c,
-          Opportunity.StageName		
+          Opportunity.StageName,
+          TotalPrice,
+          OpportunityId		
           FROM OpportunityLineItem
           WHERE OpportunityId = :opportunityId
           ];

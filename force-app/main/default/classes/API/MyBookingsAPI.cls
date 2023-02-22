@@ -24,6 +24,7 @@ global static  List<ServiceMapper>  getAllService(){
            return requestServiceInstance.GetReservationsRequestByStatus(recordId,getReuest.params.get('Status'));
         }else{ 
             return requestServiceInstance.GetReservationsRequest(recordId);}
+            
         }else{
         throw new GeneralException(' not allowed for external apps');
       }

@@ -3,15 +3,20 @@ public class PackageServiceMapper {
      public Decimal totalPoints; 
      public String status;
      public String id;
+     public Decimal totalPrice;
+     public String packageID;
+
 
     public PackageServiceMapper() {
 
     }
-    public PackageServiceMapper(String logo, Decimal totalPoints, String status,String id) {
-        this.logo = logo;
-        this.totalPoints = totalPoints;
-        this.status = status;
-        this.id = id;
+    public PackageServiceMapper(OpportunityLineItem packageservice) {
+        this.logo = packageservice.PricebookEntry.Product2.Logo__c;
+        this.totalPoints = packageservice.Total_Points__c;
+        this.status = packageservice.Opportunity.StageName;
+        this.id = packageservice.id;
+        this.totalPrice = packageservice.TotalPrice;
+        this.packageID =packageservice.OpportunityId;
     }
 
    

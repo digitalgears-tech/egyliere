@@ -134,7 +134,7 @@ public class RequestService {
          Map<String,PackageServiceMapper> packageServiceMap = new Map<String,PackageServiceMapper>();
 
          for(OpportunityLineItem o :packageServices){
-            packageServiceMap.put(o.Id, new PackageServiceMapper(o.PricebookEntry.Product2.Logo__c,o.Total_Points__c,o.Opportunity.StageName,o.Id));
+            packageServiceMap.put(o.Id, new PackageServiceMapper(o));
             packageServicesIDs.add(o.Id);
          }
          services.addAll(serviceRepositoryInstance.findServiceByOpportunityProduct(packageServicesIDs));
@@ -160,6 +160,15 @@ public class RequestService {
          }else if(status.equals('approved')){
           statusList.add('Ready for payment');
           statusList.add('Paid');
+         }else{
+            statusList.add('Qualification');
+            statusList.add('Pricing');
+            statusList.add('Proposal');
+            statusList.add('Negotiation');
+            statusList.add('Ready for payment');
+            statusList.add('Paid');
+            statusList.add('Closed Lost');
+            statusList.add('Closed Won');
          }
         Contact contact = contactRepositoryInstance.findByRecordId(recordId);
         Account account = accountRepositoryInstance.findByAccountId(contact.AccountId);
@@ -167,7 +176,8 @@ public class RequestService {
         List<Case> reservationRequests = requestRepositoryInstance.findReservationRequestByContact(contact , rt.Id);
         List<Opportunity> opportunities = new List<Opportunity>();
         for(Case r : reservationRequests){
-         opportunities.addAll(opportunityRepositoryInstance.findByCaseandStatus(r.Id,statusList));}
+         opportunities.addAll(opportunityRepositoryInstance.findByCaseandStatus(r.Id,statusList));
+      }
          List<OpportunityLineItem> packageServices = new List<OpportunityLineItem>();
          List<Opprtunity_Line_Item_Details__c> services = new List<Opprtunity_Line_Item_Details__c>();
 
@@ -181,7 +191,7 @@ public class RequestService {
          Map<String,PackageServiceMapper> packageServiceMap = new Map<String,PackageServiceMapper>();
 
          for(OpportunityLineItem o :packageServices){
-            packageServiceMap.put(o.Id, new PackageServiceMapper(o.PricebookEntry.Product2.Logo__c,o.Total_Points__c,o.Opportunity.StageName,o.Id));
+            packageServiceMap.put(o.Id, new PackageServiceMapper(o));
             packageServicesIDs.add(o.Id);
          }
          services.addAll(serviceRepositoryInstance.findServiceByOpportunityProduct(packageServicesIDs));

@@ -4,6 +4,10 @@ global class ServiceMapper {
     List<String> logo;
     Decimal totalPoints; 
     String status;
+    String confirmationNumber;
+    String packageID;
+    Decimal price;
+    Datetime startDate;
     String id;
 
 
@@ -22,6 +26,11 @@ global class ServiceMapper {
         serviceMapper.totalPoints = packageService.totalPoints;
         serviceMapper.status = packageService.status;
         serviceMapper.id = packageService.id;
+        serviceMapper.packageID = packageService.packageID;
+        serviceMapper.price = packageService.totalPrice;
+        serviceMapper.startDate = servicesObject.Arival_Date__c;
+        serviceMapper.confirmationNumber = servicesObject.Confirmation_Number__c;
+      
       return serviceMapper;
     }
 
