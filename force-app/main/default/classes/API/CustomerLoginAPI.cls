@@ -27,9 +27,8 @@ global  class CustomerLoginAPI {
       
       if(app.equals('Internal')|| app.equals('orange')){
         try{
-        String username = credentials.get('username');
-        String password = credentials.get('password');
-        responseMap=contactServiceInstance.checkContactPassword(username, password, app);
+
+        responseMap=contactServiceInstance.checkContactPassword(credentials, app);
         requestResponse.statusCode=200;
 
         }catch(Exception e){

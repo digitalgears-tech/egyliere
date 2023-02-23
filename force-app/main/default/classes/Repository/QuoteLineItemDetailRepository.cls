@@ -108,7 +108,7 @@ public class QuoteLineItemDetailRepository {
             List_Price__c,
             Meal_Plan__c,
             Bookings__c,
-            Opportunity_Line_Item_Details__c,
+            Opportunity_Line_Item_Details__r.Category__c,
             Preferences__c,
             Quote__c,
             Name,
@@ -119,7 +119,8 @@ public class QuoteLineItemDetailRepository {
             Supplier__c,
             Transport_Type__c,
             Trip_type__c,
-            Venu__c
+            Venu__c,
+            Opportunity_Line_Item_Details__c
             FROM Quote_Line_Item_Detail__c
             WHERE Opportunity_Line_Item_Details__c =:opportunityLineItemDetails
         ];

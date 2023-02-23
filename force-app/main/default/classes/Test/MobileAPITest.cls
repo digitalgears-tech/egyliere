@@ -399,6 +399,71 @@ public class MobileAPITest {
   }
 
   @istest
+  static void TestgetQuoteApi() {
+    RestRequest req = new RestRequest(); 
+    RestResponse res = new RestResponse();
+    DataFactoryTest dataFactory = DataFactoryTest.getInstance();
+    Account account = dataFactory.CreateAccount('Test', '1');
+    Opportunity opportunityMock=dataFactory.createOpportunity(Date.today(), account.Id, 'Qualification','test'); 
+    Opprtunity_Line_Item_Details__c opportunityLineDetailMock=dataFactory.createOpprtunity_Line_Items_Details(null,null,null,null);
+    OpportunityLineItem opportunityLineItemMock=dataFactory.createOpprtunityLineItem(opportunityLineDetailMock.Id,opportunityMock.Id,3,10);
+    Quote quote= dataFactory.createQuote(opportunityMock,account,'test');
+    req.requestURI = '/QuotesAPI';  
+    req.httpMethod = 'GET';
+    req.params.put('bookingID', opportunityLineItemMock.Id);
+    req.params.put('App', 'Internal');
+    RestContext.request = req;
+    RestContext.response = res;
+    Test.startTest();
+    QuotesAPI.getQuotes();
+    Test.stopTest();
+  }
+
+  @istest
+  static void TestpostQuoteApi() {
+    RestRequest req = new RestRequest(); 
+    RestResponse res = new RestResponse();
+    DataFactoryTest dataFactory = DataFactoryTest.getInstance();
+    Account account = dataFactory.CreateAccount('Test', '1');
+    Opportunity opportunityMock=dataFactory.createOpportunity(Date.today(), account.Id, 'Qualification','test'); 
+    Opprtunity_Line_Item_Details__c opportunityLineDetailMock=dataFactory.createOpprtunity_Line_Items_Details(null,null,null,null);
+    OpportunityLineItem opportunityLineItemMock=dataFactory.createOpprtunityLineItem(opportunityLineDetailMock.Id,opportunityMock.Id,3,10);
+    Quote quote= dataFactory.createQuote(opportunityMock,account,'test');
+    req.requestURI = '/QuotesAPI';  
+    req.httpMethod = 'Post';
+    req.params.put('App', 'Internal');
+    String jsonString = '['+'{' +'"id":"'+quote.Id+'"'+'"status" :'+'"Accepted"'+'}]';
+    RestContext.request = req;
+    RestContext.response = res;
+    req.requestBody =blob.valueOf(jsonString);
+    Test.startTest();
+    QuotesAPI.updateQuotes();
+    Test.stopTest();
+  }
+
+  @istest
+  static void TestPackageApi() {
+    RestRequest req = new RestRequest(); 
+    RestResponse res = new RestResponse();
+    DataFactoryTest dataFactory = DataFactoryTest.getInstance();
+    Account account = dataFactory.CreateAccount('Test', '1');
+    Opportunity opportunityMock=dataFactory.createOpportunity(Date.today(), account.Id, 'Qualification','test'); 
+    Opprtunity_Line_Item_Details__c opportunityLineDetailMock=dataFactory.createOpprtunity_Line_Items_Details(null,null,null,null);
+    OpportunityLineItem opportunityLineItemMock=dataFactory.createOpprtunityLineItem(opportunityLineDetailMock.Id,opportunityMock.Id,3,10);
+    req.requestURI = '/PackageAPI';  
+    req.httpMethod = 'GET';
+    req.params.put('packageID', opportunityMock.Id);
+    req.params.put('App', 'Internal');
+    req.params.put('Status', 'Paid');
+    RestContext.request = req;
+    RestContext.response = res;
+    Test.startTest();
+    PackageAPI.getPayment();
+    PackageAPI.UpdatePayment();
+    Test.stopTest();
+  }
+
+  @istest
   static void TestHelpApi() {
     RestRequest req = new RestRequest(); 
     RestResponse res = new RestResponse();

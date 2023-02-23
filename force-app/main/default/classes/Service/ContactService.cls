@@ -26,13 +26,19 @@ public class ContactService {
       }
      
       
-    public Map<String,Object> checkContactPassword(String username, String password , String app) {
+    public Map<String,Object> checkContactPassword(Map<String, String> credentials, String app) {
 
       Map<String,Object> contactMap = new Map<String,Object>();
-     
+      String username = credentials.get('username');
+      String password = credentials.get('password');
+      String deviceToken= credentials.get('Device Token');
       Contact contact = contactRepositoryInstance.findByUsername(username);
       Account account = accountRepositoryInstance.findByAccountId(contact.AccountId);
       if(password.equals(contact.Password__c)) {
+        if(credentials.get('Device Token')!=null){
+          contact.Device_Token__c=credentials.get('Device Token');
+          update contact;
+        }
         contactMap.put('Status', 'Accepted');
         contactMap.put('First Name', contact.FirstName);
         contactMap.put('Last Name', contact.LastName);

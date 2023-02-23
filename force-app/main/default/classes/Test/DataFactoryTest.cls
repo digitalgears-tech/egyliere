@@ -166,6 +166,15 @@ public Opportunity createOpportunity(Date closeDate,String accountId,String stag
     insert opp;
     return opp;
 }
+
+public Quote createQuote(Opportunity opportunity,Account account,String name){
+    Quote quote=new Quote();
+    quote.OpportunityId=opportunity.Id;
+    //quote.AccountId=account.Id;
+    quote.Name=name;
+    insert quote;
+    return quote;
+}
 public Help_QA__c createHelp(String type,String category,String header,String body){
     Help_QA__c helpMock=new Help_QA__c();
     helpMock.Type__c=type;

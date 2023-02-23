@@ -16,7 +16,7 @@ global class NotificationAPI {
     {
         String app = getReuest.params.get('App');
       if(app.equals('Internal')){
-        String recordId = getReuest.params.get('recordId');
+        String recordId = getReuest.params.get('recordID');
         return notificationServiceInstance.mapObjectListToMapper(recordId);
       }else{
             requestResponse.statusCode=503;

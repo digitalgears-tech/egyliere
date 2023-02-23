@@ -1,5 +1,6 @@
 global class QuoteMapper {
 String id;
+String category;
 String status;
 String airline;
 String airline2;
@@ -44,7 +45,6 @@ String preferences;
 String name;
 Decimal room;
 Decimal salesPrice;
-String serviceName;
 String subType;
 String Supplier;
 String transportType;
@@ -57,6 +57,7 @@ public QuoteMapper() {
     public QuoteMapper quoteObjectToMapper(Quote_Line_Item_Detail__c quoteLineItemDetails, QuoteLineItem quoteLineItem){
         QuoteMapper mapper =new QuoteMapper();
         mapper.id = quoteLineItem.QuoteId;
+        mapper.category = quoteLineItemDetails.Opportunity_Line_Item_Details__r.Category__c;
         mapper.status = quoteLineItem.Quote.Status;
         mapper.Catalogue = quoteLineItemDetails.Catalogue__c;
         mapper.Supplier	= quoteLineItemDetails.Supplier__c;
@@ -106,7 +107,7 @@ public QuoteMapper() {
             mapper.destination = quoteLineItemDetails.Destination__c;			
             mapper.mealPlan	= quoteLineItemDetails.Meal_Plan__c;
 
-            if(mapper.subType.equals('Hotel')){
+            if(mapper.category.equals('Hotel')){
             mapper.hotel = quoteLineItemDetails.Hotel__c;	
             mapper.bedSize	= quoteLineItemDetails.Bed_size__c;		
             mapper.Bookings	= quoteLineItemDetails.Bookings__c;	
