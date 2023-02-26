@@ -31,12 +31,11 @@ public class ContactService {
       Map<String,Object> contactMap = new Map<String,Object>();
       String username = credentials.get('username');
       String password = credentials.get('password');
-      String deviceToken= credentials.get('Device Token');
       Contact contact = contactRepositoryInstance.findByUsername(username);
       Account account = accountRepositoryInstance.findByAccountId(contact.AccountId);
       if(password.equals(contact.Password__c)) {
-        if(credentials.get('Device Token')!=null){
-          contact.Device_Token__c=credentials.get('Device Token');
+        if(credentials.get('devicetoken')!=null){
+          contact.Device_Token__c=credentials.get('devicetoken');
           update contact;
         }
         contactMap.put('Status', 'Accepted');

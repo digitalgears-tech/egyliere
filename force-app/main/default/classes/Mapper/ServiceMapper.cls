@@ -8,6 +8,7 @@ global class ServiceMapper {
     String packageID;
     Decimal price;
     Datetime startDate;
+    String category;
     String id;
 
 
@@ -20,6 +21,7 @@ global class ServiceMapper {
         
         ServiceMapper serviceMapper = new ServiceMapper();
         ImageListMapper ImageListMapperInstance = ImageListMapper.getInstance();
+        serviceMapper.category = servicesObject.Sub_Type__c;
         serviceMapper.serviceName = servicesObject.Name;
         serviceMapper.destination = servicesObject.Destination__c;
         ServiceMapper.logo = ImageListMapperInstance.ConvertToImageList(packageService.logo);

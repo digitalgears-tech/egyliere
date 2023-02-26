@@ -45,7 +45,7 @@ global class PackageAPI {
        try{
        String app = getReuest.params.get('App');
        if(app.equals('Internal')){
-           if( getReuest.params.get('packageID')!=null && getReuest.params.get('Status').equals('Success')){
+           if( getReuest.params.get('packageID')!=null && getReuest.params.get('Status').equals('Paid')){
            opportunityServiceInstance.updatePaidOpportunity(getReuest.params.get('packageID'));       
            requestResponse.responseBody=Blob.valueOf('Updated' );
            requestResponse.statusCode=200;}

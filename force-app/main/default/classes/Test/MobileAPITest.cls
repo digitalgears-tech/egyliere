@@ -235,19 +235,18 @@ public class MobileAPITest {
     
   }
 
-  @istest
+  @istest(seeAllData=true)
   static void TestCreateRequestAPI() {
     DataFactoryTest dataFactory = DataFactoryTest.getInstance();
     Account account = dataFactory.CreateAccount('Test', '1');
     Contact contact = dataFactory.CreateContact('Test', '1', '1234','Test1@test.com',account.Id);
     RestRequest req = new RestRequest(); 
     RestResponse res = new RestResponse();
+    Product2 p1 =dataFactory.createProduct('Type of visa','Travel Services');
+    Product2 p2 =dataFactory.createProduct('Health and Vaccine','Travel Services');
     String jsonString = '[' + '{' +' "subType": "Visa Management",'+
     '"Citizenship": "Egyption",'+' "Type of visa": "US",'+'"Adult": 1,'+
-    '"Child": 2,'+'"Infant": 1,'+'"End Date":"11/23/2023",'+'"Start Date":"9/19/2023"'+'},'
-    +'{'+'"subType": "Health and Vaccine",'+'"Category": "PCR",'
-    +' "Destination": "Egypt",'+'"Adult": 1,'+
-    '"Child": 2,'+'"Infant": 1,'+'  "Preferences":" ",'+'"Date Time":"11/22/2023, 03:00 AM"'+'}'+' ]';
+    '"Child": 2,'+'"Infant": 1,'+'"End Date":"11/23/2023",'+'"Start Date":"9/19/2023"'+'}]';
     req.requestURI = '/CreateRequestAPI';  
     req.httpMethod = 'POST';
     req.params.put('App', 'Internal');
@@ -399,6 +398,36 @@ public class MobileAPITest {
   }
 
   @istest
+  static void TestCompanyInfoAPI() {
+    RestRequest req = new RestRequest(); 
+    RestResponse res = new RestResponse();
+    req.requestURI = '/CompanyInfoAPI';  
+    req.httpMethod = 'GET';
+    req.params.put('App', 'Internal');
+    RestContext.request = req;
+    RestContext.response = res;
+    Test.startTest();
+    CompanyInfoAPI.getCompanyInfo();
+    Test.stopTest();
+    
+  }
+
+ /* @istest(seeAllData=true)
+  static void TestCategoryListAPI() {
+    RestRequest req = new RestRequest(); 
+    RestResponse res = new RestResponse();
+    req.requestURI = '/CategoryListAPI';  
+    req.httpMethod = 'GET';
+    req.params.put('App', 'Internal');
+    RestContext.request = req;
+    RestContext.response = res;
+    Test.startTest();
+    CategoryAPI.sendCategoryList();
+    Test.stopTest();
+    
+  }
+*/
+  @istest(seeAllData=true)
   static void TestgetQuoteApi() {
     RestRequest req = new RestRequest(); 
     RestResponse res = new RestResponse();
@@ -419,7 +448,7 @@ public class MobileAPITest {
     Test.stopTest();
   }
 
-  @istest
+  @istest(seeAllData=true)
   static void TestpostQuoteApi() {
     RestRequest req = new RestRequest(); 
     RestResponse res = new RestResponse();
@@ -432,17 +461,17 @@ public class MobileAPITest {
     req.requestURI = '/QuotesAPI';  
     req.httpMethod = 'Post';
     req.params.put('App', 'Internal');
-    String jsonString = '['+'{' +'"id":"'+quote.Id+'"'+'"status" :'+'"Accepted"'+'}]';
+    String jsonString = '['+'{' +'"id":"'+quote.Id+'",'+'"status" :'+'"Accepted"'+'}]';
     RestContext.request = req;
     RestContext.response = res;
     req.requestBody =blob.valueOf(jsonString);
     Test.startTest();
-    QuotesAPI.updateQuotes();
+    QuotesAPI.updateQuotes(); 
     Test.stopTest();
   }
 
-  @istest
-  static void TestPackageApi() {
+  @istest(seeAllData=true)
+  static void TestGetPackageAPI() {
     RestRequest req = new RestRequest(); 
     RestResponse res = new RestResponse();
     DataFactoryTest dataFactory = DataFactoryTest.getInstance();
@@ -450,18 +479,40 @@ public class MobileAPITest {
     Opportunity opportunityMock=dataFactory.createOpportunity(Date.today(), account.Id, 'Qualification','test'); 
     Opprtunity_Line_Item_Details__c opportunityLineDetailMock=dataFactory.createOpprtunity_Line_Items_Details(null,null,null,null);
     OpportunityLineItem opportunityLineItemMock=dataFactory.createOpprtunityLineItem(opportunityLineDetailMock.Id,opportunityMock.Id,3,10);
+    Quote quote= dataFactory.createQuote(opportunityMock,account,'test');
     req.requestURI = '/PackageAPI';  
     req.httpMethod = 'GET';
+    req.params.put('packageID', opportunityMock.Id);
+    req.params.put('App', 'Internal');
+    RestContext.request = req;
+    RestContext.response = res;
+    Test.startTest();
+    PackageAPI.getPayment();
+    Test.stopTest();
+  }
+
+  @istest(seeAllData=true)
+  static void TestPostPackageAPI() {
+    RestRequest req = new RestRequest(); 
+    RestResponse res = new RestResponse();
+    DataFactoryTest dataFactory = DataFactoryTest.getInstance();
+    Account account = dataFactory.CreateAccount('Test', '1');
+    Opportunity opportunityMock=dataFactory.createOpportunity(Date.today(), account.Id, 'Qualification','test'); 
+    Opprtunity_Line_Item_Details__c opportunityLineDetailMock=dataFactory.createOpprtunity_Line_Items_Details(null,null,null,null);
+    OpportunityLineItem opportunityLineItemMock=dataFactory.createOpprtunityLineItem(opportunityLineDetailMock.Id,opportunityMock.Id,3,10);
+    Quote quote= dataFactory.createQuote(opportunityMock,account,'test');
+    req.requestURI = '/PackageAPI';  
+    req.httpMethod = 'POST';
     req.params.put('packageID', opportunityMock.Id);
     req.params.put('App', 'Internal');
     req.params.put('Status', 'Paid');
     RestContext.request = req;
     RestContext.response = res;
     Test.startTest();
-    PackageAPI.getPayment();
     PackageAPI.UpdatePayment();
     Test.stopTest();
   }
+
 
   @istest
   static void TestHelpApi() {

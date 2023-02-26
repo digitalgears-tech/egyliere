@@ -130,7 +130,7 @@ private static ServiceRepository instance = null;
               Trip_type__c,
               Type__c,
               Type_of_visa__c,
-              Venu__c
+              Venu__c	
               FROM Opprtunity_Line_Item_Details__c
               WHERE Opportunity_Product__c = :opportunityProductId	
               ];

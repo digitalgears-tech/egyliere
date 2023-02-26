@@ -112,6 +112,14 @@ public Opprtunity_Line_Item_Details__c createOpprtunity_Line_Items_Details(Strin
     insert opprtunityLineItemDetailsMock;
     return opprtunityLineItemDetailsMock;
 }
+public Product2 createProduct(String name,String family){
+    Product2 p = new product2(name=name,Family=family,IsActive=true);
+    insert p;
+    //define the standart price for the product
+    Pricebook2 stdPb = [select Id from Pricebook2 where isStandard=true limit 1];
+    insert new PricebookEntry(pricebook2id = stdPb.id, product2id = p.id,unitprice=1.0, isActive=true);
+    return p;
+}
 public OpportunityLineItem createOpprtunityLineItem(String opportunityLineItemDetail,String opportunity,Integer quantity,Integer totalPrice){
     Product2 p = new product2(name='x');
     insert p;
@@ -170,7 +178,7 @@ public Opportunity createOpportunity(Date closeDate,String accountId,String stag
 public Quote createQuote(Opportunity opportunity,Account account,String name){
     Quote quote=new Quote();
     quote.OpportunityId=opportunity.Id;
-    //quote.AccountId=account.Id;
+   // quote.AccountId=account.Id;
     quote.Name=name;
     insert quote;
     return quote;
