@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Mohamed Tarek
  * @group             : 
- * @last modified on  : 02-16-2023
+ * @last modified on  : 02-26-2023
  * @last modified by  : Mohamed Tarek
 **/
 @istest
@@ -546,7 +546,9 @@ public class MobileAPITest {
 
     req.requestURI = '/VoucherAPI';  
     req.httpMethod = 'GET';
-    req.params.put('recordID', opportunityLineItemMock.Id);
+    req.params.put('bookingID', opportunityLineItemMock.Id);
+    req.params.put('App', 'Internal');
+
     RestContext.request = req;
     RestContext.response = res;
     Test.startTest();
@@ -554,4 +556,26 @@ public class MobileAPITest {
     Test.stopTest();
     
   }
+
+  @istest
+  static void TestNotifcationGet() {
+    RestRequest req = new RestRequest(); 
+    RestResponse res = new RestResponse();
+    DataFactoryTest dataFactory = DataFactoryTest.getInstance();
+    Account testingAccount=dataFactory.CreateAccount('Testing', 'Account');
+    Contact testingContact=dataFactory.CreateContact('testing', '2', '123', 'test@gmail.com', testingAccount.Id);
+    Notification__c notification=dataFactory.createNotification(testingContact.Id,'test','test');
+    req.params.put('recordID', testingContact.Id);
+    req.params.put('App', 'Internal');
+    req.httpMethod = 'GET';
+    RestContext.request = req;
+    RestContext.response = res;
+    Test.startTest();
+    NotificationApi.getNotifications();
+    Test.stopTest();
+    
+  }
+
+
+
 }
