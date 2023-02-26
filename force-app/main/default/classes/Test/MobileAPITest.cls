@@ -578,4 +578,37 @@ public class MobileAPITest {
 
 
 
+
+  @istest
+  static void ReviewAPITest(){
+    RestRequest request = new RestRequest();
+    RestResponse response = new RestResponse();
+    DataFactoryTest dataFactory = DataFactoryTest.getInstance();
+    Account account = dataFactory.CreateAccount('Test', '1');
+    Contact contact = dataFactory.CreateContact('Test', '1', '1234', 'Test1@Test.com', account.Id);
+
+    Map<String,Object> body = new Map<String,Object>();
+    body.put('comment', 'Test Review');
+    body.put('ratingValue', '5');
+    body.put('contactId', contact.Id);
+
+    
+    request.requestURI = '/ReviewAPI';
+    request.httpMethod = 'POST';
+    request.params.put('App', 'Internal');
+    request.requestBody = Blob.valueOf(JSON.serialize(body)); 
+    RestContext.request = request;
+    RestContext.response = response;
+    Test.startTest();
+    ReviewAPI.SetReview();
+    Test.stopTest();
+
+    ReviewRepository reviewRepositoryInstance = ReviewRepository.getInstance();
+    List<Review__c> reviews = reviewRepositoryInstance.GetAllReviews();
+
+    System.assert(!reviews.isEmpty());
+    System.assert(reviews.get(0).Comment__c.equals('Test Review'));
+    System.assert(reviews.get(0).Rating_Value__c.equals('5'));
+    System.assert(reviews.get(0).Contact__c == contact.Id);
+  }
 }
