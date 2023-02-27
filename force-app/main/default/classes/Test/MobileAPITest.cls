@@ -192,7 +192,7 @@ public class MobileAPITest {
     
   }
 
-  @istest
+  @istest(seeAllData=true)
   static void TestSubscribeAPI() {
     DataFactoryTest dataFactory = DataFactoryTest.getInstance();
     Account account = dataFactory.CreateAccount('Test', '1');

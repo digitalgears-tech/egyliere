@@ -92,6 +92,14 @@ public Plan__c CreatePlan(String planName, Integer points){
    insert plan;
    return plan;
 } 
+public RecordType CreateRecordtype(String name, String object){
+    RecordType	rt = new RecordType( 
+       Name=name,
+       SobjectType=object);
+   insert rt;
+   return rt;
+} 
+
 public Case CreateCase(String contactId	, String accountId){
     Id recordTypeId = Schema.SObjectType.Catalogue__c.getRecordTypeInfosByName().get('Reservation').getRecordTypeId();
     Case caseTest = new Case( 
