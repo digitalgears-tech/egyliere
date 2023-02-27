@@ -92,11 +92,10 @@ public Plan__c CreatePlan(String planName, Integer points){
    insert plan;
    return plan;
 } 
-public RecordType CreateRecordtype(String name, String object){
+public RecordType CreateRecordtype(String name, String o){
     RecordType	rt = new RecordType( 
        Name=name,
-       SobjectType=object);
-   insert rt;
+       SobjectType=o);
    return rt;
 } 
 
