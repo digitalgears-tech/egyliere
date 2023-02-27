@@ -2,6 +2,7 @@ public with sharing class ReviewMapper {
     public String comment;
     public String ratingValue;
     public String contact;
+    public String pack;
 
     public ReviewMapper() {
     }
@@ -11,6 +12,7 @@ public with sharing class ReviewMapper {
         reviewMap.comment = reviewObject.Comment__c;
         reviewMap.ratingValue = reviewObject.Rating_Value__c;
         reviewMap.contact = reviewObject.Contact__c;
+        reviewMap.pack = reviewObject.Package__c;
 
         return reviewMap;
     }

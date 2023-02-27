@@ -11,7 +11,7 @@ public with sharing class ReviewRepository {
 
     public List<Review__c> GetAllReviews(){
         return [
-            SELECT Comment__c, Rating_Value__c, Contact__c
+            SELECT Comment__c, Rating_Value__c, Contact__c, Package__c
             FROM Review__C
         ];
     }
