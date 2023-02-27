@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Mohamed Tarek
  * @group             : 
- * @last modified on  : 02-16-2023
+ * @last modified on  : 02-26-2023
  * @last modified by  : Mohamed Tarek
 **/
 @isTest
@@ -92,6 +92,13 @@ public Plan__c CreatePlan(String planName, Integer points){
    insert plan;
    return plan;
 } 
+public RecordType CreateRecordtype(String name, String o){
+    RecordType	rt = new RecordType( 
+       Name=name,
+       SobjectType=o);
+   return rt;
+} 
+
 public Case CreateCase(String contactId	, String accountId){
     Id recordTypeId = Schema.SObjectType.Catalogue__c.getRecordTypeInfosByName().get('Reservation').getRecordTypeId();
     Case caseTest = new Case( 
@@ -191,6 +198,14 @@ public Help_QA__c createHelp(String type,String category,String header,String bo
     helpMock.Body__c=body;
     insert helpMock;
     return helpMock;
+}
+public Notification__c createNotification(String contactId,String title,String body){
+    Notification__c notificationMock=new Notification__c();
+    notificationMock.contact__c=contactId;
+    notificationMock.title__c=title;
+    notificationMock.body__c=body;
+    insert notificationMock;
+    return notificationMock;
 }
 
  

@@ -16,8 +16,6 @@ global class CatalogueAPI {
   global static List<CatalogueMapper> getCatalogueList() {
     RestRequest getReuest = RestContext.request;
     RestResponse requestResponse= RestContext.response;
-    String app = getReuest.params.get('App');
-    String type = getReuest.params.get('Type');
     Integer pageSize;
     Integer pageNumber;
     try{
@@ -29,16 +27,23 @@ global class CatalogueAPI {
     }
 
     try{
+      String app = getReuest.params.get('App');
+      String type = getReuest.params.get('Type');
+      String subtype = getReuest.params.get('subType');
+
     if (app.equals('Internal')) {
-      if (type == null) {
-        List<CatalogueMapper> catalogueList= CatalogueServiceInstance.GetCatalogueList(pageSize, pageNumber);
-       
-        return catalogueList;
-      } else {
+      if (subtype != null) {
+        List<CatalogueMapper> catalogueListByType= CatalogueServiceInstance.GetCatalogueListByType(subtype,pageSize, pageNumber);
+        return catalogueListByType;
+
+      }else if (type != null) {
         List<CatalogueMapper> catalogueListByRecordType= CatalogueServiceInstance.GetCatalogueListByRecordType(type,pageSize, pageNumber);
-        
         return catalogueListByRecordType;
-      }
+
+      } else {
+        List<CatalogueMapper> catalogueList= CatalogueServiceInstance.GetCatalogueList(pageSize, pageNumber); 
+        return catalogueList;
+             }
     }else{
         requestResponse.statusCode=503;
         throw new GeneralException('Not allowed for External apps');

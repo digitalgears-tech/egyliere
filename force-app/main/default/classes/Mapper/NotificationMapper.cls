@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Mohamed Tarek
  * @group             : 
- * @last modified on  : 02-22-2023
+ * @last modified on  : 02-26-2023
  * @last modified by  : Mohamed Tarek
 **/
 global class NotificationMapper {
@@ -16,7 +16,9 @@ global class NotificationMapper {
         NotificationMapper mapper=new NotificationMapper();
         mapper.title=notification.Title__c;
         mapper.body=notification.Body__c;
+        if(mapper.data!=null){
         mapper.data=(Map<String,String>) JSON.deserialize(notification.Data__c, Map<String,String>.class); 
+        }
         return mapper;
     }
     public List<NotificationMapper> notificationsListToObject(List<Notification__c> notificationList){

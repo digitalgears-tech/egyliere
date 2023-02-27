@@ -26,7 +26,11 @@ public class CatalogueService {
         return CatalogueMapper.catalogueObjectListToMapperList(catalogueObjectList);
  
        }
-
+       public List<CatalogueMapper> GetCatalogueListByType(String subType, Integer pageSize,Integer pageNumber) {
+        List<Catalogue__c> catalogueObjectList = CatalogueRepositoryInstance.FindAllCatalogueByType(subType,pageSize, pageNumber);
+        return CatalogueMapper.catalogueObjectListToMapperList(catalogueObjectList);
+ 
+       }
        public List<CatalogueMapper> GetCatalogueListByRecordType(String type,Integer pageSize,Integer pageNumber) {
         RecordType rt =[
           SELECT
