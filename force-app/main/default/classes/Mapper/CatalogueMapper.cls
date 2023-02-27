@@ -18,6 +18,8 @@ global class CatalogueMapper {
     public String recommendations;
     public Map<String,List<String>> photoCatalogues;
     public Map<String,String> linksCatalogues;
+    public List<VideoMapper> videoCatalogues;
+
    
 
 
@@ -51,8 +53,17 @@ global class CatalogueMapper {
         catalogueMap.recommendations = catalogueObject.Recommendations__c;
         catalogueMap.photoCatalogues = photoCataloguesMap(catalogueObject);
         catalogueMap.linksCatalogues = linkCataloguesMap(catalogueObject);
-
+        catalogueMap.videoCatalogues = videoCataloguesMap(catalogueObject);
         return catalogueMap;
+    }
+
+    public  List<VideoMapper> videoCataloguesMap(Catalogue__c catalogueObject){
+        VideoMapper videoMapper = new VideoMapper(); 
+
+        CataloguePhotosRepository cataloguePhotosRepositoryInstance = CataloguePhotosRepository.getInstance();
+        RecordType rt =[select Id from RecordType where Name = 'Video' and SobjectType = 'Catalogue_Photos__c'];
+        List<Catalogue_Photos__c> videoCatalogues = cataloguePhotosRepositoryInstance.FindPhotoByCatalogueandRecordType(catalogueObject.Id, rt);
+        return videoMapper.convertVideos(videoCatalogues);
     }
     
     public Map<String,List<String>> photoCataloguesMap(Catalogue__c catalogueObject){

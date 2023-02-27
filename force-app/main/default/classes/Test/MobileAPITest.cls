@@ -192,8 +192,9 @@ public class MobileAPITest {
     
   }
 
-  @istest
-  static void TestSubscribeAPI() {
+
+  @istest(seeAllData=true)
+    static void TestSubscribeAPI() {
     DataFactoryTest dataFactory = DataFactoryTest.getInstance();
     Account account = dataFactory.CreateAccount('Test', '1');
     Contact contact = dataFactory.CreateContact('Test', '1', '1234','Test1@test.com',account.Id);

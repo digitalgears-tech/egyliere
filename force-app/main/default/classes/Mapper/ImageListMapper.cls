@@ -30,6 +30,7 @@ public class ImageListMapper {
             // get the value of the src attribute
             // the leading space is significant to avoid other attributes like data-cke-saved-src
             String imageURL = imageTag.substringBetween( ' src="', '"' );
+            imageURL.replace('&amp;', '&');
              imageList.add(imageURL);
         }
     }
