@@ -39,6 +39,13 @@ public class ExternalMembershipsService {
         insert externalMemberships;
       }
 
+      public void updateContactMembership(String contactId , List<Object> membershipsList){
+        
+        List<MemberShip__c> externalMemberships = externalMembershipsMapperInstance.MembershipAPIListToObject(contactId, membershipsList);
+       
+        update externalMemberships;
+      }
+
       public  void deleteContactMembership(List<Object> membershipsList){
         
         List <String> id = new List<String>();

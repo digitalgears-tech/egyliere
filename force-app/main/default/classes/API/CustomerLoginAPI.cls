@@ -19,35 +19,38 @@ global  class CustomerLoginAPI {
 
 
       Map<String, Object> responseMap = new  Map<String, Object>();
-     try{
+    // try{
         RestRequest getReuest= RestContext.request;
 
         String app = getReuest.params.get('App');
      
       
       if(app.equals('Internal')|| app.equals('orange')){
-        try{
+       // try{
+         if(getReuest.params.get('Provider')!=null){
+          responseMap=contactServiceInstance.checkGoogleContact(credentials);
 
+         }else{
         responseMap=contactServiceInstance.checkContactPassword(credentials, app);
-        requestResponse.statusCode=200;
+        requestResponse.statusCode=200;}
 
-        }catch(Exception e){
+        /*  }  catch(Exception e){
         RestContext.response.statusCode = 400;
         responseMap.put('Status', 'error');
         responseMap.put('Message', 'Invalid username or password');
         System.debug(e.getMessage());
-        }
-      }
-    }catch(Exception e){
+         } */ 
+      //}
+        /*  }catch(Exception e){
         RestContext.response.statusCode = 400;
         responseMap.put('Status', 'error');
         responseMap.put('Message', 'Please enter your application name');
         System.debug(e.getMessage());
-
+ */ 
       }
       requestResponse.responseBody=Blob.valueOf(Json.serialize(responseMap));
 
      
     }
-
+  
 }

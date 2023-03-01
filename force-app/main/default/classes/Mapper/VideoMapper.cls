@@ -9,9 +9,9 @@ global class VideoMapper {
     public VideoMapper convertVideo(Catalogue_Photos__c videoCatalogue){
         ImageListMapper ImageListMapperInstance = ImageListMapper.getInstance(); 
         VideoMapper videoMapper = new VideoMapper();
-        this.name = videoCatalogue.Name;
-        this.thumbnailImage = ImageListMapperInstance.ConvertToImageList(videoCatalogue.thumbnail_Image__c).get(0);
-        this.videoLink = videoCatalogue.Video_Link__c;
+        videoMapper.name = videoCatalogue.Name;
+        videoMapper.thumbnailImage = ImageListMapperInstance.ConvertToImageList(videoCatalogue.thumbnail_Image__c).get(0);
+        videoMapper.videoLink = videoCatalogue.Video_Link__c;
         return videoMapper;
     }
     public List<VideoMapper> convertVideos(List<Catalogue_Photos__c> videoCatalogues){
