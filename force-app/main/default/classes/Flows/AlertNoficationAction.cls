@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Mohamed Tarek
  * @group             : 
- * @last modified on  : 02-23-2023
+ * @last modified on  : 03-02-2023
  * @last modified by  : Mohamed Tarek
 **/
 global class AlertNoficationAction {
@@ -12,13 +12,14 @@ global class AlertNoficationAction {
         NotificationAlertInput inputDetails=input[0];
         String title=inputDetails.title; 
         String body=inputDetails.body;
-        Map<String,String> data=new Map<String,String>{'recordId'=>inputDetails.recordId,'notificationType'=>inputDetails.type};
+        Map<String,String> data=new Map<String,String>{'recordId'=>inputDetails.recordId,'notificationType'=>inputDetails.type,'icon'=>inputDetails.icon,'detailTitle'=>inputDetails.detailTitle};
         FirebaseService.pushFireBaseNotification(inputDetails.deviceToken, body, title, data);
         Notification__c newNotification=new Notification__c();
         newNotification.Contact__c=inputDetails.contactId;
         newNotification.Title__c=title;
         newNotification.Body__c=body;
         newNotification.Data__c=JSON.serialize(data);
+
         insert newNotification;
     } 
 
@@ -35,6 +36,11 @@ global class AlertNoficationAction {
         public String type;
         @InvocableVariable
         public String recordId;
+        @InvocableVariable 
+        public String icon;
+        @InvocableVariable
+        public String detailTitle;
+
     }
    
 }

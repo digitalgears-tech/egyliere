@@ -2,14 +2,14 @@
  * @description       : 
  * @author            : Mohamed Tarek
  * @group             : 
- * @last modified on  : 02-26-2023
+ * @last modified on  : 03-01-2023
  * @last modified by  : Mohamed Tarek
 **/
 @IsTest
 public  class ActionTests {
 
     @istest
-    static void TestPostPackageAPI() {
+    static void TestSendNotification() {
         DataFactoryTest dataFactoryTestInstance=DataFactoryTest.getInstance();
         Account testingAccount=dataFactoryTestInstance.CreateAccount('Testing', 'Account');
         Contact testingContact=dataFactoryTestInstance.CreateContact('testing', '2', '123', 'test@gmail.com', testingAccount.Id);
@@ -21,6 +21,7 @@ public  class ActionTests {
         alert.body='testing notification';
         alert.type='Alert';
         alert.recordId='testingid';
+
         Map<String, String> headers = new Map<String, String>();
         headers.put('Content-Type', 'application/json');
     
