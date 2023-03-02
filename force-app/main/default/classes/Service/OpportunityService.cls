@@ -3,11 +3,15 @@ public class OpportunityService {
     public OpportunityRepository opportunityRepositoryInstance;
     public PackageServiceRepository packageServiceRepositoryInstance;
     public ServiceRepository serviceRepositoryInstance;
+    public RequestRepository requestRepositoryInstance;
+    public  ContactRepository contactRepositoryInstance;
     public ServiceMapper serviceMapper = new ServiceMapper();
     public PackageMapper packageMapper = new PackageMapper();
 
 
     public OpportunityService() {
+        requestRepositoryInstance = RequestRepository.getInstance();
+        contactRepositoryInstance = ContactRepository.getInstance();
         opportunityRepositoryInstance = OpportunityRepository.getInstance();
         serviceRepositoryInstance = ServiceRepository.getInstance();  
         packageServiceRepositoryInstance = PackageServiceRepository.getInstance();
@@ -53,6 +57,22 @@ public class OpportunityService {
 
       }
 
+      public Integer getCountOpportunity(String recordId){
+        Contact contact = contactRepositoryInstance.findByRecordId(recordId);
+        RecordType rt =[select Id from RecordType where Name = 'Reservation' and SobjectType = 'Case'];
+        List<Case> reservationRequests = requestRepositoryInstance.findReservationRequestByContact(contact , rt.Id);
+        List<Opportunity> opportunities = new List<Opportunity>();
+        for(Case r : reservationRequests){
+         opportunities.addAll(opportunityRepositoryInstance.findByCase(r.Id));
+      }
+      List<OpportunityLineItem> packageServices = new List<OpportunityLineItem>();
+      List<String> opportunitiesIDs = new List<String>();
+      for(Opportunity o : opportunities){
+         opportunitiesIDs.add(o.Id);
+      }
+      packageServices.addAll(packageServiceRepositoryInstance.findAllPackageServiceByOpportunity(opportunitiesIDs));
+         return packageServices.size();
+      }
 
 
 }

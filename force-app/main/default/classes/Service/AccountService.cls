@@ -32,5 +32,16 @@ public class AccountService {
           insert accounts;
           return accounts.get(0);
       }
+      public Account CreateGoogleRegisterAccount(Map<String, String> accountsmap){
+        RecordType rt = [select Id from RecordType where Name = 'Individual' and SobjectType = 'Account'];
+        Account account = new Account(
+           Name = accountsmap.get('First Name') + '  ' + accountsmap.get('Last Name'),
+           RecordType = rt,
+           Guest__c= true,
+           Type= 'Prospect');
+
+           insert account;
+          return account;
+      }
 
 }

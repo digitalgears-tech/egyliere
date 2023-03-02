@@ -16,6 +16,7 @@ global class CatalogueMapper {
     public String cancellationPolicy;
     public String benefits;
     public String recommendations;
+    public String operatingHours;
     public Map<String,List<String>> photoCatalogues;
     public Map<String,String> linksCatalogues;
     public List<VideoMapper> videoCatalogues;
@@ -49,6 +50,7 @@ global class CatalogueMapper {
         catalogueMap.changePolicy = catalogueObject.Change_Policy__c;
         catalogueMap.cancellationPolicy = catalogueObject.Cancellation_Policy__c;
         catalogueMap.benefits = catalogueObject.Benefits__c;
+        catalogueMap.operatingHours = catalogueObject.Operating_Hours__c;
         catalogueMap.category  = recordTypeRepositoryInstance.getRecordTypebyId(catalogueObject.RecordTypeId).Name;
         catalogueMap.recommendations = catalogueObject.Recommendations__c;
         catalogueMap.photoCatalogues = photoCataloguesMap(catalogueObject);

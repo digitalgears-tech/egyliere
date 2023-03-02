@@ -31,7 +31,8 @@ public class CatalogueRepository {
           Cancellation_Policy__c,
           Benefits__c,
           Recommendations__c,
-          RecordTypeId	
+          RecordTypeId,
+          Operating_Hours__c
           FROM Catalogue__c
           ORDER BY createddate 
           DESC LIMIT :pageSize OFFSET :offset
@@ -57,7 +58,8 @@ public class CatalogueRepository {
           Cancellation_Policy__c,
           Benefits__c,
           Recommendations__c,
-          RecordTypeId	
+          RecordTypeId,
+          Operating_Hours__c
           FROM Catalogue__c
           WHERE Type__c = :type
          // ORDER BY createddate 
@@ -84,7 +86,8 @@ public class CatalogueRepository {
           Cancellation_Policy__c,
           Benefits__c,
           Recommendations__c,
-          RecordTypeId	
+          RecordTypeId,
+          Operating_Hours__c
           FROM Catalogue__c
           WHERE City_Guide__c =: cityGuideId
          // ORDER BY createddate 
@@ -109,7 +112,8 @@ public class CatalogueRepository {
           Cancellation_Policy__c,
           Benefits__c,
           Recommendations__c,
-          RecordTypeId	
+          RecordTypeId,
+          Operating_Hours__c
           FROM Catalogue__c
           WHERE City_Guide__c =: cityGuideId
           AND RecordTypeId =: recordTypeId
@@ -136,7 +140,8 @@ public class CatalogueRepository {
           Cancellation_Policy__c,
           Benefits__c,
           Recommendations__c,
-          RecordTypeId	
+          RecordTypeId,
+          Operating_Hours__c
           FROM Catalogue__c
           WHERE RecordTypeId = :recordTypeId
           ORDER BY createddate 
@@ -163,7 +168,8 @@ public class CatalogueRepository {
           Cancellation_Policy__c,
           Benefits__c,
           Recommendations__c,
-          RecordTypeId	
+          RecordTypeId,
+          Operating_Hours__c	
           FROM Catalogue__c
           WHERE Type__c = :type
           ORDER BY createddate 

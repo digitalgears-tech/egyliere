@@ -11,10 +11,12 @@ public class ContactService {
     public AccountRepository accountRepositoryInstance;
     public PlansRepository  plansRepositoryInstance;
     public ContactCityGuideRepository contactCityGuideRepositoryInstance;
+    public AccountService accountServiceInstance ;
     public ContactService() {
         contactRepositoryInstance = ContactRepository.getInstance();
         accountRepositoryInstance = AccountRepository.getInstance();
         plansRepositoryInstance = PlansRepository.getInstance();
+        accountServiceInstance = AccountService.getInstance();
         contactCityGuideRepositoryInstance = ContactCityGuideRepository.getInstance();
     }
 
@@ -25,6 +27,51 @@ public class ContactService {
         return instance;
       }
      
+      public Map<String,Object> checkGoogleContact(Map<String, String> credentials) {
+        Map<String,Object> contactMap = new Map<String,Object>();
+        String username = credentials.get('username');
+        String firstname = credentials.get('First Name');
+        String lastname = credentials.get('Last Name');
+        Contact contact;
+        Account account;
+        try{
+          contact = contactRepositoryInstance.findByUsername(username);
+          account = accountRepositoryInstance.findByAccountId(contact.AccountId);
+        }catch(Exception e){
+           account = accountServiceInstance.CreateGoogleRegisterAccount(credentials);
+           contact = new Contact( FirstName=firstname,
+           LastName=lastname,
+           Email=username,
+           UserName__c=username,
+           AccountId=account.Id);
+           insert contact;
+        }
+
+        if(credentials.get('devicetoken')!=null){
+          contact.Device_Token__c=credentials.get('devicetoken');
+          update contact;
+        }
+        contactMap.put('Status', 'Accepted');
+        contactMap.put('First Name', contact.FirstName);
+        contactMap.put('Last Name', contact.LastName);
+        contactMap.put('Email', contact.Email);
+        contactMap.put('Phone', contact.Phone);
+        contactMap.put('ID', contact.Id);
+        contactMap.put('Account ID', account.Id);
+        if(!account.Guest__c){
+          contactMap.put('Total Points', account.Balance__c +'');
+          contactMap.put('Consumed Points', account.Consumed__c+'');
+          contactMap.put('Total Hold', account.Total_Hold__c+'');}
+          contactMap.put('Guest', account.Guest__c+'');
+          If(Account.Guest__c){
+            List<Contact_City_Guide__c> contactCityGuide=contactCityGuideRepositoryInstance.FindAllCityGuidesbyContactAndActive(contact.Id);
+            ContactCityGuideMapper mapperInstance=new ContactCityGuideMapper();
+            List<ContactCityGuideMapper> contactCityGuideMapperList=mapperInstance.mapObjectListToMapper(contactCityGuide); 
+  
+            contactMap.put('CityGuide', contactCityGuideMapperList);
+          }
+        return contactMap;
+      }
       
     public Map<String,Object> checkContactPassword(Map<String, String> credentials, String app) {
 

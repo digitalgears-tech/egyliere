@@ -91,6 +91,44 @@ global  class ExternalMembershipsAPI {
 
     }
 
+    @HttpPatch
+    global static void UpdateCustomerExternalMemberships(){
+        RestRequest getReuest= RestContext.request;
+        RestResponse requestResponse= RestContext.response;
+        try{
+        String app = getReuest.params.get('App');
+        String id;
+        if(app.equals('Internal')){
+            id = getReuest.params.get('recordID');
+            List< Object> body = (List< Object>)JSON.deserializeUntyped(RestContext.request.requestbody.tostring());
+            externalMembershipsServiceInstance.updateContactMembership(id, body);
+            requestResponse.responseBody=Blob.valueOf('Membership set' );
+            requestResponse.statusCode=200;
+    
+        }else{
+            throw new GeneralException(' not allowed for external apps');
+
+        }
+    }catch (System.NullPointerException e) {
+        requestResponse.statusCode=500;
+        requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
+   
+   }
+
+    catch (System.DmlException e) {
+        requestResponse.statusCode=500;
+        requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
+   
+    }
+
+    catch(GeneralException e){
+        requestResponse.statusCode=400;
+        requestResponse.responseBody = Blob.valueOf('ERROR: ' + e.getMessage());
+  
+    }
+
+    }
+
     @HttpDelete
     global static void DeleteCustomerExternalMemberships(){
        RestRequest getReuest= RestContext.request;

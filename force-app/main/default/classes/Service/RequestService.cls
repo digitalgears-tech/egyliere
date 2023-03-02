@@ -1,10 +1,10 @@
 public class RequestService {
     private static RequestService instance = null;
-    public  ContactRepository contactRepositoryInstance;
     public AccountRepository accountRepositoryInstance;
     public OpportunityRepository opportunityRepositoryInstance;
     public ProductRepository productRepositoryInstance;
     public RequestRepository requestRepositoryInstance;
+    public  ContactRepository contactRepositoryInstance;
     public ServiceRepository serviceRepositoryInstance;
     public PackageServiceRepository packageServiceRepositoryInstance;
     public PlansRepository plansRepositoryInstance;
@@ -34,7 +34,7 @@ public class RequestService {
          
          Contact contact = contactRepositoryInstance.findByRecordId(recordId);
          Account account = accountRepositoryInstance.findByAccountId(contact.AccountId);
-         RecordType rt =[select Id from RecordType where Name = 'Subscription' and SobjectType = 'Case'];
+         RecordType rt =[select Id from RecordType where Name = 'Membership Subscription' and SobjectType = 'Case'];
          Map<String,Object> planDetails = (Map<String,Object>) plan.get(0);
         Case subscribeRequest = new Case(
             Subject= contact.Name +' Subscription Request '+ planDetails.get('name'),
@@ -195,10 +195,12 @@ public class RequestService {
             packageServicesIDs.add(o.Id);
          }
          services.addAll(serviceRepositoryInstance.findServiceByOpportunityProduct(packageServicesIDs));
-
+          
         return  serviceMapper.ServiceobjectListToMapperList(services, packageServiceMap);
 
       }
+
+      
 
       
 }
