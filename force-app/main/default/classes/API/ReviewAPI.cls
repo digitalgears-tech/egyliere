@@ -1,3 +1,10 @@
+/**
+ * @description       : 
+ * @author            : Mohamed Tarek
+ * @group             : 
+ * @last modified on  : 03-02-2023
+ * @last modified by  : Mohamed Tarek
+**/
 @RestResource(urlMapping = '/ReviewAPI/*')
 global with sharing class ReviewAPI {
     public static ReviewService reviewServiceInstance = ReviewService.getInstance();
@@ -11,11 +18,12 @@ global with sharing class ReviewAPI {
         try{
             String app = request.params.get('App');
             String contactId = request.params.get('recordID');
-            String packageId = request.params.get('packageID');
             if(app.equals('Internal')){
                 Map<String,Object> body = (Map<String,Object>)JSON.deserializeUntyped(request.requestBody.toString());
                 String comment = (String) body.get('comment');
                 String ratingValue = (String) body.get('ratingValue');
+                String packageId =(String) body.get('packageID');
+
 
                 reviewServiceInstance.SetReview(comment, ratingValue, contactId, packageId);
                 response.statusCode = 200;
