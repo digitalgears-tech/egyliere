@@ -19,8 +19,12 @@ global class PlansAPI {
         try{
         String app = getReuest.params.get('App');
         if(app.equals('Internal')){
-            List<PlansMapper> details=plansServiceInstance.getPlanList();
-           
+            List<PlansMapper> details;
+            if(getReuest.params.get('Name')== null){
+             details=plansServiceInstance.getPlanList();
+           }else{
+            details=plansServiceInstance.getPlanListByName(getReuest.params.get('Name'));
+           }
             
            return details;
         }else{

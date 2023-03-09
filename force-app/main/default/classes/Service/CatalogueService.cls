@@ -20,6 +20,10 @@ public class CatalogueService {
        return CatalogueRepositoryInstance.FindAllCatalogueByType(type);
 
       }
+      public List<CatalogueMapper> getCatalogueListById(String recordId) {
+        return CatalogueMapper.catalogueObjectListToMapperList(CatalogueRepositoryInstance.FindAllCatalogueByID(recordId));
+ 
+       }
 
       public List<CatalogueMapper> GetCatalogueList(Integer pageSize,Integer pageNumber) {
         List<Catalogue__c> catalogueObjectList = CatalogueRepositoryInstance.FindAllCatalogue(pageSize, pageNumber);
@@ -48,6 +52,11 @@ public class CatalogueService {
         return CatalogueMapper.catalogueObjectListToMapperList(catalogueObjectList);
  
        }
+       public List<CatalogueMapper> GetCatalogueListByCountry(String country) {
+        List<Catalogue__c> catalogueObjectList = CatalogueRepositoryInstance.FindCatalogueByCountry(country);
+        return CatalogueMapper.catalogueObjectListToMapperList(catalogueObjectList);
+ 
+       }
 
        public List<CatalogueMapper> GetCityGuideCatalogueListType(String id,String type) {
         RecordType rt =[
@@ -71,6 +80,18 @@ public class CatalogueService {
 
            return CategoriesMap;
    
-}
+        }
+
+        public List<String> GetCountryList() {
+          List<Catalogue__c> catalogueObjectList = CatalogueRepositoryInstance.FindAllCatalogue(200,1);
+          List<String>  country = new List<String>();
+          for(Catalogue__c c : catalogueObjectList){
+            if(!(country.contains(c.Country__c) || c.Country__c==null)){
+              country.add(c.Country__c);
+            }
+          }
+          return country;
+   
+         }
 
 }

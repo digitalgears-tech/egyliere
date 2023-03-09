@@ -19,6 +19,7 @@ public class OpportunityRepository {
           Id,
           Name,
           StageName,
+          CloseDate,
           Amount
           FROM Opportunity
           WHERE Request__c = :requestID
@@ -31,6 +32,7 @@ public class OpportunityRepository {
         Id,
         Name,
         StageName,
+        CloseDate,
         Amount
         FROM Opportunity
         WHERE Request__c = :requestID
@@ -44,7 +46,8 @@ public class OpportunityRepository {
       Id,
       Name,
       StageName,
-      Amount
+      Amount,
+      CloseDate
       FROM Opportunity
       WHERE Request__c = :requestID
       AND stageName = :stageName
@@ -58,6 +61,7 @@ public class OpportunityRepository {
       Id,
       Name,
       StageName,
+      CloseDate,
       Amount
       FROM Opportunity
       WHERE Id = :id

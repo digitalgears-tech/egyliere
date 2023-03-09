@@ -64,7 +64,7 @@ public QuoteMapper() {
         mapper.subType	= quoteLineItemDetails.SubType__c;
         mapper.salesPrice =	quoteLineItem.TotalPrice;		
         mapper.description = quoteLineItemDetails.Description__c;		
-
+        mapper.name = quoteLineItem.Product2.Name;
         if(quoteLineItem.Product2.Name.equals('Flight Management')){
             mapper.triptype	= quoteLineItemDetails.Trip_type__c;		
             mapper.airline = quoteLineItemDetails.Airline__c;		

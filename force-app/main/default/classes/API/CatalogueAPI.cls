@@ -30,9 +30,17 @@ global class CatalogueAPI {
       String app = getReuest.params.get('App');
       String type = getReuest.params.get('Type');
       String subtype = getReuest.params.get('subType');
+      String catalogueId = getReuest.params.get('CatalogueId');
+      String country = getReuest.params.get('Country');
 
     if (app.equals('Internal')) {
-      if (subtype != null) {
+      if(country != null){
+        List<CatalogueMapper> catalogueList= CatalogueServiceInstance.GetCatalogueListByCountry(country); 
+        return catalogueList;
+      }else if (catalogueId != null) {
+        List<CatalogueMapper> catalogueList= CatalogueServiceInstance.getCatalogueListById(catalogueId); 
+        return catalogueList;
+      } else if (subtype != null) {
         List<CatalogueMapper> catalogueListByType= CatalogueServiceInstance.GetCatalogueListByType(subtype,pageSize, pageNumber);
         return catalogueListByType;
 

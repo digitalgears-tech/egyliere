@@ -1,6 +1,7 @@
 global class PackageMapper {
     List<ServiceMapper> services;
     Decimal totalPrice;
+    Date bookingDate;
 
     public PackageMapper() {
 
@@ -10,7 +11,7 @@ global class PackageMapper {
         PackageMapper packagemapper = new PackageMapper();
         packagemapper.totalPrice = o.Amount;
         packagemapper.services = services;
-
+        packagemapper.bookingDate = o.CloseDate;
         return packagemapper;
     }
 }

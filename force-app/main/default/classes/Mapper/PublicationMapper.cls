@@ -34,7 +34,7 @@ global class PublicationMapper {
         mapper.startDate= publicationObject.Start_Date__c;  
         mapper.endDate= publicationObject.End_Date__c;
         mapper.description= publicationObject.Description__c;
-        //mapper.images= publicationObject.Image__c;
+       //mapper.images= publicationObject.Image__c;
         mapper.images= ImageListMapperInstance.ConvertToImageList(publicationObject.Image__c);
         mapper.catalougeId = publicationObject.Catalogue__r.Id;
        mapper.catalougeCategory =publicationObject.Catalogue__r.RecordType.Name;

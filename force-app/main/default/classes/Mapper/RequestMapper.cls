@@ -125,7 +125,8 @@ public class RequestMapper {
             service.Arival_Date__c = Date.parse((String)serviceDetails.get('Check in Date'));
             service.Departure_Date__c = Date.parse((String)serviceDetails.get('Check out Date'));
             service.Destination__c = (String)serviceDetails.get('Destination');
-            service.Meal_Plan__c = (String)serviceDetails.get('Meal Plan');
+            if(serviceDetails.get('Meal Plan')!=null){
+            service.Meal_Plan__c = (String)serviceDetails.get('Meal Plan');}
             service.Bed_size__c = (String)serviceDetails.get('Bed Size');
             if (service.Category__c.equals('Hotel')){
             service.Booking__c= (Decimal)serviceDetails.get('Number of rooms');

@@ -70,6 +70,13 @@ public class ContactService {
   
             contactMap.put('CityGuide', contactCityGuideMapperList);
           }
+          try{      
+            Plan__c plan = plansRepositoryInstance.FindPlansById(Account.Plan__c);
+            contactMap.put('MemberShip', plan.Name);
+          }catch(Exception e){
+        
+  
+          }
         return contactMap;
       }
       
@@ -109,7 +116,7 @@ public class ContactService {
         }
         try{      
           Plan__c plan = plansRepositoryInstance.FindPlansById(Account.Plan__c);
-          contactMap.put('MmeberShip', plan.Name);
+          contactMap.put('MemberShip', plan.Name);
         }catch(Exception e){
       
 
@@ -150,18 +157,19 @@ public class ContactService {
     Map<String, Object> contactsmap = (Map<String, Object>) contactDetails.get(0);
     Contact contact = contactRepositoryInstance.findByRecordId(id);
    
+    if((String)contactsmap.get('First Name') !=null)
       contact.FirstName = (String)contactsmap.get('First Name');
+    if((String)contactsmap.get('Last Name')!=null)
       contact.LastName = (String)contactsmap.get('Last Name');
+    if((String)contactsmap.get('Email')!=null)
       contact.Email = (String)contactsmap.get('Email');
+    if((String)contactsmap.get('Phone')!=null)
       contact.Phone = (String)contactsmap.get('Phone');
 
       if(contactsmap.get('New Password') != null && contact.Password__c.equals(contactsmap.get('Password'))){
         contact.Password__c= (String)contactsmap.get('New Password');
       }
-      else{
-      throw new DMLException('Wrong Password');
-    }
-  
+      
     update contact;
   }
 

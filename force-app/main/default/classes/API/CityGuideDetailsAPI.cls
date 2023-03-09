@@ -21,8 +21,7 @@ global class CityGuideDetailsAPI {
           
             String app = getReuest.params.get('App');
             String type = getReuest.params.get('Type');
-            Map< String,Object> body = (Map< String,Object>)JSON.deserializeUntyped(RestContext.request.requestbody.tostring());  
-            String id = (String)body.get('cityGuide');
+            String id =  getReuest.params.get('cityGuide');
             if(app.equals('Internal')){
                 List<CatalogueMapper> catalogues=new List<CatalogueMapper>();
 

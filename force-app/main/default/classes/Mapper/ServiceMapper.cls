@@ -20,11 +20,14 @@ global class ServiceMapper {
     public ServiceMapper ServiceobjectToMapper( Opprtunity_Line_Item_Details__c servicesObject , PackageServiceMapper packageService){
         
         ServiceMapper serviceMapper = new ServiceMapper();
+        List<String> logo = new List<String>();
         ImageListMapper ImageListMapperInstance = ImageListMapper.getInstance();
         serviceMapper.category = servicesObject.Sub_Type__c;
         serviceMapper.serviceName = servicesObject.Name;
         serviceMapper.destination = servicesObject.Destination__c;
-        ServiceMapper.logo = ImageListMapperInstance.ConvertToImageList(packageService.logo);
+        logo.add(packageService.logo);
+        ServiceMapper.logo = logo;
+        //ImageListMapperInstance.ConvertToImageList(packageService.logo);
         serviceMapper.totalPoints = packageService.totalPoints;
         serviceMapper.status = packageService.status;
         serviceMapper.id = packageService.id;

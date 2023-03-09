@@ -18,6 +18,10 @@ public class PlansService {
         return plansMapperInstance.PlansMapperListToObject(planRepositoryInstance.FindAllPlans());
  
        }
-
+       public List<PlansMapper> getPlanListByName(String name) {
+        List<PlansMapper> planMapper = new List<PlansMapper>();
+         planMapper.add(plansMapperInstance.PlansMapperToObject(planRepositoryInstance.FindPlansByName(name)));
+         return planMapper;
+       }
 
 }

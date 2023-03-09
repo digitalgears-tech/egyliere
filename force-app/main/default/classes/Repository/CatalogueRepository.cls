@@ -11,8 +11,8 @@ public class CatalogueRepository {
         return instance;
       }
 
-      public List<Catalogue__c> FindAllCatalogue(Integer pageSize,Integer pageNumber){
-        Integer offset = pageSize*(pageNumber-1);
+       
+      public List<Catalogue__c> FindAllCatalogueByID(String recordID){
 
         return [
           SELECT
@@ -34,8 +34,62 @@ public class CatalogueRepository {
           RecordTypeId,
           Operating_Hours__c
           FROM Catalogue__c
+          WHERE Id = :recordID
+        ];
+      }
+ 
+      public List<Catalogue__c> FindAllCatalogue(Integer pageSize,Integer pageNumber){
+        Integer offset = pageSize*(pageNumber-1);
+
+        return [
+          SELECT
+          Name,
+          Id,
+          Logo__c,
+          City__c,
+          Country__c,
+          Address__c,
+          Location__c,
+          Phone__c,
+          Emergency_Number__c,
+          Type__c,
+          Description__c,
+          House_Rules__c,
+          Change_Policy__c,
+          Cancellation_Policy__c,
+          Benefits__c,
+          Recommendations__c,
+          RecordTypeId,
+          Operating_Hours__c
+          FROM Catalogue__c
           ORDER BY createddate 
           DESC LIMIT :pageSize OFFSET :offset
+        ];
+      }
+      public List<Catalogue__c> FindCatalogueByCountry(String country){
+
+        return [
+          SELECT
+          Name,
+          Id,
+          Logo__c,
+          City__c,
+          Country__c,
+          Address__c,
+          Location__c,
+          Phone__c,
+          Emergency_Number__c,
+          Type__c,
+          Description__c,
+          House_Rules__c,
+          Change_Policy__c,
+          Cancellation_Policy__c,
+          Benefits__c,
+          Recommendations__c,
+          RecordTypeId,
+          Operating_Hours__c
+          FROM Catalogue__c
+          WHERE Country__c = :country
         ];
       }
 
