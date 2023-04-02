@@ -62,9 +62,11 @@ public class OpportunityService {
         RecordType rt =[select Id from RecordType where Name = 'Reservation' and SobjectType = 'Case'];
         List<Case> reservationRequests = requestRepositoryInstance.findReservationRequestByContact(contact , rt.Id);
         List<Opportunity> opportunities = new List<Opportunity>();
+        List <String> caseId = new List<String>();
         for(Case r : reservationRequests){
-         opportunities.addAll(opportunityRepositoryInstance.findByCase(r.Id));
+         caseId.add(r.Id);
       }
+       opportunities.addAll(opportunityRepositoryInstance.findByCase(caseId));
       List<OpportunityLineItem> packageServices = new List<OpportunityLineItem>();
       List<String> opportunitiesIDs = new List<String>();
       for(Opportunity o : opportunities){

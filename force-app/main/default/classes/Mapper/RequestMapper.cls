@@ -61,7 +61,7 @@ public class RequestMapper {
         service.Type__c = productRepositoryInstance.findByName(subType).Family;
         service.Sub_Type__c = (String)serviceDetails.get('subType');
         service.Catalogue__c= (String)serviceDetails.get('Catalogue');
-
+        
 
         if (subType.equals(VALUE_Flight)){
 
@@ -86,21 +86,30 @@ public class RequestMapper {
                 service.Arival_Date1__c= DateTime.parse((String)serviceDetails.get('return Arrival Date'));}
             }
             if(service.Trip_type__c.equals('Multi-city')){
+                if((String)serviceDetails.get('Flight1 Departure') != null){
                 service.Departure__c=(String)serviceDetails.get('Flight1 Departure'); 
                 service.Destination__c=(String)serviceDetails.get('Flight1 Destination'); 
-                service.Departure_Date__c= DateTime.parse((String)serviceDetails.get('Flight1 Departure Date'));
+                service.Departure_Date__c= DateTime.parse((String)serviceDetails.get('Flight1 Departure Date'));}
+
+                if((String)serviceDetails.get('Flight2 Departure') != null){
                 service.Departure_1__c=(String)serviceDetails.get('Flight2 Departure'); 
                 service.Destination_1__c=(String)serviceDetails.get('Flight2 Destination'); 
-                service.Departure_Date_1__c= DateTime.parse((String)serviceDetails.get('Flight2 Departure Date'));
+                service.Departure_Date_1__c= DateTime.parse((String)serviceDetails.get('Flight2 Departure Date'));}
+                
+                if((String)serviceDetails.get('Flight3 Departure') != null){
                 service.Departure_2__c=(String)serviceDetails.get('Flight3 Departure'); 
                 service.Destination_2__c=(String)serviceDetails.get('Flight3 Destination'); 
-                service.Departure_Date_2__c= DateTime.parse((String)serviceDetails.get('Flight3 Departure Date'));
+                service.Departure_Date_2__c= DateTime.parse((String)serviceDetails.get('Flight3 Departure Date'));}
+
+                if((String)serviceDetails.get('Flight4 Departure') != null){
                 service.Departure_3__c=(String)serviceDetails.get('Flight4 Departure'); 
                 service.Destination_3__c=(String)serviceDetails.get('Flight4 Destination'); 
-                service.Departure_Date_3__c= DateTime.parse((String)serviceDetails.get('Flight4 Departure Date'));
+                service.Departure_Date_3__c= DateTime.parse((String)serviceDetails.get('Flight4 Departure Date'));}
+
+                if((String)serviceDetails.get('Flight5 Departure') != null){
                 service.Departure_4__c=(String)serviceDetails.get('Flight5 Departure'); 
                 service.Destination_4__c=(String)serviceDetails.get('Flight5 Destination'); 
-                service.Departure_Date_4__c= DateTime.parse((String)serviceDetails.get('Flight5 Departure Date'));
+                service.Departure_Date_4__c= DateTime.parse((String)serviceDetails.get('Flight5 Departure Date'));}
 
             }
             return service;
@@ -114,7 +123,8 @@ public class RequestMapper {
             service.Adult__c = (Decimal)serviceDetails.get('Adult');
             service.Child_0_2yr__c = (Decimal)serviceDetails.get('Infant');
             service.Child_3_12yr__c = (Decimal)serviceDetails.get('Child');
-            service.Additional_Details__c  =(String)serviceDetails.get('Additional details');
+            if((String)serviceDetails.get('Additional details')!=null){
+            service.Additional_Details__c  =(String)serviceDetails.get('Additional details');}
 
             return service;
         }
@@ -135,7 +145,8 @@ public class RequestMapper {
             }
             service.Room__c = (Decimal)serviceDetails.get('Room Occupancy');
             service.Prefrence__c = (String)serviceDetails.get('Room Preference');
-            service.Additional_Details__c  =(String)serviceDetails.get('Additional details');
+            if((String)serviceDetails.get('Additional details')!=null){
+            service.Additional_Details__c  =(String)serviceDetails.get('Additional details');}
 
             return service;
         }
@@ -146,7 +157,8 @@ public class RequestMapper {
             service.Departure_Date__c = Date.parse((String)serviceDetails.get('Start Date'));
             service.Category__c = (String)serviceDetails.get('Category');
             service.Destination__c = (String)serviceDetails.get('Destination');
-            service.Additional_Details__c  =(String)serviceDetails.get('Additional details');
+            if((String)serviceDetails.get('Additional details')!=null){
+            service.Additional_Details__c  =(String)serviceDetails.get('Additional details');}
 
             return service;
         }
@@ -168,7 +180,8 @@ public class RequestMapper {
             service.Arival_Date__c = DateTime.parse((String)serviceDetails.get('Date Time'));
             service.Category__c = (String)serviceDetails.get('Category');
             service.Destination__c = (String)serviceDetails.get('Location');
-            service.Additional_Details__c  =(String)serviceDetails.get('Additional details');
+            if((String)serviceDetails.get('Additional details')!=null){
+            service.Additional_Details__c  =(String)serviceDetails.get('Additional details');}
 
             return service;
         }
@@ -181,7 +194,8 @@ public class RequestMapper {
             service.Ticket_Type__c= (String)serviceDetails.get('Ticket Type');
             service.Destination__c = (String)serviceDetails.get('Location');
             service.Promo_code__c = (String)serviceDetails.get('Promo Code');
-            service.Additional_Details__c  =(String)serviceDetails.get('Additional details');
+            if((String)serviceDetails.get('Additional details')!=null){
+            service.Additional_Details__c  =(String)serviceDetails.get('Additional details');}
             
             return service;
         }
@@ -192,7 +206,8 @@ public class RequestMapper {
             service.Venu__c = (String)serviceDetails.get('Venue');
             service.Time_slot__c = (String)serviceDetails.get('Meal Period');
             service.Prefrence__c = (String)serviceDetails.get('Seating');
-            service.Additional_Details__c  =(String)serviceDetails.get('Additional details');
+            if((String)serviceDetails.get('Additional details')!=null){
+            service.Additional_Details__c  =(String)serviceDetails.get('Additional details');}
            
             return service;
         }
@@ -204,7 +219,8 @@ public class RequestMapper {
             service.Flight_Number__c = (String)serviceDetails.get('Flight Number');
             service.Destination__c= (String)serviceDetails.get('Destination');
             service.Departure__c= (String)serviceDetails.get('Pick-up Address');
-            service.Additional_Details__c  =(String)serviceDetails.get('Additional details');
+            if((String)serviceDetails.get('Additional details')!=null){
+            service.Additional_Details__c  =(String)serviceDetails.get('Additional details');}
 
             return service;
 
@@ -217,7 +233,8 @@ public class RequestMapper {
             service.Departure__c = (String)serviceDetails.get('Pick-up Address');
             service.Destination__c= (String)serviceDetails.get('Drop-off Address');
             service.Transport_Type__c = (String)serviceDetails.get('Transportation Type');
-            service.Additional_Details__c  =(String)serviceDetails.get('Additional details');
+            if((String)serviceDetails.get('Additional details')!=null){
+            service.Additional_Details__c  =(String)serviceDetails.get('Additional details');}
 
             return service;
         }
@@ -276,7 +293,8 @@ public class RequestMapper {
         if (subType.equals(VALUE_LongHolidays)){
             
         }
-        service.Additional_Details__c  =(String)serviceDetails.get('Additional details');
+        if((String)serviceDetails.get('Additional details')!=null){
+        service.Additional_Details__c  =(String)serviceDetails.get('Additional details');}
         return service;
         
        

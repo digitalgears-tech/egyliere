@@ -50,6 +50,8 @@ String Supplier;
 String transportType;
 String triptype;
 String venu;
+String bookingId;
+String sequenceNumber;
 
 public QuoteMapper() {
 
@@ -57,6 +59,7 @@ public QuoteMapper() {
     public QuoteMapper quoteObjectToMapper(Quote_Line_Item_Detail__c quoteLineItemDetails, QuoteLineItem quoteLineItem){
         QuoteMapper mapper =new QuoteMapper();
         mapper.id = quoteLineItem.QuoteId;
+        mapper.sequenceNumber = quoteLineItem.Quote.Sequence_Number__c;
         mapper.category = quoteLineItemDetails.Opportunity_Line_Item_Details__r.Category__c;
         mapper.status = quoteLineItem.Quote.Status;
         mapper.Catalogue = quoteLineItemDetails.Catalogue__c;
@@ -65,6 +68,8 @@ public QuoteMapper() {
         mapper.salesPrice =	quoteLineItem.TotalPrice;		
         mapper.description = quoteLineItemDetails.Description__c;		
         mapper.name = quoteLineItem.Product2.Name;
+        mapper.bookingId=quoteLineItemDetails.Opportunity_Line_Item_Details__r.Opportunity_Product__c;
+
         if(quoteLineItem.Product2.Name.equals('Flight Management')){
             mapper.triptype	= quoteLineItemDetails.Trip_type__c;		
             mapper.airline = quoteLineItemDetails.Airline__c;		
@@ -147,6 +152,7 @@ public QuoteMapper() {
 
         for( Quote_Line_Item_Detail__c q : quoteLineItemDetails ){
 
+            if(quoteLineItemDetailsIdQuoteLineItem.get(q.Id)!=null)
             mapperList.add(quoteObjectToMapper(q,quoteLineItemDetailsIdQuoteLineItem.get(q.Id)));
         }
 

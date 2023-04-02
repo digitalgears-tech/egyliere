@@ -10,6 +10,7 @@ global class ServiceMapper {
     Datetime startDate;
     String category;
     String id;
+    String sequenceNumber;
 
 
 
@@ -25,11 +26,16 @@ global class ServiceMapper {
         serviceMapper.category = servicesObject.Sub_Type__c;
         serviceMapper.serviceName = servicesObject.Name;
         serviceMapper.destination = servicesObject.Destination__c;
+        serviceMapper.sequenceNumber= packageService.sequenceNumber;
         logo.add(packageService.logo);
         ServiceMapper.logo = logo;
         //ImageListMapperInstance.ConvertToImageList(packageService.logo);
         serviceMapper.totalPoints = packageService.totalPoints;
         serviceMapper.status = packageService.status;
+        if (packageService.status.equals('Closed Lost')){
+          serviceMapper.status = 'Cancelled';
+        }else if (packageService.status.equals('Closed Won')){
+          serviceMapper.status = 'Completed';}
         serviceMapper.id = packageService.id;
         serviceMapper.packageID = packageService.packageID;
         serviceMapper.price = packageService.totalPrice;

@@ -12,7 +12,7 @@ public class OpportunityRepository {
         return instance;
       }
 
-    public List<Opportunity> findByCase(String requestID){
+    public List<Opportunity> findByCase(List<String> requestID){
 
         return [
           SELECT
@@ -25,7 +25,7 @@ public class OpportunityRepository {
           WHERE Request__c = :requestID
           ];
     }
-    public List<Opportunity> findByCaseandStatus(String requestID, List<String> stageName){
+    public List<Opportunity> findByCaseandStatus(List<String> requestID, List<String> stageName){
 
       return [
         SELECT

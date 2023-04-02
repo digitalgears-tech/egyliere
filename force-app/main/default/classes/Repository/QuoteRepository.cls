@@ -38,6 +38,7 @@ public class QuoteRepository {
         return [
         SELECT
         Id,
+        Sequence_Number__c,
         OpportunityId,
         Phone,
         Name,

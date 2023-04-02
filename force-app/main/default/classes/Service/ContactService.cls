@@ -12,8 +12,7 @@ public class ContactService {
     public PlansRepository  plansRepositoryInstance;
     public ContactCityGuideRepository contactCityGuideRepositoryInstance;
     public AccountService accountServiceInstance ;
-    public ContactService() {
-        contactRepositoryInstance = ContactRepository.getInstance();
+    public ContactService() { 
         accountRepositoryInstance = AccountRepository.getInstance();
         plansRepositoryInstance = PlansRepository.getInstance();
         accountServiceInstance = AccountService.getInstance();

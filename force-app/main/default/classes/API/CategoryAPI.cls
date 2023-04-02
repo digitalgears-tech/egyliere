@@ -10,8 +10,8 @@ global class CategoryAPI {
         RestRequest getReuest= RestContext.request;
         RestResponse requestResponse= RestContext.response;
         try{
-            String app = getReuest.params.get('App');
-        if(app.equals('Internal')){
+       
+        if(getReuest.params.get('App').equals('Internal')){
                 return CatalogueServiceInstance.getCategoriesMap();
         }else{
             requestResponse.statusCode=503;

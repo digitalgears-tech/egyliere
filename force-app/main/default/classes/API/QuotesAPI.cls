@@ -23,9 +23,14 @@ global class QuotesAPI {
         }
         try{
          app = getReuest.params.get('App');
-            if(app.equals('Internal')){
-                String packageServiceId = getReuest.params.get('bookingID');
-                return quoteServiceInstance.GetQuoteDetails(packageServiceId);
+        if(app.equals('Internal')){
+            if(getReuest.params.get('QuoteId')!= null){
+                return quoteServiceInstance.GetQuoteDetailsById(getReuest.params.get('QuoteId'));}
+            else if(getReuest.params.get('bookingID')!= null){
+                return quoteServiceInstance.GetQuoteDetails(getReuest.params.get('bookingID'));
+            }else {
+                requestResponse.statusCode=503;
+            throw new GeneralException('No enough information');}
             }else{
                 requestResponse.statusCode=503;
                 throw new GeneralException('Not allowed for External apps');}

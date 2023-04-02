@@ -419,7 +419,7 @@ public class MobileAPITest {
     RestResponse res = new RestResponse();
     req.requestURI = '/CategoryListAPI';  
     req.httpMethod = 'GET';
-    req.params.put('App', 'Internal');
+    req.params.put('App', '');
     RestContext.request = req;
     RestContext.response = res;
     Test.startTest();
@@ -573,6 +573,40 @@ public class MobileAPITest {
     RestContext.response = res;
     Test.startTest();
     NotificationApi.getNotifications();
+    Test.stopTest();
+    
+  }
+
+  @istest
+  static void TestCountryList() {
+    RestRequest req = new RestRequest(); 
+    RestResponse res = new RestResponse();
+    DataFactoryTest dataFactory = DataFactoryTest.getInstance();
+    DataFactory.CreateCatalogue('Accommodation','Marriott Marbella Beach Resort Hotel','src="https://egylieretravel--dev.sandbox.file.force.com/servlet/rtaImage?eid=a017X00000CPnM2&amp;feoid=00N7X000003itop&amp;refid=0EM7X000000Dhfy"','Spain');
+    req.params.put('App', 'Internal');
+    req.httpMethod = 'GET';
+    RestContext.request = req;
+    RestContext.response = res;
+    Test.startTest();
+    CountryListAPI.getCountryList();
+    Test.stopTest();
+    
+  }
+
+  @istest
+  static void TestMyBookingsCount() {
+    RestRequest req = new RestRequest(); 
+    RestResponse res = new RestResponse();
+    DataFactoryTest dataFactory = DataFactoryTest.getInstance();
+    Account testingAccount=dataFactory.CreateAccount('Testing', 'Account');
+    Contact testingContact=dataFactory.CreateContact('testing', '2', '123', 'test@gmail.com', testingAccount.Id);
+    req.params.put('recordID', testingContact.Id);
+    req.params.put('App', 'Internal');
+    req.httpMethod = 'GET';
+    RestContext.request = req;
+    RestContext.response = res;
+    Test.startTest();
+    BookingCountAPI.getBookingCountAPI();
     Test.stopTest();
     
   }

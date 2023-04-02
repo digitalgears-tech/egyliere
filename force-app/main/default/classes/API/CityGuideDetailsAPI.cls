@@ -66,9 +66,12 @@ global class CityGuideDetailsAPI {
                    Map< String,Object> body = (Map< String,Object>)JSON.deserializeUntyped(RestContext.request.requestbody.tostring());  
                    String recordId = postReuest.params.get('recordID');
                    String id = (String)body.get('cityGuide');
-                   cityGuideServiceInstance.SetContactCityGuideList(recordId,id);
-                   requestResponse.responseBody=Blob.valueOf('Cityguide set' );
-                   requestResponse.statusCode=200;
+                   Datetime dt =cityGuideServiceInstance.SetContactCityGuideList(recordId,id);
+                   Map<String,Object> resbody = new Map<String,Object>();
+                   resbody.put('Status', 'Cityguide set' );
+                   resbody.put('Expiry Date',dt);
+                   requestResponse.responseBody=Blob.valueOf(Json.serialize(resbody));
+                  // requestResponse.statusCode=200;
               
                 
              }

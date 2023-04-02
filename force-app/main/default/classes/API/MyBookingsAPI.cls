@@ -20,7 +20,9 @@ global static  List<ServiceMapper>  getAllService(){
         String app = getReuest.params.get('App');
       if(app.equals('Internal')){
         String recordId = getReuest.params.get('recordID');
-      if(getReuest.params.get('Status')!=null){
+        if(getReuest.params.get('BookingId')!=null){
+        return requestServiceInstance.GetReservationsRequestbyPackageService(getReuest.params.get('BookingId'));
+        }else if(getReuest.params.get('Status')!=null){
            return requestServiceInstance.GetReservationsRequestByStatus(recordId,getReuest.params.get('Status'));
         }else{ 
             return requestServiceInstance.GetReservationsRequest(recordId);}

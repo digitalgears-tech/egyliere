@@ -5,6 +5,7 @@ public class PackageServiceMapper {
      public String id;
      public Decimal totalPrice;
      public String packageID;
+     public String sequenceNumber;
 
 
     public PackageServiceMapper() {
@@ -17,6 +18,7 @@ public class PackageServiceMapper {
         this.id = packageservice.id;
         this.totalPrice = packageservice.TotalPrice;
         this.packageID =packageservice.OpportunityId;
+        this.sequenceNumber= packageservice.Sequence_Number__c;
     }
 
    

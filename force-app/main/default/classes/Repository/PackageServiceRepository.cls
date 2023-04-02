@@ -19,6 +19,7 @@ public class PackageServiceRepository {
           Id,
           Name,
           Total_Points__c,
+          Sequence_Number__c,
           Opportunity.StageName	
           FROM OpportunityLineItem
           ];
@@ -34,6 +35,7 @@ public class PackageServiceRepository {
           PricebookEntry.Product2.Logo__c,
           Total_Points__c,
           Opportunity.StageName,
+          Sequence_Number__c,
           TotalPrice,
           OpportunityId		
           FROM OpportunityLineItem
@@ -50,6 +52,9 @@ public class PackageServiceRepository {
         Opportunity_Line_Item_Details__c,
         PricebookEntry.Product2.Logo__c,
         Total_Points__c,
+        TotalPrice,
+        Sequence_Number__c,
+        OpportunityId,
         Opportunity.StageName		
         FROM OpportunityLineItem
         WHERE Id = :id

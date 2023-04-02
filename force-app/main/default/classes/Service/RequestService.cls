@@ -61,7 +61,9 @@ public class RequestService {
             Status='New',
             RecordTypeId=rt.Id);
             insert reservationRequest;
-            Opportunity packages = opportunityRepositoryInstance.findByCase(reservationRequest.Id).get(0);
+            List<String> requestId = new List<String>();
+            requestId.add(reservationRequest.Id);
+            Opportunity packages = opportunityRepositoryInstance.findByCase(requestId).get(0);
             List<OpportunityLineItem> packageServices= new List<OpportunityLineItem>();
             List<Opprtunity_Line_Item_Details__c> services = new List<Opprtunity_Line_Item_Details__c>();
             List<Service_Member__c> serviceMembers = new List<Service_Member__c>();
@@ -119,8 +121,11 @@ public class RequestService {
         RecordType rt =[select Id from RecordType where Name = 'Reservation' and SobjectType = 'Case'];
         List<Case> reservationRequests = requestRepositoryInstance.findReservationRequestByContact(contact , rt.Id);
         List<Opportunity> opportunities = new List<Opportunity>();
+        List <String> caseId = new List<String>();
         for(Case r : reservationRequests){
-         opportunities.addAll(opportunityRepositoryInstance.findByCase(r.Id));}
+         caseId.add(r.Id);
+      }
+       opportunities.addAll(opportunityRepositoryInstance.findByCase(caseId));
          List<OpportunityLineItem> packageServices = new List<OpportunityLineItem>();
          List<Opprtunity_Line_Item_Details__c> services = new List<Opprtunity_Line_Item_Details__c>();
 
@@ -141,6 +146,22 @@ public class RequestService {
 
         return  serviceMapper.ServiceobjectListToMapperList(services, packageServiceMap);
 
+      }
+      public List<ServiceMapper>  GetReservationsRequestbyPackageService(String packageService){
+         List<OpportunityLineItem> packageServices = new List<OpportunityLineItem>();
+         List<Opprtunity_Line_Item_Details__c> services = new List<Opprtunity_Line_Item_Details__c>();
+         packageServices.add(packageServiceRepositoryInstance.findPackageServiceById(packageService));
+
+         List <String> packageServicesIDs=  new List<String>();
+         Map<String,PackageServiceMapper> packageServiceMap = new Map<String,PackageServiceMapper>();
+
+         for(OpportunityLineItem o :packageServices){
+            packageServiceMap.put(o.Id, new PackageServiceMapper(o));
+            packageServicesIDs.add(o.Id);
+         }
+         services.addAll(serviceRepositoryInstance.findServiceByOpportunityProduct(packageServicesIDs));
+
+        return  serviceMapper.ServiceobjectListToMapperList(services, packageServiceMap);
       }
 
       public List<ServiceMapper>  GetReservationsRequestByStatus(String recordId,String status){
@@ -175,9 +196,12 @@ public class RequestService {
         RecordType rt =[select Id from RecordType where Name = 'Reservation' and SobjectType = 'Case'];
         List<Case> reservationRequests = requestRepositoryInstance.findReservationRequestByContact(contact , rt.Id);
         List<Opportunity> opportunities = new List<Opportunity>();
+        List <String> caseId = new List<String>();
         for(Case r : reservationRequests){
-         opportunities.addAll(opportunityRepositoryInstance.findByCaseandStatus(r.Id,statusList));
+         caseId.add(r.Id);
       }
+          opportunities.addAll(opportunityRepositoryInstance.findByCaseandStatus(caseId,statusList));
+
          List<OpportunityLineItem> packageServices = new List<OpportunityLineItem>();
          List<Opprtunity_Line_Item_Details__c> services = new List<Opprtunity_Line_Item_Details__c>();
 

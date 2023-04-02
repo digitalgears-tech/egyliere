@@ -3,6 +3,7 @@ public class CityGuideService {
     CityGuideRepository cityGuideRepositoryInstance;
     public  ContactRepository contactRepositoryInstance;
     public CityGuideMapper cityGuideMapper = new CityGuideMapper();
+    public ContactCityGuideMapper contactCityGuideMapper = new ContactCityGuideMapper();
 
 
     public CityGuideService() {
@@ -23,7 +24,7 @@ public class CityGuideService {
  
        }
 
-       public void SetContactCityGuideList(String contactId, String cityGuideId) {
+       public Date SetContactCityGuideList(String contactId, String cityGuideId) {
         City_Guide__c cityGuide =cityGuideRepositoryInstance.FindCityGuideById(cityGuideId);
         Contact contact = contactRepositoryInstance.findByRecordId(contactId);
         Contact_City_Guide__c contactCityGuideObjectList = new Contact_City_Guide__c();
@@ -35,7 +36,8 @@ public class CityGuideService {
         contactCityGuideObjectList.Active__c = true;
          
         insert contactCityGuideObjectList;
- 
+        contactCityGuideMapper.mapObjectToMapper(contactCityGuideObjectList);
+        return contactCityGuideObjectList.End_Date__c;
        }
 
        public List<CityGuideMapper> GetFeaturedCityGuide() {

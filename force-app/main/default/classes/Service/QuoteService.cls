@@ -33,6 +33,24 @@ public  class QuoteService {
         List<QuoteLineItem> quoteLineItems = quoteLineItemRepositoryInstance.findQuoteLineItemByQuoteLineItemDetailsId(quoteLineItemDetailsidList);
         Map<Id,QuoteLineItem> quoteLineItemDetailsIdQuoteLineItem = new Map<Id,QuoteLineItem>();
         for(QuoteLineItem q : quoteLineItems){
+          if(q.Quote.Status.equals('Presented')||q.Quote.Status.equals('Accepted') || q.Quote.Status.equals('Denied')){
+            quoteLineItemDetailsIdQuoteLineItem.put(q.Line_Item_Detail__c,q);
+          }
+        }
+        return quoteMapper.quoteObjectListToMapperList(quoteLineItemDetails, quoteLineItemDetailsIdQuoteLineItem);
+       
+
+      }
+      public List<QuoteMapper> GetQuoteDetailsById(String quoteId){
+
+        List<Quote_Line_Item_Detail__c> quoteLineItemDetails = quoteLineItemDetailRepositoryInstance.findQuoteLineItemDetailByQuote(quoteId);
+        List<Id> quoteLineItemDetailsidList = new List<Id>();
+        for(Quote_Line_Item_Detail__c qD : quoteLineItemDetails){
+            quoteLineItemDetailsidList.add(qD.Id);
+        }
+        List<QuoteLineItem> quoteLineItems = quoteLineItemRepositoryInstance.findQuoteLineItemByQuoteLineItemDetailsId(quoteLineItemDetailsidList);
+        Map<Id,QuoteLineItem> quoteLineItemDetailsIdQuoteLineItem = new Map<Id,QuoteLineItem>();
+        for(QuoteLineItem q : quoteLineItems){
             quoteLineItemDetailsIdQuoteLineItem.put(q.Line_Item_Detail__c,q);
         }
         return quoteMapper.quoteObjectListToMapperList(quoteLineItemDetails, quoteLineItemDetailsIdQuoteLineItem);
